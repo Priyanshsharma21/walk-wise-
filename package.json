@@ -9,9 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
+    "antd": "^5.20.6",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.5.4",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.13",
+    "mouse-follower": "^1.1.2",
+    "next": "14.2.11",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.11"
+    "react-intersection-observer": "^9.13.1",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "postcss": "^8",
