@@ -1,118 +1,72 @@
 import React, { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { gsap } from "gsap";
+import styles from "./Demo.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function getCurrentFrame(index) {
-  return `/mountainSeq/${(index + 33).toString().padStart(4, "0")}.png`;
-}
-
-const Demo = ({
-  numFrames = 393,
-  width,
-  height,
-  initialWidth,
-  initialHeight,
-}) => {
-  const canvasRef = useRef(null);
-  const [images, setImages] = useState([]);
-  const [frameIndex, setFrameIndex] = useState(0);
-  const [canvasSize, setCanvasSize] = useState({
-    width: initialWidth,
-    height: initialHeight,
-  });
+const Demo = ({ height }) => {
+  const demoRef = useRef(null);
+  const videoRef = useRef(null);
+  const [videoDuration, setVideoDuration] = useState(0);
 
   useEffect(() => {
-    function preloadImages() {
-      const loadedImages = [];
-      for (let i = 0; i < numFrames; i++) {
-        const img = new Image();
-        img.src = getCurrentFrame(i);
-        img.onload = () => {
-          loadedImages.push(img);
-          if (loadedImages.length === numFrames) {
-            setImages(loadedImages);
-          }
-        };
+    const video = videoRef.current;
+
+    const handleMetadataLoaded = () => {
+      // Set video duration after metadata is loaded
+      if (video && video.duration) {
+        setVideoDuration(video.duration);
       }
-    }
+    };
 
-    preloadImages();
+    video.addEventListener("loadedmetadata", handleMetadataLoaded);
 
-    const ctx = canvasRef.current.getContext("2d");
-    ctx.canvas.width = width;
-    ctx.canvas.height = height;
-
-    ScrollTrigger.create({
-      trigger: canvasRef.current,
+    // Register ScrollTrigger instance
+    const scrollTriggerInstance = ScrollTrigger.create({
+      trigger: demoRef.current,
       start: "top top",
-      end: `+=${height}`,
+      end: () => `+=${videoDuration * 200}`, // Set end based on video duration (in milliseconds)
       pin: true,
       scrub: 1,
       onUpdate: ({ progress }) => {
-        const index = Math.min(numFrames - 1, Math.ceil(progress * numFrames));
-        setFrameIndex(index);
+        if (video && video.duration) {
+          video.currentTime = progress * video.duration; // Sync video frames with scroll progress
+        }
       },
     });
 
+    // Cleanup on unmount
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      video.removeEventListener("loadedmetadata", handleMetadataLoaded);
+      scrollTriggerInstance.kill();
+      ScrollTrigger.refresh();
     };
-  }, [numFrames, width, height]);
-
-  useEffect(() => {
-    if (!canvasRef.current || images.length < 1) {
-      return;
-    }
-
-    const context = canvasRef.current.getContext("2d");
-    let requestId;
-
-    const render = () => {
-      context.clearRect(0, 0, canvasSize.width, canvasSize.height); // Clear canvas before drawing
-      context.drawImage(
-        images[frameIndex],
-        0,
-        0,
-        canvasSize.width,
-        canvasSize.height
-      );
-      requestId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => cancelAnimationFrame(requestId);
-  }, [frameIndex, images, canvasSize]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const aspectRatio = initialWidth / initialHeight;
-      const newWidth = window.innerWidth;
-      const newHeight = newWidth / aspectRatio;
-      setCanvasSize({ width: newWidth, height: newHeight });
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, [initialWidth, initialHeight]);
+  }, [videoDuration]);
 
   return (
-    <div className="overflow-hidden">
-      <div
+    <div
+      className="absolute top-0"
+      style={{
+        position: "relative",
+        height: height,
+        width: "100%",
+        overflow: "hidden",
+      }}
+      ref={demoRef}
+    >
+      <video
+        ref={videoRef}
+        className={`${styles.videoTransition}`}
+        src="https://res.cloudinary.com/dlxpea208/video/upload/v1726568387/transition_fitxu8.mp4"
+        muted
+        playsInline
         style={{
-          position: "relative",
-          height: `${height}px`,
           width: "100%",
+          height: "100%",
+          objectFit: "cover",
         }}
-      >
-        <canvas ref={canvasRef} className="canvas-style" />
-      </div>
-      <div style={{ height: "120vh" }} />
+      />
     </div>
   );
 };

@@ -17,14 +17,37 @@
   display: none;
 }
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+html:before,
+body:before {
+  content: "";
+  content: "";
+  width: 100%;
+  height: 100vh;
+  background-image: url(../assets/background.png);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app-content {
+  padding: 1rem;
+  padding-bottom: 0px;
+}
+
+.pin-spacer {
+}
+
 /* body {
   cursor: none;
 } */
 
-.home-outer {
-  background: #a900a9;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
 /* cursor animation */

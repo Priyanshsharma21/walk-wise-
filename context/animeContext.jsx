@@ -7,7 +7,7 @@ const AnimeContext = createContext();
 export const AnimeProvider = ({ children }) => {
   const [breakPoint] = useState(768);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakPoint);
-  const [showWebsite, setShowWebsite] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,7 +20,7 @@ export const AnimeProvider = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setShowWebsite(true);
-    }, 3000);
+    }, 1000);
   }, []);
 
   let appRef = useRef(null);

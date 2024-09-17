@@ -1,0 +1,12 @@
+.intro {
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 0) 100%
+  );
+
+  border-top-left-radius: 4em;
+  border-top-right-radius: 4em;
+}
