@@ -9,14 +9,11 @@ import Navbar from "@/components/Navbar/Navbar";
 const page = () => {
   const { isMobile } = useAnimeContext();
 
-
-
   return (
     <div className="app w-full">
       <Preloader />
       <div className="home-outer flex flex-col items-center justify-center">
         <Navbar />
-
         <Home />
       </div>
     </div>

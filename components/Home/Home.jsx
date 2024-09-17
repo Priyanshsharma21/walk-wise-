@@ -4,6 +4,10 @@ import styles from "./Home.module.css";
 import { logo } from "@/assets";
 import Image from "next/image";
 import Lenis from "lenis";
+import Hero from "../Hero/Hero";
+import Introduction from "../Introduction/Introduction";
+import Video from "../Video/Video";
+import Demo from "../Demo/Demo";
 
 const Home = () => {
   // useEffect(() => {
@@ -27,9 +31,16 @@ const Home = () => {
         </div>
       </div>
       <div className="w-full">
-        {[1, 2, 3, 4, 5].map((item) => (
-          <div className="w-full h-screen text-white text-[20rem]">{item}</div>
-        ))}
+        <Hero />
+        <Demo
+          numFrames={393}
+          width={window.innerWidth}
+          height={window.innerHeight}
+          initialWidth={1920}
+          initialHeight={1080}
+        />
+        <Introduction />
+        <Video />
       </div>
     </div>
   );

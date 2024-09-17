@@ -10,6 +10,7 @@ MouseFollower.registerGSAP(gsap);
 const Preloader = () => {
   const { showWebsite } = useAnimeContext();
 
+  console.log(showWebsite);
   useEffect(() => {
     const cursor = new MouseFollower({
       speed: 0.8,

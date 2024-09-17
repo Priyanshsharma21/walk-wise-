@@ -20,7 +20,7 @@ export const AnimeProvider = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setShowWebsite(true);
-    }, 1000);
+    }, 3000);
   }, []);
 
   let appRef = useRef(null);
