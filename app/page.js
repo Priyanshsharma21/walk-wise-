@@ -29,18 +29,7 @@ const page = () => {
   return (
     <main className="app w-full">
       <Preloader />
-      <div className="app-content">
-        <div>
-          <Card height="100vh" component={<Hero />} />
-          <Card height="100vh" component={<Hero />} />
-          <div>
-            <Card height="100vh" component={<Hero />} />
-          </div>
-          <div>
-            <Card height="100vh" component={<Hero />} />
-          </div>
-        </div>
-      </div>
+      <div className="app-content w-full h-[300vh]"></div>
     </main>
   );
 };

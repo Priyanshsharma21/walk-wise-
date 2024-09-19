@@ -14,5 +14,19 @@
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #370037;
+  border-radius: 33rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff21;
+}
+
+.check {
+  color: #ffebcd;
 }
