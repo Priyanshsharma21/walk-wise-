@@ -1,113 +1,31 @@
 .preloader {
-  background: #bb00bb;
-  transition: all 0.2s linear;
+  background: #ffebcd;
+  overflow: hidden;
 }
 
-.loaderWrapper {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+.preloaderTimer {
+  font-size: 9vw;
+  color: #370037;
+  position: absolute;
+  bottom: 0.1em;
+  font-family: "Times New Roman", Times, serif;
+  transition: all 0.5s linear;
+}
+
+.stickyMask {
   display: flex;
-  justify-content: center;
+  overflow: hidden;
+  position: absolute; /* Updated to absolute to cover full screen */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Make sure the mask covers full width */
+  height: 100vh;
   align-items: center;
-}
-
-.spinner {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-}
-
-.spinnerDiv {
-  position: absolute;
-  width: 80px; /* Adjust this value for width */
-  height: 80px; /* Adjust this value for height */
-  background: url(../../assets/footprint.png) no-repeat center center;
-  background-size: contain; /* Adjust this value for the footprint size */
-  transform: rotate(calc(var(--rotation) * 1deg))
-    translate(0, calc(var(--translation) * 1%));
-  animation: spinner-animation 1s calc(var(--delay) * 1s) infinite ease;
-}
-
-/* Individual elements' delays, rotations, and translations */
-.spinnerDiv:nth-child(1) {
-  --delay: 0.1;
-  --rotation: 36;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(2) {
-  --delay: 0.2;
-  --rotation: 72;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(3) {
-  --delay: 0.3;
-  --rotation: 108;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(4) {
-  --delay: 0.4;
-  --rotation: 144;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(5) {
-  --delay: 0.5;
-  --rotation: 180;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(6) {
-  --delay: 0.6;
-  --rotation: 216;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(7) {
-  --delay: 0.7;
-  --rotation: 252;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(8) {
-  --delay: 0.8;
-  --rotation: 288;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(9) {
-  --delay: 0.9;
-  --rotation: 324;
-  --translation: 150;
-}
-
-.spinnerDiv:nth-child(10) {
-  --delay: 1;
-  --rotation: 360;
-  --translation: 150;
-}
-
-/* Animation for the spinning effect */
-@keyframes spinner-animation {
-  0%,
-  10%,
-  20%,
-  30%,
-  50%,
-  60%,
-  70%,
-  80%,
-  90%,
-  100% {
-    transform: rotate(calc(var(--rotation) * 1deg))
-      translate(0, calc(var(--translation) * 1%));
-  }
-
-  50% {
-    transform: rotate(calc(var(--rotation) * 1deg))
-      translate(0, calc(var(--translation) * 1.5%));
-  }
+  justify-content: center;
+  mask-image: url("/mask2.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 80%;
+  transform: scale(0); /* Initial scale set to 0 */
+  transition: transform 0.8s ease-out;
 }
