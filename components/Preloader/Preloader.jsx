@@ -13,6 +13,9 @@ const Preloader = () => {
   const container = useRef(null);
   const stickyMask = useRef(null);
 
+  const initialMaskSize = 0.1; // Initial size of the mask
+  const targetMaskSize = 8000; // Target size when the animation completes
+
   useEffect(() => {
     // Disable scroll on mount
     document.body.style.overflow = "hidden";
@@ -24,6 +27,7 @@ const Preloader = () => {
       skewing: 0,
     });
 
+    // Counter increment logic
     const interval = setInterval(() => {
       setCounter((prevCounter) => {
         if (prevCounter < 100) {
@@ -32,6 +36,14 @@ const Preloader = () => {
           clearInterval(interval);
           // Enable scroll once the counter reaches 100%
           document.body.style.overflow = "auto";
+
+          // Trigger the mask size increase animation
+          gsap.to(stickyMask.current, {
+            webkitMaskSize: `${targetMaskSize}%`,
+            duration: 4, // Adjust the duration as needed
+            ease: "sine.out",
+          });
+
           return 100;
         }
       });
@@ -45,47 +57,30 @@ const Preloader = () => {
     };
   }, []);
 
-  // const initialMaskSize = 0.8;
-  // const targetMaskSize = 30;
-  // const easing = 0.15;
-  // let easedScrollProgress = 0;
-
-  // useEffect(() => {
-  //   requestAnimationFrame(animate);
-  // }, []);
-
-  // const animate = () => {
-  //   const maskSizeProgress = targetMaskSize * getScrollProgress();
-  //   stickyMask.current.style.webkitMaskSize =
-  //     (initialMaskSize + maskSizeProgress) * 100 + "%";
-  //   requestAnimationFrame(animate);
-  // };
-
-  // const getScrollProgress = () => {
-  //   const scrollProgress =
-  //     stickyMask.current.offsetTop /
-  //     (container.current.getBoundingClientRect().height - window.innerHeight);
-  //   const delta = scrollProgress - easedScrollProgress;
-  //   easedScrollProgress += delta * easing;
-  //   return easedScrollProgress;
-  // };
-
   return (
-    <div
-      // style={{ opacity: showWebsite ? 0 : 1, zIndex: 999999 }}
-      className={`${styles.preloader} w-full h-screen fixed overflow-clip flex justify-center items-center`}
+    <main
+      className="main flex justify-center preload"
+      style={{
+        opacity: counter === 100 ? 0 : 1,
+        zIndex: 999999,
+        position: counter === 100 ? "flex" : "fixed",
+      }}
     >
-      <div className={styles.stickyMask}>
-        <div className="w-full h-screen bg-[#370037]"></div>
+      <div ref={container} className="containerZ">
+        <div ref={stickyMask} className="stickyMask">
+          <div className="w-full h-screen maskbg"></div>
+        </div>
       </div>
+
+      {/* Counter display */}
       <div
         style={{ opacity: counter === 100 ? 0 : 1 }}
         data-cursor="-inverse"
         className={`${styles.preloaderTimer}`}
       >
-        {counter}%
+        {counter}
       </div>
-    </div>
+    </main>
   );
 };
 
