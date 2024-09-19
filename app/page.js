@@ -3,20 +3,45 @@ import { useAnimeContext } from "../context/animeContext";
 import React, { useEffect } from "react";
 import Lenis from "lenis";
 import Preloader from "@/components/Preloader/Preloader";
-import Home from "@/components/Home/Home";
 import Navbar from "@/components/Navbar/Navbar";
+import Card from "@/components/Card";
+import Hero from "@/components/Hero/Hero";
 
 const page = () => {
   const { isMobile } = useAnimeContext();
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.04,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <div className="app w-full">
+    <main className="app w-full">
       <Preloader />
-      <div className="home-outer flex flex-col items-center justify-center">
-        <Navbar />
-        <Home />
+      <div className="app-content">
+        <div>
+          <Card height="100vh" component={<Hero />} />
+          <Card height="100vh" component={<Hero />} />
+          <div>
+            <Card height="100vh" component={<Hero />} />
+          </div>
+          <div>
+            <Card height="100vh" component={<Hero />} />
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
