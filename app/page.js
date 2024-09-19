@@ -6,17 +6,13 @@ import Preloader from "@/components/Preloader/Preloader";
 import Navbar from "@/components/Navbar/Navbar";
 import Card from "@/components/Card";
 import Hero from "@/components/Hero/Hero";
-import Introduction from "@/components/Introduction/Introduction";
-import Demo from "@/components/Demo/Demo";
-import Video from "@/components/Video/Video";
 
 const page = () => {
   const { isMobile } = useAnimeContext();
 
   useEffect(() => {
-    // Adjust Lenis for more easing and smoother effect
     const lenis = new Lenis({
-      lerp: 0.05, // A slightly higher lerp for smoother transition (adjust as needed)
+      lerp: 0.04,
     });
 
     function raf(time) {
@@ -36,13 +32,12 @@ const page = () => {
       <div className="app-content">
         <div>
           <Card height="100vh" component={<Hero />} />
-          <Card height="100vh" component={<Introduction />} />
+          <Card height="100vh" component={<Hero />} />
           <div>
-            <Card height="100vh" component={<Demo height={"100vh"} />} />
+            <Card height="100vh" component={<Hero />} />
           </div>
-          <div className="w-full h-[147vh]" />
           <div>
-            <Card height="100vh" component={<Video />} />
+            <Card height="100vh" component={<Hero />} />
           </div>
         </div>
       </div>

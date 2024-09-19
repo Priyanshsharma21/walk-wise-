@@ -1,12 +1,9 @@
 import React from "react";
-import styles from "./Hero.module.css";
 
 const Hero = () => {
   return (
-    <div
-      className={`w-full h-full flex justify-center items-center ${styles.hero}`}
-    >
-      Hero
+    <div className="w-full h-screen bg-[#818181] flex justify-center items-center text-[7vw] text-white">
+      Hello
     </div>
   );
 };
