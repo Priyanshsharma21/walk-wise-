@@ -12,16 +12,12 @@
   transition: all 0.5s linear;
 }
 
-
-
-
 .containerZ {
   position: relative;
   height: 300vh;
   width: 100%;
   background-color: #ffebcd;
 }
-
 
 .stickyMask {
   display: flex;
@@ -46,30 +42,42 @@
 }
 
 .maskbg {
-  display: block;
-  position: relative;
-  height: 100vh; /* Full height */
-  width: 100%; /* Full width */
-  background: #ffebcd; /* Initial color */
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #370037;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
-.maskbg::before {
+.progressBox {
+  display: flex;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #ffebcd;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressBox::before {
   content: "";
-  background: #370037; /* Target color */
+  background: #370037;
   position: absolute;
   left: 0;
-  bottom: 0; /* Start from the bottom */
+  bottom: 0;
   width: 100%;
-  height: 0; /* Start with no height */
-  animation: loading_302 3s ease forwards; /* Adjust duration */
+  height: 0;
+  animation: loading_302 3s ease forwards;
 }
 
 @keyframes loading_302 {
   0% {
-    height: 0; /* Start from 0 height */
+    height: 0;
   }
   100% {
-    height: 100%; /* Fill to full height */
+    height: 100%;
   }
 }

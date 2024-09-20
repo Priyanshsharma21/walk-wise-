@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @import "../node_modules/mouse-follower/dist/mouse-follower.min.css";
 @import "~mouse-follower/dist/mouse-follower.min.css";
 @import "../node_modules/lenis/dist/lenis.css";
@@ -32,11 +34,13 @@
   height: 100%;
 }
 
-
-.mf-cursor::before{
-  display : none
+/* TODO - uncomment it */
+.mf-cursor::before {
+  display: none;
 }
-
+/* body {
+  cursor: none;
+} */
 
 /* Set the custom image for the cursor */
 .mf-cursor {
@@ -52,11 +56,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  transform: translate(-50%, -50%); /* Centers the image at the cursor position */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Centers the image at the cursor position */
   z-index: 999999999999999; /* Ensures the cursor is on top of all other elements */
 }
 
 /* Optional: Hide the default cursor */
-body {
-  cursor: none;
-}

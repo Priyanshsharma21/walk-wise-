@@ -1,5 +1,83 @@
-.navbarAbout {
-  position: fixed;
-  top: 2em;
-  right: 2em;
+.navbar {
+  padding: 2vw 3vw;
+}
+
+.navLogo {
+  width: 100px;
+}
+
+.navBtn {
+  background: white;
+  border-radius: 1.5em;
+  padding: 1em;
+  height: 70%;
+}
+
+.buyNow {
+  background: blanchedalmond;
+  color: #370037;
+  font-family: "Poppins", "Helvetica Neue";
+  border-radius: 1.5em;
+  padding: 1em;
+
+  font-size: 1rem;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #370037;
+}
+
+.navTopText {
+  font-family: "Poppins", "Helvetica Neue";
+  font-size: 1rem;
+  color: #370037;
+}
+
+.navBottomLeft {
+}
+
+.mouseIcon {
+  color: rgba(255, 235, 205, 0.751);
+  font-size: 2rem;
+}
+
+.socialMedia {
+  margin-right: 20em;
+}
+
+.navIcons {
+  margin-left: 4em;
+  transition: all 0.2s linear;
+}
+
+.navIcons {
+  transform: scale(0.91);
+}
+
+.navIcons:hover {
+  color: rgba(255, 235, 205, 0.736);
+  text-shadow: 0 0 8px blanchedalmond; /* Initial glow effect */
+}
+
+.navIcon {
+  color: blanchedalmond;
+  font-size: 1.5rem;
+  transition: text-shadow 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.navIcon:hover {
+  text-shadow: none;
+  color: rgba(255, 235, 205, 0.736);
+  text-shadow: 0 0 8px blanchedalmond; /* Initial glow effect */
+}
+
+.navBottomNumber {
+  color: antiquewhite;
+  font-size: rem;
+  margin-left: 1rem;
+}
+
+.navBottomNumber1 {
+  font-size: 1.2rem;
 }

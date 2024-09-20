@@ -13,7 +13,7 @@ const Preloader = () => {
   const container = useRef(null);
   const stickyMask = useRef(null);
 
-  const initialMaskSize = 0.1; // Initial size of the mask
+  const initialMaskSize = 0.1;
   const targetMaskSize = 8000; // Target size when the animation completes
 
   useEffect(() => {
@@ -68,11 +68,12 @@ const Preloader = () => {
     >
       <div ref={container} className={styles.containerZ}>
         <div ref={stickyMask} className={styles.stickyMask}>
-          <div className={styles.maskbg}></div>
+          <div className={styles.maskbg}>
+            <div className={styles.progressBox}></div>
+          </div>
         </div>
       </div>
 
-      {/* Counter display */}
       <div
         style={{ opacity: counter === 100 ? 0 : 1 }}
         data-cursor="-inverse"

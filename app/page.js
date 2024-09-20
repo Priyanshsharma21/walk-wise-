@@ -5,11 +5,11 @@ import Lenis from "lenis";
 import Preloader from "@/components/Preloader/Preloader";
 import Navbar from "@/components/Navbar/Navbar";
 import Card from "@/components/Card";
-import Hero from "@/components/Hero/Hero";
+import Website from "@/components/Website/Website";
 
 const page = () => {
   const { isMobile } = useAnimeContext();
-  
+
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.04,
@@ -28,8 +28,8 @@ const page = () => {
 
   return (
     <main className="app">
-      <Preloader />
-      <Hero />
+      {/* <Preloader /> */}
+      <Website />
     </main>
   );
 };

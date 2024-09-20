@@ -1,0 +1,32 @@
+/* Container for footprints */
+.footprintContainer {
+  position: relative;
+  width: 100%; /* Full width of the page or section */
+  height: 300px; /* Adjust height as needed */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #370037; /* Purple background */
+  overflow: hidden;
+}
+
+/* Footprint styling */
+.footprint {
+  position: absolute;
+  bottom: 20px; /* Adjust for vertical alignment */
+  opacity: 0;
+  transform: scale(0.5) rotate(0deg); /* Start smaller and with no rotation */
+  animation: appear 3s ease-out forwards; /* Control footprint appearance */
+}
+
+/* Keyframe for footprint entrance animation */
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg); /* Start small and no rotation */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rotation)); /* Final size and rotation */
+  }
+}
