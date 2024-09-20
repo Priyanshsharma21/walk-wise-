@@ -5,13 +5,11 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <div className={` w-full sticky top-0 flex justify-between items-start`}>
-      <div
-        className={`navbar-about ${styles.navbarAbout} fixed text-[#e2e2e2] right-5`}
-      >
-        Walk Wise Collective Pvt Ltd
+    <nav className="flex justify-center items-center">
+      <div className="nav-logo-box">
+        <img src={logo} alt="logo"/>
       </div>
-    </div>
+    </nav>
   );
 };
 

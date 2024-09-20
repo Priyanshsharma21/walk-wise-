@@ -41,7 +41,7 @@ const Preloader = () => {
           gsap.to(stickyMask.current, {
             webkitMaskSize: `${targetMaskSize}%`,
             duration: 4, // Adjust the duration as needed
-            ease: "sine.out",
+            ease: "power4.inOut",
           });
 
           return 100;
@@ -59,16 +59,16 @@ const Preloader = () => {
 
   return (
     <main
-      className="main flex justify-center preload"
+      className={`main flex justify-center ${styles.preload}`}
       style={{
         opacity: counter === 100 ? 0 : 1,
         zIndex: 999999,
         position: counter === 100 ? "flex" : "fixed",
       }}
     >
-      <div ref={container} className="containerZ">
-        <div ref={stickyMask} className="stickyMask">
-          <div className="w-full h-screen maskbg"></div>
+      <div ref={container} className={styles.containerZ}>
+        <div ref={stickyMask} className={styles.stickyMask}>
+          <div className={styles.maskbg}></div>
         </div>
       </div>
 
