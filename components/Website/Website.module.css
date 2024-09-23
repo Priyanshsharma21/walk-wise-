@@ -1,49 +1,40 @@
 .website {
   position: relative;
   width: 100%;
-  height: 100vh;
   overflow-x: hidden;
+  transition: all 2.5s linear;
+  background: #3b003b;
 }
 
 .gradientBackground {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Limit gradient background to the top 100vh */
+  height: 100vh;
   z-index: 1;
-
-  /* Updated background with smoother bokeh gradient effect */
-  background: radial-gradient(circle at 10% 10%, #702370 0%, transparent 60%),
-    /* Top-left deep purple */
-      radial-gradient(circle at 90% 90%, #a900a9 0%, transparent 60%),
-    /* Bottom-right magenta */
-      radial-gradient(
-        circle at 50% 50%,
-        rgba(255, 255, 255, 0.4) 0%,
-        transparent 60%
-      ),
-    /* Center light with glow */
-      radial-gradient(
-        circle at 70% 30%,
-        rgba(167, 0, 167, 0.3) 0%,
-        transparent 50%
-      );
-  /* Center soft magenta light */
-  filter: blur(50px); /* Slightly increase blur for smoothness */
+  background: url("/wwc-bg.png");
+  /* Conical gradient */
+  /* background: conic-gradient(
+    from 180deg,
+    #3b003b 0%,
+     #3b003b 50%,
+     #3b003b 100%
+  ); */
+  filter: blur(0px); /* Slight blur for smoothness */
+  background-size: cover;
 }
 
-.glassLayer {
-  position: absolute;
+/* .glassLayer {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Limit glass effect to 100vh */
+  height: 100vh;
   z-index: 2;
-  backdrop-filter: blur(15px); /* Stronger glass effect */
-  background: rgba(255, 255, 255, 0.2); /* More transparent for luxury feel */
-  border-radius: 20px; /* Rounded corners for smoother look */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  backdrop-filter: blur(15px); 
+  background: rgba(255, 255, 255, 0.162); 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -55,20 +46,18 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: url("https://img.freepik.com/free-vector/realistic-grainy-texture-background_23-2149231140.jpg?t=st=1726836248~exp=1726839848~hmac=2368b8776cb4be4466eca260465a5392350f9ec30ebc0e642aa2bce1f0ca47cc&w=1380");
-  background-size: contain; /* Adjusted to cover */
-  opacity: 0.01; /* Increase the grain effect slightly */
+  background-size: contain;
+  opacity: 0.1; 
   z-index: 3;
-}
+} */
 
 .content {
   position: relative;
-  z-index: 4; /* Ensures content is above the glass and gradient layers */
+  z-index: 4;
   width: 100%;
-  height: 200vh; /* Ensures there's enough content to scroll */
-  padding-top: 100vh; /* Pushes content below the glass section */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
+  z-index: 999999999;
 }

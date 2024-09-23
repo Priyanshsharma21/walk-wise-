@@ -1,15 +1,11 @@
 "use client";
 import { useAnimeContext } from "../context/animeContext";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Lenis from "lenis";
 import Preloader from "@/components/Preloader/Preloader";
-import Navbar from "@/components/Navbar/Navbar";
-import Card from "@/components/Card";
 import Website from "@/components/Website/Website";
 
 const page = () => {
-  const { isMobile } = useAnimeContext();
-
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.04,
@@ -28,7 +24,7 @@ const page = () => {
 
   return (
     <main className="app">
-      {/* <Preloader /> */}
+      <Preloader />
       <Website />
     </main>
   );

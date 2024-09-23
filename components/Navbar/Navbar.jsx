@@ -23,7 +23,8 @@ const Navbar = () => {
             }
             className={styles.buyNow}
           >
-            Buy Now
+            <span className={styles.text}>Buy Now</span>
+            <span className={styles.thanksText}>Buy Now</span>
           </div>
         </div>
       </div>
@@ -42,6 +43,7 @@ const Navbar = () => {
           <div className={`${styles.socialMedia} flex`}>
             {navbarData.socialMedia.map((item, i) => (
               <a
+                key={i}
                 href={item.link}
                 target="_blank"
                 className={`${styles.navIcons} flex`}

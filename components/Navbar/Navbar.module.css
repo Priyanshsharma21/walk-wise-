@@ -8,16 +8,21 @@
 
 .navBtn {
   background: white;
-  border-radius: 1.5em;
-  padding: 1em;
+  border-radius: 1em;
+  padding: 1em 0.5em;
   height: 70%;
+
+  background: rgba(255, 235, 205, 0.42);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
 }
 
 .buyNow {
-  background: blanchedalmond;
+  background: #ffebcd;
   color: #370037;
   font-family: "Poppins", "Helvetica Neue";
-  border-radius: 1.5em;
+  border-radius: 1em;
   padding: 1em;
 
   font-size: 1rem;
@@ -32,6 +37,7 @@
   font-family: "Poppins", "Helvetica Neue";
   font-size: 1rem;
   color: #370037;
+  padding-left: 0.5em;
 }
 
 .navBottomLeft {
@@ -80,4 +86,106 @@
 
 .navBottomNumber1 {
   font-size: 1.2rem;
+}
+
+/* Base styles for the Buy Now button */
+.buyNow {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #370037;
+  color: #370037;
+  font-family: "Poppins", "Helvetica Neue";
+  border-radius: 1em;
+  padding: 1em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ffebcd;
+  transition: background-color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buyNow span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.buyNow span:last-child {
+  color: #ffebcd;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(225%) translateX(-50%);
+  opacity: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: nowrap;
+}
+
+/* Background reveal effect */
+.buyNow:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #370037;
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+/* Hover Effect - Reveal hidden text and change background */
+.buyNow:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.buyNow:hover span:first-child {
+  color: #ffebcd; /* Change original text color on hover */
+}
+
+.buyNow:hover span:last-child {
+  transform: translateX(-50%) translateY(-50%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+
+@media (max-width: 1200px) {
+  .socialMedia {
+    margin-right: 10em;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .socialMedia {
+    margin-right: 2em;
+  }
+  .mouseIcon {
+    display: none;
+  }
+  .navIcons {
+    margin-left: 2em;
+  }
+}
+
+@media (max-width: 500px) {
+  .navBottom,
+  .navBtn {
+    display: none;
+  }
+
+  .navLogo {
+    width: 60px;
+  }
 }

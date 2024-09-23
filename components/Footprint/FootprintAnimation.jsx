@@ -21,7 +21,7 @@ const FootprintAnimation = () => {
   }, []);
 
   return (
-    <div style={{ position: "relative", height: "500px" }}>
+    <div style={{ position: "relative", height: "500px", zIndex: 9999999999 }}>
       {footprintHeroData.map((footprint) => (
         <>
           {footprint ? (

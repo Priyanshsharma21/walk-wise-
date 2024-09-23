@@ -1,88 +1,76 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Preloader.module.css";
 import { useAnimeContext } from "@/context/animeContext";
-import MouseFollower from "mouse-follower";
-import gsap from "gsap";
-
-MouseFollower.registerGSAP(gsap);
 
 const Preloader = () => {
-  const { showWebsite } = useAnimeContext();
+  const { setShowWebsite } = useAnimeContext();
   const [counter, setCounter] = useState(0);
-  const container = useRef(null);
-  const stickyMask = useRef(null);
-
-  const initialMaskSize = 0.1;
-  const targetMaskSize = 8000; // Target size when the animation completes
+  const [hidePreloader, setHidePreloader] = useState(false);
 
   useEffect(() => {
-    // Disable scroll on mount
+    // Disable body scrolling during preloader
     document.body.style.overflow = "hidden";
 
-    const cursor = new MouseFollower({
-      speed: 0.8,
-      className: "mf-cursor",
-      ease: "expo.out",
-      skewing: 0,
-    });
-
-    // Counter increment logic
     const interval = setInterval(() => {
       setCounter((prevCounter) => {
         if (prevCounter < 100) {
           return prevCounter + 1;
         } else {
           clearInterval(interval);
-          // Enable scroll once the counter reaches 100%
-          document.body.style.overflow = "auto";
+          document.body.style.overflow = "auto"; // Enable body scrolling when counter hits 100
 
-          // Trigger the mask size increase animation
-          gsap.to(stickyMask.current, {
-            webkitMaskSize: `${targetMaskSize}%`,
-            duration: 4, // Adjust the duration as needed
-            ease: "power4.inOut",
-          });
+          setShowWebsite(true);
+          setHidePreloader(true);
 
           return 100;
         }
       });
-    }, 30); // Adjust this value for faster/slower counting
+    }, 30); // Adjust interval time as needed
 
     return () => {
       clearInterval(interval);
-      cursor.destroy();
-      // Cleanup: Enable scrolling when the component unmounts
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"; // Clean up on component unmount
     };
-  }, []);
+  }, [setShowWebsite]);
 
   return (
     <main
-      className={`main flex justify-center ${styles.preload}`}
+      className={`main flex justify-center items-center ${styles.preload}`}
       style={{
         opacity: counter === 100 ? 0 : 1,
-        zIndex: 999999,
-        position: counter === 100 ? "flex" : "fixed",
+        zIndex: hidePreloader ? -1 : 999999,
+        display: hidePreloader ? "none" : "fixed",
+        position: counter === 100 ? "relative" : "fixed",
       }}
     >
-      <div ref={container} className={styles.containerZ}>
-        <div ref={stickyMask} className={styles.stickyMask}>
-          <div className={styles.maskbg}>
-            <div className={styles.progressBox}></div>
+      <div>
+        <div className={styles.loaderWrapper}>
+          <div data-cursor="-inverse" className={styles.spinner}>
+            {Array.from({ length: 10 }).map((_, index) => (
+              <div
+                key={index}
+                className={styles.spinnerDiv}
+                style={{
+                  opacity: counter >= (index + 1) * 10 ? 1 : 0.1,
+                }}
+              />
+            ))}
           </div>
         </div>
-      </div>
-
-      <div
-        style={{ opacity: counter === 100 ? 0 : 1 }}
-        data-cursor="-inverse"
-        className={`${styles.preloaderTimer}`}
-      >
-        {counter}
       </div>
     </main>
   );
 };
 
 export default Preloader;
+
+{
+  /* <div
+        style={{ opacity: counter === 100 ? 0 : 1 }}
+        data-cursor="-inverse"
+        className={`${styles.preloaderTimer}`}
+      >
+        {counter}
+      </div> */
+}
