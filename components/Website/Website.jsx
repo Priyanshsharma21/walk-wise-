@@ -3,6 +3,7 @@ import styles from "./Website.module.css";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Hero/Hero";
 import { useAnimeContext } from "@/context/animeContext";
+import Introduction from "../Introduction/Introduction";
 
 const Website = () => {
   const { showWebsite } = useAnimeContext();
@@ -20,9 +21,7 @@ const Website = () => {
       <div className={styles.content}>
         <Navbar />
         <Hero />
-        <div className="w-full h-screen flex justify-center items-center">
-          Hello
-        </div>
+        <Introduction />
       </div>
     </section>
   );

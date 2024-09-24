@@ -14,16 +14,16 @@ const Preloader = () => {
 
     const interval = setInterval(() => {
       setCounter((prevCounter) => {
-        if (prevCounter < 100) {
+        if (prevCounter < 111) {
           return prevCounter + 1;
         } else {
           clearInterval(interval);
-          document.body.style.overflow = "auto"; // Enable body scrolling when counter hits 100
+          document.body.style.overflow = "auto"; // Enable body scrolling when counter hits 111
 
           setShowWebsite(true);
           setHidePreloader(true);
 
-          return 100;
+          return 111;
         }
       });
     }, 30); // Adjust interval time as needed
@@ -38,10 +38,10 @@ const Preloader = () => {
     <main
       className={`main flex justify-center items-center ${styles.preload}`}
       style={{
-        opacity: counter === 100 ? 0 : 1,
+        opacity: counter === 111 ? 0 : 1,
         zIndex: hidePreloader ? -1 : 999999,
         display: hidePreloader ? "none" : "fixed",
-        position: counter === 100 ? "relative" : "fixed",
+        position: counter === 111 ? "relative" : "fixed",
       }}
     >
       <div>
@@ -64,13 +64,3 @@ const Preloader = () => {
 };
 
 export default Preloader;
-
-{
-  /* <div
-        style={{ opacity: counter === 100 ? 0 : 1 }}
-        data-cursor="-inverse"
-        className={`${styles.preloaderTimer}`}
-      >
-        {counter}
-      </div> */
-}

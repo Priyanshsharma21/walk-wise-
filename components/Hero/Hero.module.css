@@ -10,6 +10,7 @@
   color: #ffebcd;
   position: relative;
   top: 2em;
+  letter-spacing: 0.01em;
 }
 
 .heroTitle {
@@ -18,6 +19,7 @@
   font-family: "Times New Roman", Times, serif;
   line-height: 0.8em;
   color: #ffebcd;
+  letter-spacing: 0.01em;
 }
 
 .heroSubTitle2 {
@@ -28,6 +30,7 @@
   color: #ffebcd;
   position: relative;
   bottom: 0.2em;
+  letter-spacing: 0.01em;
 }
 
 .heroVideoBox video {
@@ -40,4 +43,23 @@
 .customO {
   position: relative;
   top: 0.1em;
+}
+
+.canvas {
+  mix-blend-mode: lighten;
+  position: fixed;
+}
+
+.scrollDown {
+  color: blanchedalmond;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4vw;
+  font-family: "Times New Roman", Times, serif;
 }

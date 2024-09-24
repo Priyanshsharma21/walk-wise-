@@ -2,6 +2,10 @@
   padding: 2vw 3vw;
 }
 
+.navbar {
+  z-index: 99999999999999;
+}
+
 .navLogo {
   width: 100px;
 }

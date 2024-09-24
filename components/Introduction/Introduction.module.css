@@ -1,0 +1,21 @@
+.introduction {
+  z-index: 100;
+}
+
+.iSubhead {
+  color: blanchedalmond;
+  font-size: 3vw;
+  font-weight: 200;
+  line-height: 0.8em;
+  margin-right: 4rem;
+  margin-top: 0.2em;
+  letter-spacing: 0.01em;
+}
+
+.info {
+  padding-top: 3rem;
+}
+
+.iCol1 {
+  border-right: 2px solid blanchedalmond;
+}

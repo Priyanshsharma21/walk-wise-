@@ -4,6 +4,10 @@
   z-index: 999999999999999999999;
 }
 
+.preload {
+  transition: all 0.3s linear;
+}
+
 .preloaderTimer {
   font-size: 10vw;
   color: #dc5bdd;
@@ -30,16 +34,16 @@
 
 .spinnerDiv {
   position: absolute;
-  width: 60px; /* Adjust this value for width */
-  height: 60px; /* Adjust this value for height */
+  width: 60px;
+  height: 60px;
   background: url(../../assets/footprint.png) no-repeat center center;
-  background-size: contain; /* Adjust this value for the footprint size */
+  background-size: contain;
   transform: rotate(calc(var(--rotation) * 1deg))
     translate(0, calc(var(--translation) * 1%));
   animation: spinner-animation 1s calc(var(--delay) * 1s) infinite ease;
+  transition: all 0.2s linear;
 }
 
-/* Individual elements' delays, rotations, and translations */
 .spinnerDiv:nth-child(1) {
   --delay: 0.1;
   --rotation: 36;
@@ -118,6 +122,6 @@
 
   50% {
     transform: rotate(calc(var(--rotation) * 1deg))
-      translate(0, calc(var(--translation) * 1.05%));
+      translate(0, calc(var(--translation) * 1.01%));
   }
 }

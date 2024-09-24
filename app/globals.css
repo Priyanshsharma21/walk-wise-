@@ -107,15 +107,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 10%; /* Makes the cursor circular */
-  pointer-events: none; /* Prevents the cursor from interfering with other elements */
-  mix-blend-mode: difference; /* Inverts the cursor color based on the background */
+  border-radius: 10%;
+  pointer-events: none;
+  mix-blend-mode: difference;
   position: fixed;
   top: 0;
   left: 0;
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Centers the image at the cursor position */
-  z-index: 999999999999999; /* Ensures the cursor is on top of all other elements */
+  transform: translate(-50%, -50%);
+  z-index: 999999999999999;
 }

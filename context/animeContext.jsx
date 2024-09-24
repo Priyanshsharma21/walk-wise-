@@ -8,6 +8,8 @@ export const AnimeProvider = ({ children }) => {
   const [breakPoint] = useState(768);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakPoint);
   const [showWebsite, setShowWebsite] = useState(false);
+  const [pageCount, setPageCount] = useState(1);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +34,9 @@ export const AnimeProvider = ({ children }) => {
         isMobile,
         showWebsite,
         setShowWebsite,
+        setPageCount,
+        pageCount,
+        navRef,
       }}
     >
       {children}
