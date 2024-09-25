@@ -20,9 +20,13 @@
   border-right: 2px solid blanchedalmond;
 }
 
-/* .hero {
-  padding: 12em 10em;
-} */
+.hero {
+  padding: 0em 10em;
+}
+.heroContent {
+  position: relative;
+  bottom: 4em;
+}
 
 .heroSubTitle {
   font-size: 3vw;
@@ -31,17 +35,19 @@
   line-height: 0.8em;
   color: #ffebcd;
   position: relative;
-  top: 2em;
+  top: 1.5em;
   letter-spacing: 0.01em;
 }
 
 .heroTitle {
-  font-size: 26vw;
+  font-size: 20vw;
   font-weight: 500;
   font-family: "Times New Roman", Times, serif;
   line-height: 0.8em;
   color: #ffebcd;
   letter-spacing: 0.01em;
+  position: relative;
+  left: 6rem;
 }
 
 .heroSubTitle2 {
@@ -53,4 +59,8 @@
   position: relative;
   bottom: 0.2em;
   letter-spacing: 0.01em;
+}
+
+.canvas {
+  top: -30px;
 }

@@ -7,7 +7,6 @@ import styles from "./Hero.module.css";
 import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
 
-// Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Hero = () => {
@@ -21,9 +20,8 @@ const Hero = () => {
   const comfortRef = useRef(null);
   const stepIntoRef = useRef(null);
   const zoneRef = useRef(null);
-  const imageSequenceRef = useRef(null); // Reference for the image sequence div
+  const imageSequenceRef = useRef(null);
 
-  // Preload Image Sequence
   useEffect(() => {
     const preloadImages = async () => {
       const loadedImages = [];
@@ -190,7 +188,7 @@ const Hero = () => {
   return (
     <>
       <div
-        className={`${styles.imageSequence} relative`}
+        className={`relative`}
         style={{ height: "100vh", width: "100%" }}
         ref={imageSequenceRef}
       >

@@ -15,6 +15,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
+      style={{ zIndex: 9999999999999999999999999999999 }}
       className={`${styles.navbar} w-full h-screen flex flex-col justify-between fixed top-0`}
     >
       <div className={`${styles.navTop} flex justify-between items-center`}>
@@ -33,7 +34,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={`${styles.navBottom} flex items-center justify-between`}>
+      <div className={`${styles.navBottom} flex items-center justify-start`}>
         <div className={`${styles.navBottomLeft} flex`}>
           <div
             className={`${styles.navBottomNumber} ${styles.navBottomNumber1}`}
@@ -56,7 +57,7 @@ const Navbar = () => {
               </a>
             ))}
           </div>
-          <div className={``}>
+          <div className={`fixed right-10`}>
             <CiDesktopMouse2 className={styles.mouseIcon} />
           </div>
         </div>

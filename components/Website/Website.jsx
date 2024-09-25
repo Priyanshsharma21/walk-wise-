@@ -4,9 +4,10 @@ import Navbar from "../Navbar/Navbar";
 import Hero from "../Hero/Hero";
 import { useAnimeContext } from "@/context/animeContext";
 import Introduction from "../Introduction/Introduction";
+import VideoShow from "../VideoShowcase/VideoShow";
 
 const Website = () => {
-  // const { showWebsite } = useAnimeContext();
+  const { showWebsite } = useAnimeContext();
 
   return (
     <section
@@ -22,6 +23,7 @@ const Website = () => {
         <Navbar />
         <Hero />
         <Introduction />
+        <VideoShow />
       </div>
     </section>
   );
