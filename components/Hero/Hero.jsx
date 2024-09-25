@@ -2,12 +2,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "./Hero.module.css"; // Assuming you have CSS Modules
-import { logoSeqImg } from "../../constants"; // Update with the correct path to logo sequence images
+import SplitText from "gsap/SplitText"; // Import SplitText
+import styles from "./Hero.module.css";
+import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
 
-// Register GSAP ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+// Register GSAP Plugins
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Hero = () => {
   const [contentVisible, setContentVisible] = useState(false);
@@ -20,13 +21,13 @@ const Hero = () => {
   const comfortRef = useRef(null);
   const stepIntoRef = useRef(null);
   const zoneRef = useRef(null);
-  const imageSequenceRef = useRef(null); // Reference for the imageSequence div
+  const imageSequenceRef = useRef(null); // Reference for the image sequence div
 
   // Preload Image Sequence
   useEffect(() => {
     const preloadImages = async () => {
       const loadedImages = [];
-      const batchSize = 50; // Load 50 images at a time for performance
+      const batchSize = 50;
 
       for (let i = 0; i < logoSeqImg.length; i += batchSize) {
         const batch = logoSeqImg.slice(i, i + batchSize);
@@ -38,7 +39,6 @@ const Hero = () => {
               img.onload = () => resolve(img);
             })
         );
-
         const loadedBatch = await Promise.all(batchPromises);
         loadedImages.push(...loadedBatch);
       }
@@ -56,7 +56,7 @@ const Hero = () => {
     ScrollTrigger.create({
       trigger: canvasRef.current,
       start: "top top",
-      end: "+=300%", // Adjust based on image sequence length
+      end: "+=300%",
       pin: true,
       scrub: 1,
       onUpdate: ({ progress }) => {
@@ -68,10 +68,8 @@ const Hero = () => {
 
         const newColorOpacity = 1 - Math.min(progress * 2, 1);
         const newColorOpacityForScroll = 1 - Math.min(progress * 21, 1);
-        const navbarReveal = 0 + Math.min(progress * 21, 1);
         canvasRef.current.style.backgroundColor = `rgba(0, 0, 0, ${newColorOpacity})`;
         scrollRef.current.style.opacity = newColorOpacityForScroll;
-        navRef.current.style.opacity = navbarReveal;
       },
       onLeave: () => {
         setContentVisible(true);
@@ -114,10 +112,35 @@ const Hero = () => {
     return () => cancelAnimationFrame(requestId);
   }, [frameIndex, images]);
 
-  // Stagger text animation with blur to opacity transition
+  // Stagger text animation with SplitText and blur to opacity transition
   useEffect(() => {
+    const element = heroRef.current;
+
+    const trigger = ScrollTrigger.create({
+      trigger: element,
+      start: "top 20%",
+      end: "top top",
+      onEnter: () => {
+        gsap.to(navRef.current, {
+          opacity: 1,
+          duration: 0.8, // Adjust duration for the smoothness of the animation
+          ease: "power2.out", // Apply easing for a smoother transition
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(navRef.current, {
+          opacity: 0,
+          duration: 0.8, // Same duration for consistency
+          ease: "power2.out", // Apply easing for a smoother transition
+        });
+      },
+    });
+
     if (contentVisible) {
-      const comfortText = comfortRef.current.querySelectorAll("span");
+      const splitComfortText = new SplitText(comfortRef.current, {
+        type: "chars",
+      });
+      const chars = splitComfortText.chars;
 
       gsap
         .timeline({
@@ -136,15 +159,15 @@ const Hero = () => {
           { opacity: 1, filter: "blur(0px)", duration: 2 }
         )
         .fromTo(
-          comfortText,
-          { x: -50, opacity: 0, filter: "blur(5px)" },
+          chars,
+          { y: 100, opacity: 0 },
           {
-            x: 0,
+            y: 0,
             opacity: 1,
-            stagger: 0.1,
-            duration: 1.5,
-            ease: "power1.out",
-            filter: "blur(0px)",
+            stagger: 0.08,
+            duration: 2,
+            ease: "power4.inOut",
+            scrub: true,
           }
         )
         .fromTo(
@@ -158,6 +181,10 @@ const Hero = () => {
           { y: 0, opacity: 1, duration: 1, ease: "power1.out" }
         );
     }
+
+    return () => {
+      trigger.kill();
+    };
   }, [contentVisible]);
 
   return (
@@ -175,9 +202,9 @@ const Hero = () => {
         />
       </div>
       <div ref={scrollRef} className={styles.scrollDown}>
-        SCROLL
+        LA MARCA
       </div>
-      <div className="w-full h-[200vh]" />
+      <div className="w-full h-[250vh]" />
       <section
         className={`${styles.hero} w-full min-h-full`}
         ref={heroRef} // Reference to the hero section for ScrollTrigger
@@ -192,7 +219,7 @@ const Hero = () => {
           <h4
             ref={stepIntoRef}
             className={`${styles.heroSubTitle} text-6xl text-white text-left`}
-            style={{ opacity: 0 }} // Initial opacity 0 for animation
+            style={{ opacity: 0 }}
           >
             step into the
           </h4>
@@ -201,27 +228,19 @@ const Hero = () => {
             className={`${styles.heroTitle} text-6xl text-white flex items-center`}
             ref={comfortRef}
           >
-            <span>c</span>
-            <span className={styles.customO}>
-              <img src="/herologo.png" alt="logo" />
-            </span>
-            <span>m</span>
-            <span>f</span>
-            <span>o</span>
-            <span>r</span>
-            <span>t</span>
+            comfort
           </h1>
 
           <h4
             ref={zoneRef}
             className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
-            style={{ opacity: 0 }} // Initial opacity 0 for animation
+            style={{ opacity: 0 }}
           >
             zone
           </h4>
         </div>
       </section>
-      <div className="w-full h-[200vh]" />
+      <div className="w-full h-[150vh]" />
     </>
   );
 };

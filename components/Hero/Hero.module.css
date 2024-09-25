@@ -47,7 +47,6 @@
 
 .canvas {
   mix-blend-mode: lighten;
-  position: fixed;
 }
 
 .scrollDown {

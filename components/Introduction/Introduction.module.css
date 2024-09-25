@@ -19,3 +19,38 @@
 .iCol1 {
   border-right: 2px solid blanchedalmond;
 }
+
+/* .hero {
+  padding: 12em 10em;
+} */
+
+.heroSubTitle {
+  font-size: 3vw;
+  font-weight: 200;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+  line-height: 0.8em;
+  color: #ffebcd;
+  position: relative;
+  top: 2em;
+  letter-spacing: 0.01em;
+}
+
+.heroTitle {
+  font-size: 26vw;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 0.8em;
+  color: #ffebcd;
+  letter-spacing: 0.01em;
+}
+
+.heroSubTitle2 {
+  font-size: 3vw;
+  font-weight: 200;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+  line-height: 0.8em;
+  color: #ffebcd;
+  position: relative;
+  bottom: 0.2em;
+  letter-spacing: 0.01em;
+}

@@ -6,12 +6,12 @@ import { useAnimeContext } from "@/context/animeContext";
 import Introduction from "../Introduction/Introduction";
 
 const Website = () => {
-  const { showWebsite } = useAnimeContext();
+  // const { showWebsite } = useAnimeContext();
 
   return (
     <section
       className={styles.website}
-      style={{ opacity: showWebsite ? 1 : 0 }}
+      // style={{ opacity: showWebsite ? 1 : 0 }}
     >
       <div className={styles.gradientBackground}></div>
 
