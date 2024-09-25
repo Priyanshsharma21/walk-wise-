@@ -12,7 +12,7 @@ const Website = () => {
   return (
     <section
       className={styles.website}
-      // style={{ opacity: showWebsite ? 1 : 0 }}
+      style={{ opacity: showWebsite ? 1 : 0 }}
     >
       <div className={styles.gradientBackground}></div>
 
