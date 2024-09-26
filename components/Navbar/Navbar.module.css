@@ -45,6 +45,7 @@
 }
 
 .navBottomLeft {
+  margin-right: 2em;
 }
 
 .mouseIcon {
@@ -60,9 +61,8 @@
   margin-left: 4em;
   transition: all 0.2s linear;
 }
-
-.navIcons {
-  transform: scale(0.91);
+.navIconsFor1 {
+  margin-left: 0px;
 }
 
 .navIcons:hover {
@@ -166,7 +166,7 @@
 }
 
 .navbarBottomRight {
-  margin-left: 20em;
+  /* margin-left: 20em; */
 }
 
 @media (max-width: 1200px) {

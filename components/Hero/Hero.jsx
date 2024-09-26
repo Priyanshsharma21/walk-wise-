@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Hero = () => {
   const [contentVisible, setContentVisible] = useState(false);
-  const { navRef } = useAnimeContext();
+  const { navRef, setShowWebsite, showWebsite } = useAnimeContext();
   const [images, setImages] = useState([]);
   const [frameIndex, setFrameIndex] = useState(0);
   const canvasRef = useRef(null);
@@ -39,6 +39,10 @@ const Hero = () => {
         );
         const loadedBatch = await Promise.all(batchPromises);
         loadedImages.push(...loadedBatch);
+        if (i === 1) {
+          // Show the website as soon as the first batch is loaded
+          setShowWebsite(true);
+        }
       }
 
       setImages(loadedImages);
@@ -162,8 +166,8 @@ const Hero = () => {
           {
             y: 0,
             opacity: 1,
-            stagger: 0.08,
-            duration: 2,
+            stagger: 0.15, // Increased from 0.08 to 0.15 for a slower stagger
+            duration: 7, // Increased from 2 to 3 for a longer overall animation
             ease: "power4.inOut",
             scrub: true,
           }
@@ -200,7 +204,19 @@ const Hero = () => {
         />
       </div>
       <div ref={scrollRef} className={styles.scrollDown}>
-        LA MARCA
+        <div className={styles.scrollToBegin}>SCROLL TO BEGIN</div>
+        {showWebsite && (
+          <video
+            className={styles.video}
+            src={`https://res.cloudinary.com/dlxpea208/video/upload/v1727342704/test-Vbit-01_fwlgw0.mp4`}
+            muted
+            loop
+            autoPlay
+            preload="auto"
+            style={{ mixBlendMode: "lighten" }}
+          />
+        )}
+        <div className={styles.glassLayer}></div>
       </div>
       <div className="w-full h-[250vh]" />
       <section
@@ -238,7 +254,7 @@ const Hero = () => {
           </h4>
         </div>
       </section>
-      <div className="w-full h-[150vh]" />
+      <div className="w-full h-[50vh]" />
     </>
   );
 };

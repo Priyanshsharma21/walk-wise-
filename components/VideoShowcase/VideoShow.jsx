@@ -1,113 +1,102 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Row, Col } from "antd";
+import React, { useRef } from "react";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { videoSectionData } from "@/constants";
 import styles from "./VideoShow.module.css";
-import { useAnimeContext } from "@/context/animeContext";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const videoContent = [
-  {
-    videoUrl:
-      "https://res.cloudinary.com/dlxpea208/video/upload/v1727275746/wwc_materials_zvpbxx.mp4",
-    title: "Some random title 1",
-  },
-  {
-    videoUrl:
-      "https://res.cloudinary.com/dlxpea208/video/upload/v1727275746/wwc_materials_zvpbxx.mp4",
-    title: "Some random title 2",
-  },
-  {
-    videoUrl:
-      "https://res.cloudinary.com/dlxpea208/video/upload/v1727275746/wwc_materials_zvpbxx.mp4",
-    title: "Some random title 3",
-  },
-];
 
 const VideoShow = () => {
-  const videoRefs = useRef([]);
-  const sectionRef = useRef(null);
-  const { setPageCount } = useAnimeContext();
+  const processRef = useRef(null);
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-  useEffect(() => {
-    const element = sectionRef.current;
-
-    const trigger = ScrollTrigger.create({
-      trigger: element,
-      start: "top 7%",
-      end: "+=300%",
-      onEnter: () => setPageCount(3),
-      onLeaveBack: () => setPageCount(2),
-    });
-
-    return () => {
-      trigger.kill();
-    };
-  }, [setPageCount]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const scrollTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=3000", // Adjust based on how long you want the scroll section to be
-          pin: true,
-          scrub: 1,
-        },
-      });
-
-      videoRefs.current.forEach((video, index) => {
-        scrollTimeline
-          .to(video, {
-            scale: 1, // Scale up when active
-            filter: "blur(0)", // Remove blur
-            duration: 0.5,
-            onStart: () => video.play(), // Play video on enter
-          })
-          .to(
-            video,
-            {
-              scale: 0.8, // Scale down when inactive
-              filter: "blur(5px)", // Apply blur
-              duration: 0.5,
-              onComplete: () => video.pause(), // Pause video on leave
-            },
-            index * 2
-          ); // Stagger timing for each video
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <>
-      <div
-        ref={sectionRef}
-        className="w-full h-screen flex items-center justify-center"
-      >
-        <Row gutter={[16, 16]} justify="center">
-          {videoContent.map((video, index) => (
-            <Col key={index} xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className={styles.videoCard}>
-                <video
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  className={styles.video}
-                  src={video.videoUrl}
-                  muted
-                  loop
-                  preload="auto"
-                />
-                <div className={styles.videoTitle}>{video.title}</div>
-              </div>
-            </Col>
-          ))}
-        </Row>
+    <div
+      id="process"
+      ref={processRef}
+      className="w-full min-h-[100vh] text-white"
+    >
+      <div className="w-full h-[50vh]" />
+
+      <section ref={targetRef} className="relative h-[300vh] scrolling_box">
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden processbg">
+          <motion.div style={{ x }} className="flex gap-4 c-process-cont">
+            {videoSectionData.map((card) => (
+              <Card card={card} key={card.id} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="w-full h-screen flex justify-center items-center">
+        Showcase section
       </div>
-      <div className="w-full h-[300vh]" />
-    </>
+    </div>
+  );
+};
+
+const Card = ({ card }) => {
+  return (
+    <div
+      className={`${styles.cardContainer} group ml-[2rem] rounded-xl relative videoCardMain overflow-hidden`}
+    >
+      <div className={styles.videoContainer}>
+        {/* Title Animation */}
+        <motion.div className={styles.cardTitle}>
+          {card.title.split("").map((char, index) => (
+            <motion.span
+              key={index}
+              style={{ display: "inline-block" }}
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                staggerChildren: 0.03, // Char by char animation effect
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* Video Section */}
+        <div className={styles.cardVideoMain}>
+          <video
+            preload="preload"
+            poster={card.poster}
+            muted
+            playsInline
+            loop
+            autoPlay
+            className={styles.videoMain}
+          >
+            <source src={card.videoUrl} />
+          </video>
+        </div>
+
+        {/* Subtitle Animation */}
+        <motion.div className={styles.cardSubTitle}>
+          {card.subtitle.split(" ").map((word, index) => (
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                staggerChildren: 0.01, // Word by word animation effect
+              }}
+              key={index}
+              style={{ display: "inline-block", marginRight: "0.3em" }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
+      </div>
+    </div>
   );
 };
 

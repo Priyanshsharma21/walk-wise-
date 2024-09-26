@@ -325,3 +325,33 @@ export const shoeEntryImg = [
   "https://res.cloudinary.com/dlxpea208/image/upload/v1727273700/0109_w8dkd2.png",
   "https://res.cloudinary.com/dlxpea208/image/upload/v1727273700/0110_evehbv.png",
 ];
+
+export const videoSectionData = [
+  {
+    id: 1,
+    title: "Hand-picked materials",
+    subtitle: "Best in class sourcing and production processes",
+    videoUrl:
+      "https://res.cloudinary.com/dlxpea208/video/upload/v1727275746/wwc_materials_zvpbxx.mp4",
+    poster:
+      "https://cdn.pixabay.com/photo/2019/07/18/07/04/shoes-4345636_1280.jpg",
+  },
+  {
+    id: 2,
+    title: "Distinct Detailing",
+    subtitle: "High quality craftsmanship meets meticulous workmanship",
+    videoUrl:
+      "https://cdn.pixabay.com/video/2017/08/10/11284-229221013_large.mp4",
+    poster:
+      "https://cdn.pixabay.com/photo/2016/11/19/11/33/footwear-1838767_1280.jpg",
+  },
+  {
+    id: 3,
+    title: "Reflective Experiences",
+    subtitle: "Collections curated in the image of the consumer",
+    videoUrl:
+      "https://cdn.pixabay.com/video/2018/10/14/18713-295718392_large.mp4",
+    poster:
+      "https://cdn.pixabay.com/photo/2016/11/29/13/54/fall-1870012_1280.jpg",
+  },
+];

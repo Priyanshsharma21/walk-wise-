@@ -8,6 +8,7 @@ export const AnimeProvider = ({ children }) => {
   const [breakPoint] = useState(768);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakPoint);
   const [showWebsite, setShowWebsite] = useState(false);
+  const [isLoaderCompleted, setIsLoaderCompleted] = useState(false);
   const [pageCount, setPageCount] = useState(1);
   const navRef = useRef(null);
 
@@ -37,6 +38,8 @@ export const AnimeProvider = ({ children }) => {
         setPageCount,
         pageCount,
         navRef,
+        setIsLoaderCompleted,
+        isLoaderCompleted,
       }}
     >
       {children}

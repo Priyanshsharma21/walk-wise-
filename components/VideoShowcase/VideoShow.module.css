@@ -1,29 +1,61 @@
-.videoCard {
+.cardContainer {
+  width: 100vw;
+  height: 100vh;
   position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  width: 600px; /* Adjust as needed */
-  height: 600px; /* Adjust as needed */
-  margin: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  /* filter: blur(5px); Start with blur */
-  transform: scale(0.8); /* Start scaled down */
-  transition: transform 0.5s, filter 0.5s; /* Smooth transition */
 }
 
-.video {
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
-.videoTitle {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: white;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+.cardVideoMain {
+  height: 80%;
+  width: 90%;
+  overflow: hidden;
+  mask-image: url("/Subtract.svg");
+  mask-position: 52.35% center;
+  mask-repeat: no-repeat;
+  mask-size: 80%;
+}
+
+.cardVideoMain video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cardTitle {
+  /* color: transparent; */
+  /* -webkit-text-stroke: 1px blanchedalmond; */
+  color: blanchedalmond;
+  font-size: 4vw;
+  position: relative;
+  top: 2rem;
+  font-weight: 600;
+  font-family: "Cinzel", system-ui;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.cardSubTitle {
+  word-spacing: 0.2em;
+  font-size: 1.8vw;
+  line-height: 0.8em;
+  position: relative;
+  font-weight: 300;
+  font-family: "Cinzel", system-ui;
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+  bottom: 1rem;
 }

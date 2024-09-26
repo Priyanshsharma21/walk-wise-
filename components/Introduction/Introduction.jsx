@@ -51,8 +51,10 @@ const Introduction = () => {
   useEffect(() => {
     const element = sectionRef.current;
 
-    // Set initial opacity of subhead elements to 0.1
-    gsap.set(subheadRefs.current, { opacity: 0.1 });
+    // Set initial opacity of subhead elements to 0.1 for each char span
+    subheadRefs.current.forEach((subhead) => {
+      gsap.set(subhead.querySelectorAll(".char-span"), { opacity: 0.1 });
+    });
 
     const trigger = ScrollTrigger.create({
       trigger: element,
@@ -64,16 +66,18 @@ const Introduction = () => {
       scrub: 1,
     });
 
-    // Animation for each subhead element with stagger
-    gsap.to(subheadRefs.current, {
-      opacity: 1,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: element,
-        start: "top 50%",
-        end: "bottom bottom",
-        scrub: 1,
-      },
+    // Animation for each char span within subhead elements with stagger
+    subheadRefs.current.forEach((subhead) => {
+      gsap.to(subhead.querySelectorAll(".char-span"), {
+        opacity: 1,
+        stagger: 0.4, // Stagger for each character
+        scrollTrigger: {
+          trigger: element,
+          start: "top 50%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      });
     });
 
     return () => {
@@ -212,7 +216,11 @@ const Introduction = () => {
                     className={`${styles.iSubhead} pb-8 text-right`}
                     ref={(el) => (subheadRefs.current[i] = el)} // Collect refs
                   >
-                    {data}
+                    {data.split("").map((char, charIndex) => (
+                      <span key={charIndex} className="char-span">
+                        {char}
+                      </span>
+                    ))}
                   </div>
                 ))}
               </div>

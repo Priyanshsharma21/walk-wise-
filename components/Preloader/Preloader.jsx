@@ -4,7 +4,8 @@ import styles from "./Preloader.module.css";
 import { useAnimeContext } from "@/context/animeContext";
 
 const Preloader = () => {
-  const { setShowWebsite } = useAnimeContext();
+  const { setShowWebsite, setIsLoaderCompleted, isLoaderCompleted } =
+    useAnimeContext();
   const [counter, setCounter] = useState(0);
   const [hidePreloader, setHidePreloader] = useState(false);
 
@@ -20,8 +21,9 @@ const Preloader = () => {
           clearInterval(interval);
           document.body.style.overflow = "auto"; // Enable body scrolling when counter hits 111
 
-          setShowWebsite(true);
+          // setShowWebsite(true);
           setHidePreloader(true);
+          setIsLoaderCompleted(true);
 
           return 111;
         }
@@ -38,10 +40,10 @@ const Preloader = () => {
     <main
       className={`main flex justify-center items-center ${styles.preload}`}
       style={{
-        opacity: counter === 111 ? 0 : 1,
+        opacity: isLoaderCompleted === true ? 0 : 1,
         zIndex: hidePreloader ? -1 : 999999,
         display: hidePreloader ? "none" : "fixed",
-        position: counter === 111 ? "relative" : "fixed",
+        position: isLoaderCompleted === true ? "relative" : "fixed",
       }}
     >
       <div>
@@ -59,6 +61,7 @@ const Preloader = () => {
           </div>
         </div>
       </div>
+      <div className={styles.glassLayer}></div>
     </main>
   );
 };

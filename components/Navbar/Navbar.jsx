@@ -20,7 +20,7 @@ const Navbar = () => {
     >
       <div className={`${styles.navTop} flex justify-between items-center`}>
         <Image src={logo} alt="logo" className={styles.navLogo} />
-        <div className={`${styles.navBtn} flex items-center`}>
+        {/* <div className={`${styles.navBtn} flex items-center`}>
           <div className={styles.navTopText}>Premium collection</div>
           <div
             onClick={() =>
@@ -31,11 +31,31 @@ const Navbar = () => {
             <span className={styles.text}>Buy Now</span>
             <span className={styles.thanksText}>Buy Now</span>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className={`${styles.navBottom} flex items-center justify-start`}>
-        <div className={`${styles.navBottomLeft} flex`}>
+      <div className={`${styles.navBottom} flex items-center justify-between`}>
+        <div className={`${styles.navbarBottomRight} flex items-center`}>
+          {/* <div className={`${styles.socialMedia} flex`}>
+            {navbarData.socialMedia.map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                className={`${
+                  i === 0 ? styles.navIconsFor1 : styles.navIcons
+                } flex`}
+              >
+                <item.icon className={`${styles.navIcon}`} />
+              </a>
+            ))}
+          </div> */}
+          {/* <div className={`fixed right-10`}>
+            <CiDesktopMouse2 className={styles.mouseIcon} />
+          </div> */}
+        </div>
+
+        {/* <div className={`${styles.navBottomLeft} flex`}>
           <div
             className={`${styles.navBottomNumber} ${styles.navBottomNumber1}`}
           >
@@ -43,27 +63,12 @@ const Navbar = () => {
           </div>
           <div className={`${styles.navBottomNumber}`}>/</div>
           <div className={`${styles.navBottomNumber}`}>5</div>
-        </div>
-        <div className={`${styles.navbarBottomRight} flex items-center`}>
-          <div className={`${styles.socialMedia} flex`}>
-            {navbarData.socialMedia.map((item, i) => (
-              <a
-                key={i}
-                href={item.link}
-                target="_blank"
-                className={`${styles.navIcons} flex`}
-              >
-                <item.icon className={`${styles.navIcon}`} />
-              </a>
-            ))}
-          </div>
-          <div className={`fixed right-10`}>
-            <CiDesktopMouse2 className={styles.mouseIcon} />
-          </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
+

@@ -1,11 +1,15 @@
 .preloader {
-  background: #000000;
   overflow: hidden;
   z-index: 999999999999999999999;
 }
 
 .preload {
   transition: all 0.3s linear;
+  background: radial-gradient(
+    782px circle at 48.06% 0.31%,
+    #d700d7 0%,
+    #710071 100%
+  );
 }
 
 .preloaderTimer {
@@ -24,6 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999999;
 }
 
 .spinner {
@@ -124,4 +129,34 @@
     transform: rotate(calc(var(--rotation) * 1deg))
       translate(0, calc(var(--translation) * 1.01%));
   }
+}
+
+.glassLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  backdrop-filter: blur(15px);
+  background: radial-gradient(
+    782px circle at 48.06% 0.31%,
+    #d700d7 0%,
+    #710071 100%
+  );
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.glassLayer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-size: contain;
+  opacity: 0.1;
+  z-index: 3;
 }
