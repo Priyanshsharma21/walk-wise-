@@ -1,0 +1,36 @@
+.canvas {
+  mix-blend-mode: lighten;
+  z-index: 999999999999999999999999999999999999;
+}
+
+.primeText {
+  color: blanchedalmond;
+  font-size: 10vw;
+  font-weight: 600;
+  font-family: "Cinzel", system-ui;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.gallarySubtitleBox {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 235, 205, 0.425);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.gallarySubtitle {
+  color: #181818;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Cinzel", system-ui;
+  font-style: normal;
+  text-transform: uppercase;
+}

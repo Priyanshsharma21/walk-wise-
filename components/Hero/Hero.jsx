@@ -142,7 +142,15 @@ const Hero = () => {
       const splitComfortText = new SplitText(comfortRef.current, {
         type: "chars",
       });
-      const chars = splitComfortText.chars;
+      const splitStepIntoText = new SplitText(stepIntoRef.current, {
+        type: "chars",
+      });
+      const splitZoneText = new SplitText(zoneRef.current, {
+        type: "chars",
+      });
+      const splitChar = splitComfortText.chars;
+      const stepChars = splitStepIntoText.chars;
+      const zoneChars = splitZoneText.chars;
 
       gsap
         .timeline({
@@ -161,26 +169,41 @@ const Hero = () => {
           { opacity: 1, filter: "blur(0px)", duration: 2 }
         )
         .fromTo(
-          chars,
-          { y: 100, opacity: 0 },
+          splitChar,
+          { y: 150, opacity: 0, overflow: "hidden" },
           {
             y: 0,
             opacity: 1,
-            stagger: 0.15, // Increased from 0.08 to 0.15 for a slower stagger
-            duration: 7, // Increased from 2 to 3 for a longer overall animation
+            overflow: "hidden",
+            stagger: 0.15,
+            duration: 7,
             ease: "power4.inOut",
             scrub: true,
           }
         )
         .fromTo(
-          stepIntoRef.current,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, ease: "power1.out" }
+          stepChars,
+          { opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+            duration: 7,
+            ease: "power4.inOut",
+            scrub: true,
+          }
         )
         .fromTo(
-          zoneRef.current,
-          { y: -50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, ease: "power1.out" }
+          zoneChars,
+          { opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+            duration: 7,
+            ease: "power4.inOut",
+            scrub: true,
+          }
         );
     }
 
@@ -204,9 +227,13 @@ const Hero = () => {
         />
       </div>
       <div ref={scrollRef} className={styles.scrollDown}>
-        <div className={styles.scrollToBegin}>SCROLL TO BEGIN</div>
-        {showWebsite && (
-          <video
+        <div className={styles.scrollToBegin}>
+          <div>SCROLL</div>
+          <div>TO</div>
+          <div>BEGIN</div>
+        </div>
+        {/* {showWebsite && ( */}
+        {/* <video
             className={styles.video}
             src={`https://res.cloudinary.com/dlxpea208/video/upload/v1727342704/test-Vbit-01_fwlgw0.mp4`}
             muted
@@ -214,8 +241,8 @@ const Hero = () => {
             autoPlay
             preload="auto"
             style={{ mixBlendMode: "lighten" }}
-          />
-        )}
+          /> */}
+        {/* )} */}
         <div className={styles.glassLayer}></div>
       </div>
       <div className="w-full h-[250vh]" />
@@ -233,7 +260,6 @@ const Hero = () => {
           <h4
             ref={stepIntoRef}
             className={`${styles.heroSubTitle} text-6xl text-white text-left`}
-            style={{ opacity: 0 }}
           >
             step into the
           </h4>
@@ -248,7 +274,6 @@ const Hero = () => {
           <h4
             ref={zoneRef}
             className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
-            style={{ opacity: 0 }}
           >
             zone
           </h4>

@@ -54,7 +54,7 @@ const Card = ({ card }) => {
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
-                staggerChildren: 0.03, // Char by char animation effect
+                staggerChildren: 0.03,
               }}
             >
               {char}
@@ -63,7 +63,15 @@ const Card = ({ card }) => {
         </motion.div>
 
         {/* Video Section */}
-        <div className={styles.cardVideoMain}>
+        <motion.div
+          initial={{ x: 100 }}
+          whileInView={{ x: 0 }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+          }}
+          className={styles.cardVideoMain}
+        >
           <video
             preload="preload"
             poster={card.poster}
@@ -75,7 +83,7 @@ const Card = ({ card }) => {
           >
             <source src={card.videoUrl} />
           </video>
-        </div>
+        </motion.div>
 
         {/* Subtitle Animation */}
         <motion.div className={styles.cardSubTitle}>

@@ -5,6 +5,8 @@ import Hero from "../Hero/Hero";
 import { useAnimeContext } from "@/context/animeContext";
 import Introduction from "../Introduction/Introduction";
 import VideoShow from "../VideoShowcase/VideoShow";
+import Video from "../Video/Video";
+import Gallary from "../Gallary/Gallary";
 
 const Website = () => {
   const { showWebsite, isLoaderCompleted } = useAnimeContext();
@@ -23,12 +25,17 @@ const Website = () => {
       style={{ opacity: showMainWebsite() ? 1 : 0 }}
     >
       <div className={styles.gradientBackground}></div>
+      <div className={styles.glassLayer}></div>
 
       <div className={styles.content}>
         <Navbar />
         <Hero />
         <Introduction />
-        <VideoShow />
+
+        <div className="w-full h-[100vh]" />
+        <Video />
+        <Gallary />
+        {/* <VideoShow /> */}
       </div>
     </section>
   );

@@ -111,7 +111,7 @@ const Introduction = () => {
       )
       .fromTo(
         chars,
-        { x: -100, visibility: "none" },
+        { x: 0, visibility: "none" },
         {
           x: 0,
           visibility: "visible",

@@ -41,7 +41,7 @@
 
 .heroTitle {
   font-size: 20vw;
-  font-weight: 500;
+  font-weight: 200;
   font-family: "Cormorant Garamond", serif;
   line-height: 0.8em;
   color: #ffebcd;
@@ -65,3 +65,10 @@
   top: -30px;
   filter: drop-shadow(14px 10px 12px black);
 }
+
+/* .heroSubTitle div {
+  opacity: 1 !important;
+}
+.heroSubTitle div div {
+  opacity: 1 !important;
+} */

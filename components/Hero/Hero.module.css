@@ -105,4 +105,31 @@
 
 .scrollToBegin {
   z-index: 99999;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+
+  /* Linear gradient from bottom-left to top-right */
+  background: linear-gradient(
+    to top right,
+    #710071,
+    /* Bottom-left color */ #c400c4 /* Top-right color */
+  );
+
+  /* Text styling */
+
+  /* Box shadow towards left with a subtle effect */
+  box-shadow: -5px 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.scrollToBegin div {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: #e2e2e2;
+  letter-spacing: 0.05em;
 }
