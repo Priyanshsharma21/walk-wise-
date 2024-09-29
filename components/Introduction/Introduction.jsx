@@ -70,7 +70,7 @@ const Introduction = () => {
     subheadRefs.current.forEach((subhead) => {
       gsap.to(subhead.querySelectorAll(".char-span"), {
         opacity: 1,
-        stagger: 0.4, // Stagger for each character
+        stagger: 0.1, // Stagger for each character
         scrollTrigger: {
           trigger: element,
           start: "top 50%",
@@ -85,56 +85,56 @@ const Introduction = () => {
     };
   }, [setPageCount]);
 
-  useEffect(() => {
-    // Initial setup for SplitText for the comfortRef (if needed for character splitting)
-    const splitComfortText = new SplitText(comfortRef.current, {
-      type: "chars",
-    });
-    const chars = splitComfortText.chars;
+  // useEffect(() => {
+  //   // Initial setup for SplitText for the comfortRef (if needed for character splitting)
+  //   const splitComfortText = new SplitText(comfortRef.current, {
+  //     type: "chars",
+  //   });
+  //   const chars = splitComfortText.chars;
 
-    // Create the timeline
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: heroRef.current, // Element to trigger the animation
-          start: "top top", // Start of the animation when the element hits the top of the viewport
-          end: "+=400", // End after scrolling 1000px
-          scrub: true, // Sync animation with the scroll
-          ease: "power1.inOut",
-        },
-      })
-      // Step 1: Bring all elements onto the screen at once
-      .fromTo(
-        [stepIntoRef.current, comfortRef.current, zoneRef.current],
-        { opacity: 0 }, // Initial state: all are invisible
-        { opacity: 1, duration: 1, ease: "power1.out" } // All fade in together
-      )
-      .fromTo(
-        chars,
-        { x: 0, visibility: "none" },
-        {
-          x: 0,
-          visibility: "visible",
-          stagger: 0.03,
-          duration: 1,
-          ease: "power4.inOut",
-          scrub: true,
-        }
-      )
-      // Step 2: Apply movement animations for stepIntoRef and zoneRef
-      .fromTo(
-        stepIntoRef.current,
-        { y: 50 }, // Starts from below
-        { y: 0, duration: 1, ease: "power1.out" }, // Moves to its final position
-        0 // Start at the same time
-      )
-      .fromTo(
-        zoneRef.current,
-        { y: -50 }, // Starts from above
-        { y: 0, duration: 1, ease: "power1.out" }, // Moves to its final position
-        0 // Start at the same time
-      );
-  }, []);
+  //   // Create the timeline
+  //   gsap
+  //     .timeline({
+  //       scrollTrigger: {
+  //         trigger: heroRef.current, // Element to trigger the animation
+  //         start: "top top", // Start of the animation when the element hits the top of the viewport
+  //         end: "+=400", // End after scrolling 1000px
+  //         scrub: true, // Sync animation with the scroll
+  //         ease: "power1.inOut",
+  //       },
+  //     })
+  //     // Step 1: Bring all elements onto the screen at once
+  //     .fromTo(
+  //       [stepIntoRef.current, comfortRef.current, zoneRef.current],
+  //       { opacity: 0 }, // Initial state: all are invisible
+  //       { opacity: 1, duration: 1, ease: "power1.out" } // All fade in together
+  //     )
+  //     .fromTo(
+  //       chars,
+  //       { x: 0, visibility: "none" },
+  //       {
+  //         x: 0,
+  //         visibility: "visible",
+  //         stagger: 0.03,
+  //         duration: 1,
+  //         ease: "power4.inOut",
+  //         scrub: true,
+  //       }
+  //     )
+  //     // Step 2: Apply movement animations for stepIntoRef and zoneRef
+  //     .fromTo(
+  //       stepIntoRef.current,
+  //       { y: 50 }, // Starts from below
+  //       { y: 0, duration: 1, ease: "power1.out" }, // Moves to its final position
+  //       0 // Start at the same time
+  //     )
+  //     .fromTo(
+  //       zoneRef.current,
+  //       { y: -50 }, // Starts from above
+  //       { y: 0, duration: 1, ease: "power1.out" }, // Moves to its final position
+  //       0 // Start at the same time
+  //     );
+  // }, []);
 
   // Render Image Sequence
   useEffect(() => {
@@ -182,6 +182,45 @@ const Introduction = () => {
           Math.ceil(progress * shoeEntryImg.length)
         );
         setFrameIndex(index);
+
+        console.log(index);
+
+        if (index >= 0 && index <= 439) {
+          gsap.to(sectionRef.current, { opacity: 1, duration: 1 });
+        } else {
+          gsap.to(sectionRef.current, { opacity: 0, duration: 1 });
+        }
+
+        if (index >= 326 && index <= 439) {
+          gsap.to(heroRef.current, { opacity: 1, duration: 1 });
+          gsap.to(
+            comfortRef.current,
+
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.15,
+              duration: 2,
+            }
+          );
+          gsap.to(stepIntoRef.current, {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+          });
+
+          gsap.to(zoneRef.current, {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+          });
+        } else {
+          gsap.to(heroRef.current, { opacity: 0, duration: 1 });
+          gsap.to(sectionRef.current, { opacity: 0, duration: 1 });
+          gsap.to(stepIntoRef.current, { opacity: 0, duration: 1 });
+          gsap.to(comfortRef.current, { opacity: 0, duration: 1 });
+          gsap.to(zoneRef.current, { opacity: 0, duration: 1 });
+        }
       },
     });
 
@@ -214,7 +253,7 @@ const Introduction = () => {
                   <div
                     key={i}
                     className={`${styles.iSubhead} pb-8 text-right`}
-                    ref={(el) => (subheadRefs.current[i] = el)} // Collect refs
+                    ref={(el) => (subheadRefs.current[i] = el)}
                   >
                     {data.split("").map((char, charIndex) => (
                       <span key={charIndex} className="char-span">
@@ -228,40 +267,45 @@ const Introduction = () => {
             <Col xl={15} lg={15} md={24} sm={24} xm={24}></Col>
           </Row>
 
-          <Row>
-            <Col xl={24} lg={24} md={24} sm={24} xs={24}>
-              <section
-                className={`${styles.hero} w-full min-h-full flex justify-end`}
-                ref={heroRef}
-              >
-                <div className={`${styles.heroContent} flex flex-col`}>
-                  <h4
-                    ref={stepIntoRef}
-                    className={`${styles.heroSubTitle} text-6xl text-white text-left`}
-                    style={{ opacity: 0 }}
-                  >
-                    have the
-                  </h4>
+          {/* <Row> */}
+          {/* <Col xl={24} lg={24} md={24} sm={24} xs={24}> */}
 
-                  <h1
-                    className={`${styles.heroTitle} text-6xl text-white flex items-center`}
-                    ref={comfortRef}
-                  >
-                    world
-                  </h1>
-
-                  <h4
-                    ref={zoneRef}
-                    className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
-                    style={{ opacity: 0 }}
-                  >
-                    at your feet
-                  </h4>
-                </div>
-              </section>
-            </Col>
-          </Row>
+          {/* </Col> */}
+          {/* </Row> */}
         </main>
+        <section
+          className={`${styles.hero} w-full min-h-full flex justify-end`}
+          ref={heroRef}
+          style={{
+            position: "fixed",
+            top: "14%",
+            right: "10rem",
+            opacity: 0,
+          }}
+        >
+          <div className={`${styles.heroContent} flex flex-col`}>
+            <h4
+              ref={stepIntoRef}
+              className={`${styles.heroSubTitle} text-6xl text-white text-left`}
+            >
+              have the
+            </h4>
+
+            <h1
+              className={`${styles.heroTitle} text-6xl text-white flex items-center`}
+              ref={comfortRef}
+            >
+              world
+            </h1>
+
+            <h4
+              ref={zoneRef}
+              className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
+            >
+              at your feet
+            </h4>
+          </div>
+        </section>
         <div className="w-full h-[300vh]" />
       </div>
     </>

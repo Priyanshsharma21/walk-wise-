@@ -1,0 +1,55 @@
+.cardContainer {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 2rem;
+  color: white;
+}
+
+.videoLeftSide {
+  background: blanchedalmond;
+  border-radius: 0px;
+}
+
+.videoTitle {
+  color: blanchedalmond;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Cinzel", system-ui;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #181818;
+}
+
+.videoSubtitleBox {
+  width: 70%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #7100713f;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.videoSubtitle {
+  word-spacing: 0.2em;
+  font-size: 1.5rem;
+  line-height: 1em;
+  font-weight: 300;
+  font-family: "Poppins", system-ui;
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+  color: #181818;
+  position: relative;
+}

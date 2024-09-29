@@ -21,7 +21,7 @@
 }
 
 .hero {
-  padding: 0em 10em;
+  /* padding: 0em 10em; */
 }
 .heroContent {
   position: relative;
@@ -47,7 +47,7 @@
   color: #ffebcd;
   letter-spacing: 0.01em;
   position: relative;
-  left: 6rem;
+  left: 2rem;
 }
 
 .heroSubTitle2 {
@@ -72,3 +72,9 @@
 .heroSubTitle div div {
   opacity: 1 !important;
 } */
+
+.hero {
+  /* position: fixed;
+  top: 60%;
+  right: 2rem; */
+}

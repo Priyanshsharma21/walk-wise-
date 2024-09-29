@@ -33,7 +33,7 @@ const page = () => {
 
   return (
     <main className="app">
-      <Preloader />
+      {/* <Preloader /> */}
       <Website />
     </main>
   );

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gallaryImgSeq } from "../../constants"; // Assuming your image array is in this location
-import styles from "./Gallary.module.css"; // Add styles as needed
+import { gallaryImgSeq } from "../../constants";
+import styles from "./Gallary.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,7 +54,6 @@ const Gallary = () => {
         );
         setFrameIndex(index);
 
-        // Show "Prime" text when index is between 46 and 76
         if (index >= 36 && index <= 76) {
           gsap.to(primeTextRef.current, { opacity: 1, duration: 1 });
           gsap.to(primeTextBoxRef.current, { opacity: 1, duration: 1 });
@@ -95,9 +94,7 @@ const Gallary = () => {
       }
       requestId = requestAnimationFrame(render);
     };
-
     render();
-
     return () => cancelAnimationFrame(requestId);
   }, [frameIndex, images]);
 
@@ -110,7 +107,6 @@ const Gallary = () => {
           width={1920}
           height={1080}
         />
-        {/* Prime Text */}
         <div
           ref={primeTextRef}
           className={styles.primeText}
@@ -119,7 +115,7 @@ const Gallary = () => {
             top: "40%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            opacity: 0, // Initial opacity set to 0 for fade-in
+            opacity: 0,
           }}
         >
           Prime
