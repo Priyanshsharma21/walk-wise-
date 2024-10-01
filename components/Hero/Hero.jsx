@@ -6,12 +6,14 @@ import SplitText from "gsap/SplitText"; // Import SplitText
 import styles from "./Hero.module.css";
 import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
-
+import Tilt from "react-parallax-tilt";
+import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Hero = () => {
+const Hero = ({ width, height, initialWidth, initialHeight }) => {
   const [contentVisible, setContentVisible] = useState(false);
-  const { navRef, setShowWebsite, showWebsite } = useAnimeContext();
+  const { navRef, setShowWebsite, showWebsite, isLoaderCompleted } =
+    useAnimeContext();
   const [images, setImages] = useState([]);
   const [frameIndex, setFrameIndex] = useState(0);
   const canvasRef = useRef(null);
@@ -21,6 +23,10 @@ const Hero = () => {
   const stepIntoRef = useRef(null);
   const zoneRef = useRef(null);
   const imageSequenceRef = useRef(null);
+  const [canvasSize, setCanvasSize] = useState({
+    width: initialWidth,
+    height: initialHeight,
+  });
 
   useEffect(() => {
     const preloadImages = async () => {
@@ -49,10 +55,7 @@ const Hero = () => {
     };
 
     preloadImages();
-  }, []);
 
-  // GSAP Image Sequence Animation
-  useEffect(() => {
     const ctx = canvasRef.current.getContext("2d");
 
     ScrollTrigger.create({
@@ -68,9 +71,9 @@ const Hero = () => {
         );
         setFrameIndex(index);
 
-        const newColorOpacity = 1 - Math.min(progress * 2, 1);
+        // const newColorOpacity = 1 - Math.min(progress * 2, 1);
         const newColorOpacityForScroll = 1 - Math.min(progress * 21, 1);
-        canvasRef.current.style.backgroundColor = `rgba(0, 0, 0, ${newColorOpacity})`;
+        // canvasRef.current.style.backgroundColor = `rgba(0, 0, 0, ${newColorOpacity})`;
         scrollRef.current.style.opacity = newColorOpacityForScroll;
       },
       onLeave: () => {
@@ -81,7 +84,7 @@ const Hero = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [width, height]);
 
   // Render Image Sequence
   useEffect(() => {
@@ -91,19 +94,14 @@ const Hero = () => {
     let requestId;
 
     const render = () => {
-      context.clearRect(
-        0,
-        0,
-        canvasRef.current.width,
-        canvasRef.current.height
-      );
+      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
       if (images[frameIndex]) {
         context.drawImage(
           images[frameIndex],
           0,
           0,
-          canvasRef.current.width,
-          canvasRef.current.height
+          canvasSize.width,
+          canvasSize.height
         );
       }
       requestId = requestAnimationFrame(render);
@@ -112,9 +110,22 @@ const Hero = () => {
     render();
 
     return () => cancelAnimationFrame(requestId);
-  }, [frameIndex, images]);
+  }, [frameIndex, images, canvasSize]);
 
-  // Stagger text animation with SplitText and blur to opacity transition
+  useEffect(() => {
+    const handleResize = () => {
+      const aspectRatio = initialWidth / initialHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = newWidth / aspectRatio;
+      setCanvasSize({ width: newWidth, height: newHeight });
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [initialWidth, initialHeight]);
+
   useEffect(() => {
     const element = heroRef.current;
 
@@ -170,13 +181,13 @@ const Hero = () => {
         )
         .fromTo(
           splitChar,
-          { y: 150, opacity: 0, overflow: "hidden" },
+          { y: 250, opacity: 0, overflow: "hidden" },
           {
             y: 0,
             opacity: 1,
             overflow: "hidden",
-            stagger: 0.15,
-            duration: 7,
+            stagger: 1,
+            duration: 10,
             ease: "power4.inOut",
             scrub: true,
           }
@@ -212,6 +223,14 @@ const Hero = () => {
     };
   }, [contentVisible]);
 
+  const revealMask = {
+    initial: { y: "100%" },
+    animate: (i) => ({
+      y: "0%",
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.2 * i },
+    }),
+  };
+
   return (
     <>
       <div
@@ -227,29 +246,64 @@ const Hero = () => {
         />
       </div>
       <div ref={scrollRef} className={styles.scrollDown}>
-        <div className={styles.scrollToBegin}>
-          <div>SCROLL</div>
-          <div>TO</div>
-          <div>BEGIN</div>
-        </div>
-        {/* {showWebsite && ( */}
-        {/* <video
-            className={styles.video}
-            src={`https://res.cloudinary.com/dlxpea208/video/upload/v1727342704/test-Vbit-01_fwlgw0.mp4`}
-            muted
-            loop
-            autoPlay
-            preload="auto"
-            style={{ mixBlendMode: "lighten" }}
-          /> */}
-        {/* )} */}
-        <div className={styles.glassLayer}></div>
+        <Tilt
+          className="background-stripes track-on-window"
+          perspective={500}
+          glareEnable={true}
+          glareMaxOpacity={0}
+          glarePosition="all"
+          scale={1.02}
+          trackOnWindow={true}
+        >
+          <div className="inner-element">
+            <img
+              className={styles.scrollImg}
+              src="https://res.cloudinary.com/dlxpea208/image/upload/v1727772622/scroll_ula7ky.svg"
+              alt="scrollToBegin Image"
+            />
+            {isLoaderCompleted && showWebsite ? (
+              <div className={styles.scrollToBegin}>
+                <div className="w-full overflow-hidden">
+                  <motion.div
+                    custom={1}
+                    variants={revealMask}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <motion.div>Scroll</motion.div>
+                  </motion.div>
+                </div>
+
+                <div className="w-full overflow-hidden">
+                  <motion.div
+                    custom={2}
+                    variants={revealMask}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <motion.div>To</motion.div>
+                  </motion.div>
+                </div>
+
+                <div className="w-full overflow-hidden">
+                  <motion.div
+                    custom={3}
+                    variants={revealMask}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    <motion.div>Begin</motion.div>
+                  </motion.div>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        </Tilt>
       </div>
       <div className="w-full h-[250vh]" />
-      <section
-        className={`${styles.hero} w-full min-h-full`}
-        ref={heroRef} // Reference to the hero section for ScrollTrigger
-      >
+      <section className={`${styles.hero} w-full min-h-full`} ref={heroRef}>
         <div
           className={`${styles.heroContent} flex flex-col`}
           style={{
@@ -264,12 +318,14 @@ const Hero = () => {
             step into the
           </h4>
 
-          <h1
-            className={`${styles.heroTitle} text-6xl text-white flex items-center`}
-            ref={comfortRef}
-          >
-            comfort
-          </h1>
+          <div className={styles.containerText}>
+            <h1
+              className={`${styles.heroTitle} text-6xl text-white flex items-center`}
+              ref={comfortRef}
+            >
+              comfort
+            </h1>
+          </div>
 
           <h4
             ref={zoneRef}

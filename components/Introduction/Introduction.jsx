@@ -5,12 +5,13 @@ import SplitText from "gsap/SplitText";
 import { useAnimeContext } from "@/context/animeContext";
 import React from "react";
 import styles from "./Introduction.module.css";
-import { infoData, shoeEntryImg } from "@/constants";
+import { infoData, introductionText, shoeEntryImg } from "@/constants";
 import { Col, Row } from "antd";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Introduction = () => {
+const Introduction = ({ width, height, initialWidth, initialHeight }) => {
   const { setPageCount } = useAnimeContext();
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
@@ -22,6 +23,12 @@ const Introduction = () => {
   const [frameIndex, setFrameIndex] = useState(0);
   const canvasRef = useRef(null);
   const imageSequenceRef = useRef(null);
+  const [canvasSize, setCanvasSize] = useState({
+    width: initialWidth,
+    height: initialHeight,
+  });
+
+  const [showBottomText, setShowBottomText] = useState(false);
 
   useEffect(() => {
     const preloadImages = async () => {
@@ -46,128 +53,7 @@ const Introduction = () => {
     };
 
     preloadImages();
-  }, []);
 
-  useEffect(() => {
-    const element = sectionRef.current;
-
-    // Set initial opacity of subhead elements to 0.1 for each char span
-    subheadRefs.current.forEach((subhead) => {
-      gsap.set(subhead.querySelectorAll(".char-span"), { opacity: 0.1 });
-    });
-
-    const trigger = ScrollTrigger.create({
-      trigger: element,
-      start: "top 7%",
-      end: "+=300%",
-      onEnter: () => setPageCount(2),
-      onLeaveBack: () => setPageCount(1),
-      pin: true,
-      scrub: 1,
-    });
-
-    // Animation for each char span within subhead elements with stagger
-    subheadRefs.current.forEach((subhead) => {
-      gsap.to(subhead.querySelectorAll(".char-span"), {
-        opacity: 1,
-        stagger: 0.1, // Stagger for each character
-        scrollTrigger: {
-          trigger: element,
-          start: "top 50%",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      });
-    });
-
-    return () => {
-      trigger.kill();
-    };
-  }, [setPageCount]);
-
-  // useEffect(() => {
-  //   // Initial setup for SplitText for the comfortRef (if needed for character splitting)
-  //   const splitComfortText = new SplitText(comfortRef.current, {
-  //     type: "chars",
-  //   });
-  //   const chars = splitComfortText.chars;
-
-  //   // Create the timeline
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: heroRef.current, // Element to trigger the animation
-  //         start: "top top", // Start of the animation when the element hits the top of the viewport
-  //         end: "+=400", // End after scrolling 1000px
-  //         scrub: true, // Sync animation with the scroll
-  //         ease: "power1.inOut",
-  //       },
-  //     })
-  //     // Step 1: Bring all elements onto the screen at once
-  //     .fromTo(
-  //       [stepIntoRef.current, comfortRef.current, zoneRef.current],
-  //       { opacity: 0 }, // Initial state: all are invisible
-  //       { opacity: 1, duration: 1, ease: "power1.out" } // All fade in together
-  //     )
-  //     .fromTo(
-  //       chars,
-  //       { x: 0, visibility: "none" },
-  //       {
-  //         x: 0,
-  //         visibility: "visible",
-  //         stagger: 0.03,
-  //         duration: 1,
-  //         ease: "power4.inOut",
-  //         scrub: true,
-  //       }
-  //     )
-  //     // Step 2: Apply movement animations for stepIntoRef and zoneRef
-  //     .fromTo(
-  //       stepIntoRef.current,
-  //       { y: 50 }, // Starts from below
-  //       { y: 0, duration: 1, ease: "power1.out" }, // Moves to its final position
-  //       0 // Start at the same time
-  //     )
-  //     .fromTo(
-  //       zoneRef.current,
-  //       { y: -50 }, // Starts from above
-  //       { y: 0, duration: 1, ease: "power1.out" }, // Moves to its final position
-  //       0 // Start at the same time
-  //     );
-  // }, []);
-
-  // Render Image Sequence
-  useEffect(() => {
-    if (!canvasRef.current || images.length < 1) return;
-
-    const context = canvasRef.current.getContext("2d");
-    let requestId;
-
-    const render = () => {
-      context.clearRect(
-        0,
-        0,
-        canvasRef.current.width,
-        canvasRef.current.height
-      );
-      if (images[frameIndex]) {
-        context.drawImage(
-          images[frameIndex],
-          0,
-          0,
-          canvasRef.current.width,
-          canvasRef.current.height
-        );
-      }
-      requestId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => cancelAnimationFrame(requestId);
-  }, [frameIndex, images]);
-
-  useEffect(() => {
     const ctx = canvasRef.current.getContext("2d");
 
     ScrollTrigger.create({
@@ -183,43 +69,19 @@ const Introduction = () => {
         );
         setFrameIndex(index);
 
-        console.log(index);
-
-        if (index >= 0 && index <= 439) {
-          gsap.to(sectionRef.current, { opacity: 1, duration: 1 });
+        if (index >= 0 && index <= 469) {
+          gsap.to(sectionRef.current, { opacity: 1, duration: 0.1 });
         } else {
           gsap.to(sectionRef.current, { opacity: 0, duration: 1 });
         }
 
-        if (index >= 326 && index <= 439) {
+        if (index >= 346 && index <= 469) {
+          setShowBottomText(true);
           gsap.to(heroRef.current, { opacity: 1, duration: 1 });
-          gsap.to(
-            comfortRef.current,
-
-            {
-              y: 0,
-              opacity: 1,
-              stagger: 0.15,
-              duration: 2,
-            }
-          );
-          gsap.to(stepIntoRef.current, {
-            y: 0,
-            opacity: 1,
-            stagger: 0.15,
-          });
-
-          gsap.to(zoneRef.current, {
-            y: 0,
-            opacity: 1,
-            stagger: 0.15,
-          });
         } else {
+          setShowBottomText(false);
           gsap.to(heroRef.current, { opacity: 0, duration: 1 });
           gsap.to(sectionRef.current, { opacity: 0, duration: 1 });
-          gsap.to(stepIntoRef.current, { opacity: 0, duration: 1 });
-          gsap.to(comfortRef.current, { opacity: 0, duration: 1 });
-          gsap.to(zoneRef.current, { opacity: 0, duration: 1 });
         }
       },
     });
@@ -227,7 +89,91 @@ const Introduction = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [width, height]);
+
+  useEffect(() => {
+    const element = sectionRef.current;
+
+    subheadRefs.current.forEach((subhead) => {
+      gsap.set(subhead.querySelectorAll(".char-span"), { opacity: 0.1 });
+    });
+
+    const trigger = ScrollTrigger.create({
+      trigger: element,
+      start: "top 7%", // Adjust the start position
+      end: "+=350%", // Shorten the animation range to make it faster
+      onEnter: () => setPageCount(2),
+      onLeaveBack: () => setPageCount(1),
+      pin: true,
+      scrub: 1, // Controls the animation speed during scroll
+    });
+
+    subheadRefs.current.forEach((subhead) => {
+      gsap.to(subhead.querySelectorAll(".char-span"), {
+        opacity: 1,
+        stagger: 0.7, // Faster stagger for quicker animation
+        duration: 0.5, // Adjust the duration to be quicker
+        scrollTrigger: {
+          trigger: element,
+          start: "top 10%", // Adjust to start sooner
+          end: "bottom +=200%",
+          scrub: 1, // Smooth scroll-based animation
+        },
+      });
+    });
+
+    return () => {
+      trigger.kill();
+    };
+  }, [setPageCount]);
+
+  // Render Image Sequence
+  useEffect(() => {
+    if (!canvasRef.current || images.length < 1) return;
+
+    const context = canvasRef.current.getContext("2d");
+    let requestId;
+
+    const render = () => {
+      context.clearRect(0, 0, canvasSize.width, canvasSize.height);
+      if (images[frameIndex]) {
+        context.drawImage(
+          images[frameIndex],
+          0,
+          0,
+          canvasSize.width,
+          canvasSize.height
+        );
+      }
+      requestId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => cancelAnimationFrame(requestId);
+  }, [frameIndex, images, canvasSize]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const aspectRatio = initialWidth / initialHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = newWidth / aspectRatio;
+      setCanvasSize({ width: newWidth, height: newHeight });
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [initialWidth, initialHeight]);
+
+  const revealMask = {
+    initial: { y: "100%" },
+    animate: (i) => ({
+      y: "0%",
+      transition: { duration: 0.4, ease: [0.33, 1, 0.68, 1], delay: 0.1 * i },
+    }),
+  };
 
   return (
     <>
@@ -273,6 +219,7 @@ const Introduction = () => {
           {/* </Col> */}
           {/* </Row> */}
         </main>
+
         <section
           className={`${styles.hero} w-full min-h-full flex justify-end`}
           ref={heroRef}
@@ -280,33 +227,65 @@ const Introduction = () => {
             position: "fixed",
             top: "14%",
             right: "10rem",
-            opacity: 0,
+            background: showBottomText
+              ? "linear-gradient(to right, #710071, transparent)"
+              : "",
           }}
         >
-          <div className={`${styles.heroContent} flex flex-col`}>
-            <h4
-              ref={stepIntoRef}
-              className={`${styles.heroSubTitle} text-6xl text-white text-left`}
-            >
-              have the
-            </h4>
+          {showBottomText && (
+            <div className={`${styles.heroContent} flex flex-col`}>
+              <motion.div
+                whileInView={{
+                  x: [-100, -50, 0],
+                  opacity: [0, 0, 1],
+                }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <h4
+                  ref={stepIntoRef}
+                  className={`${styles.heroSubTitle} text-6xl text-white text-left`}
+                >
+                  have the
+                </h4>
+              </motion.div>
 
-            <h1
-              className={`${styles.heroTitle} text-6xl text-white flex items-center`}
-              ref={comfortRef}
-            >
-              world
-            </h1>
+              <div className="flex">
+                {introductionText[1].split("").map((word, i) => (
+                  <div
+                    className="w-auto overflow-hidden flex justify-center"
+                    key={i}
+                  >
+                    <motion.div
+                      custom={i + 1}
+                      variants={revealMask}
+                      initial="initial"
+                      animate="animate"
+                      className={`${styles.heroTitle} w-auto text-white flex items-center`}
+                    >
+                      <motion.div>{word}</motion.div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
 
-            <h4
-              ref={zoneRef}
-              className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
-            >
-              at your feet
-            </h4>
-          </div>
+              <motion.div
+                whileInView={{
+                  x: [100, 50, 0],
+                  opacity: [0, 0, 1],
+                }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <h4
+                  ref={zoneRef}
+                  className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
+                >
+                  at your feet
+                </h4>
+              </motion.div>
+            </div>
+          )}
         </section>
-        <div className="w-full h-[300vh]" />
+        <div className="w-full h-[350vh]" />
       </div>
     </>
   );

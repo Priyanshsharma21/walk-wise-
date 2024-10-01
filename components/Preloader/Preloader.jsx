@@ -21,7 +21,6 @@ const Preloader = () => {
           clearInterval(interval);
           document.body.style.overflow = "auto"; // Enable body scrolling when counter hits 111
 
-          // setShowWebsite(true);
           setHidePreloader(true);
           setIsLoaderCompleted(true);
 
@@ -49,15 +48,21 @@ const Preloader = () => {
       <div>
         <div className={styles.loaderWrapper}>
           <div data-cursor="-inverse" className={styles.spinner}>
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className={styles.spinnerDiv}
-                style={{
-                  opacity: counter >= (index + 1) * 10 ? 1 : 0.1,
-                }}
-              />
-            ))}
+            {Array.from({ length: 10 }).map((_, index) => {
+              // Modify the opacity to start from the top
+              // The order is changed so the opacity changes in clockwise order starting from the top
+              const adjustedIndex = (index + 6) % 10; // Adjust the index to start from the top
+
+              return (
+                <div
+                  key={index}
+                  className={styles.spinnerDiv}
+                  style={{
+                    opacity: counter >= (adjustedIndex + 1) * 10 ? 1 : 0.1,
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

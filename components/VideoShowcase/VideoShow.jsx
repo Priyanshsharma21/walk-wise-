@@ -1,108 +1,147 @@
-import React, { useRef } from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import styles from "./VideoShow.module.css"; // Importing CSS module
 import { videoSectionData } from "@/constants";
-import styles from "./VideoShow.module.css";
+import { Divider } from "antd";
+import { motion } from "framer-motion";
+gsap.registerPlugin(ScrollTrigger);
 
 const VideoShow = () => {
-  const processRef = useRef(null);
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
-
-  return (
-    <div
-      id="process"
-      ref={processRef}
-      className="w-full min-h-[100vh] text-white"
-    >
-      <div className="w-full h-[50vh]" />
-
-      <section ref={targetRef} className="relative h-[300vh] scrolling_box">
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden processbg">
-          <motion.div style={{ x }} className="flex gap-4 c-process-cont">
-            {videoSectionData.map((card) => (
-              <Card card={card} key={card.id} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <div className="w-full h-screen flex justify-center items-center">
-        Showcase section
-      </div>
-    </div>
+  const containerRef = useRef(null);
+  const thumbnailRefs = useRef([]);
+  const [title, setTitle] = useState(videoSectionData[0].title);
+  const [index, setIndex] = useState(videoSectionData[0].id);
+  const [title2, setTitle2] = useState(videoSectionData[0].title2);
+  const [subTitle, setSubTitle] = useState(videoSectionData[0].subtitle);
+  const [backgroundLeft, setBackgroundLeft] = useState(
+    videoSectionData[0].background
   );
-};
+  const subtitleRef = useRef(null);
 
-const Card = ({ card }) => {
+  useEffect(() => {
+    const container = containerRef.current;
+    const scrubValue = 0.5;
+
+    // Set up the horizontal scroll trigger
+    gsap.to(thumbnailRefs.current, {
+      xPercent: -100 * (videoSectionData.length - 1), // Scroll through all videos
+      ease: "none",
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: () => `+=${container.scrollWidth - window.innerWidth}`, // Adjusting end value
+        pin: true,
+        scrub: scrubValue,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const index = Math.round(
+            self.progress * (videoSectionData.length - 1)
+          );
+          setTitle(videoSectionData[index].title);
+          setSubTitle(videoSectionData[index].subtitle);
+          setTitle2(videoSectionData[index].title2);
+          setBackgroundLeft(videoSectionData[index].background);
+          setIndex(videoSectionData[index].id);
+        },
+      },
+    });
+
+    // Clean up scroll triggers on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
+  useEffect(() => {
+    // Animation for subtitle
+    if (subtitleRef.current) {
+      gsap.fromTo(
+        subtitleRef.current.children,
+        {
+          autoAlpha: 0,
+          y: 30,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+        }
+      );
+    }
+  }, [subTitle]);
+
+  const revealMask = {
+    initial: { y: "100%" },
+    animate: (i) => ({
+      y: "0%",
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.2 * i },
+    }),
+  };
+
   return (
-    <div
-      className={`${styles.cardContainer} group ml-[2rem] rounded-xl relative videoCardMain overflow-hidden`}
-    >
-      <div className={styles.videoContainer}>
-        {/* Title Animation */}
-        <motion.div className={styles.cardTitle}>
-          {card.title.split("").map((char, index) => (
-            <motion.span
-              key={index}
-              style={{ display: "inline-block" }}
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: "easeOut",
-                staggerChildren: 0.03,
-              }}
+    <div style={{ zIndex: 999999 }}>
+      <div ref={containerRef} className={styles.container}>
+        <div className={styles.wrapper}>
+          {videoSectionData.map((item, i) => (
+            <div
+              key={item.id}
+              id={`thumbnail-${item.id}`}
+              ref={(el) => (thumbnailRefs.current[i] = el)}
+              className={styles.thumbnail}
+              style={{ marginLeft: i === 0 ? "30vw" : "0px" }}
             >
-              {char}
-            </motion.span>
+              <video
+                src={item.videoUrl}
+                poster={item.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={styles.video}
+              />
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Video Section */}
-        <motion.div
-          initial={{ x: 100 }}
-          whileInView={{ x: 0 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-          }}
-          className={styles.cardVideoMain}
+        <div
+          style={{ background: backgroundLeft }}
+          className={`absolute left-0 top-0 h-full w-[35vw] flex items-center justify-center ${styles.videoLeftSide}`}
         >
-          <video
-            preload="preload"
-            poster={card.poster}
-            muted
-            playsInline
-            loop
-            autoPlay
-            className={styles.videoMain}
+          <div
+            className={`${styles.videoCard} flex flex-col justify-around items-center w-full h-full`}
           >
-            <source src={card.videoUrl} />
-          </video>
-        </motion.div>
-
-        {/* Subtitle Animation */}
-        <motion.div className={styles.cardSubTitle}>
-          {card.subtitle.split(" ").map((word, index) => (
-            <motion.span
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                ease: "easeOut",
-                staggerChildren: 0.01, // Word by word animation effect
-              }}
-              key={index}
-              style={{ display: "inline-block", marginRight: "0.3em" }}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </motion.div>
+            <div>
+              {title2.map((title, i) => (
+                <div
+                  key={`${title}-${index}`} // Unique key for re-triggering animation
+                  className={`${styles.videoHead} w-full overflow-hidden video-${i}-${index}`}
+                >
+                  <motion.div
+                    custom={i + 1}
+                    variants={revealMask}
+                    initial="initial"
+                    animate="animate"
+                    key={`${title}-${i}-${index}`} // Important: changes every time
+                  >
+                    <motion.div>{title}</motion.div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+            <Divider className={styles.showcaseDivider} />
+            <div className={styles.videoSubtitleBox}>
+              <div ref={subtitleRef} className={styles.videoSubtitle}>
+                {subTitle.split(" ").map((word, index) => (
+                  <span key={index} className={styles.word}>
+                    {word}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
