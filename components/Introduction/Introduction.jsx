@@ -182,6 +182,15 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
         style={{ height: "100vh", width: "100%", zIndex: 9999999999999 }}
         ref={imageSequenceRef}
       >
+        {/* <Tilt
+          className="background-stripes track-on-window"
+          perspective={500}
+          glareEnable={true}
+          glareMaxOpacity={0}
+          glarePosition="all"
+          scale={1.02}
+          trackOnWindow={true}
+        > */}
         <canvas
           ref={canvasRef}
           style={{ mixBlendMode: "lighten" }}
@@ -189,7 +198,9 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
           height={1080}
           className={styles.canvas}
         />
+        {/* </Tilt> */}
       </div>
+
       <div ref={sectionRef} className={styles.introduction}>
         <main className={`${styles.info} w-full h-screen`}>
           <Row>

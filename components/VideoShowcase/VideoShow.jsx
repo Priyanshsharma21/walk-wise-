@@ -105,6 +105,16 @@ const VideoShow = () => {
           ))}
         </div>
 
+        <div className="absolute right-2 top-2">
+          <div>
+            <img
+              className={styles.logoBrandTitle}
+              src="https://res.cloudinary.com/dlxpea208/image/upload/v1727845317/Group_33_gbml5a.png"
+              alt="logo"
+            />
+          </div>
+        </div>
+
         <div
           style={{ background: backgroundLeft }}
           className={`absolute left-0 top-0 h-full w-[35vw] flex items-center justify-center ${styles.videoLeftSide}`}

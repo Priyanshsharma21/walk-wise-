@@ -1035,11 +1035,12 @@ export const gallaryData = [
 export const pilot = {
   id: 1,
   title: "Pilot",
+  subHead: "The Daily Driver",
   description:
     "Designed for the ‘CURIOUS’ who seek a near perfect blend of aesthetics – comfort – image. “PROWL” signals to its adopter as the only ‘SMART’ choice",
   activeImg: {
-    on: "https://res.cloudinary.com/dlxpea208/image/upload/v1727686963/Pilot-on_xci7e0.png",
-    off: "https://res.cloudinary.com/dlxpea208/image/upload/v1727686962/Pilot-off_u8zsca.png",
+    on: "https://res.cloudinary.com/dlxpea208/image/upload/v1727796377/Pilot-on_vjx3px.png",
+    off: "https://res.cloudinary.com/dlxpea208/image/upload/v1727796377/Pilot-off_d2hsll.png",
   },
   imgSequence: [
     "https://res.cloudinary.com/dlxpea208/image/upload/v1727673365/popUp-Church_00000_fhsjce.png",
@@ -1197,11 +1198,12 @@ export const pilot = {
 export const prime = {
   id: 2,
   title: "Prime",
+  subHead: "The Boardroom",
   description:
     "Crafted for the ‘BOLD’ who seek to be distinct regardless of the occasion, “PRIME” exudes a ‘SIGNATURE’ appeal for its adopters.",
   activeImg: {
-    on: "https://res.cloudinary.com/dlxpea208/image/upload/v1727686962/Prime-on_uaucjj.png",
-    off: "https://res.cloudinary.com/dlxpea208/image/upload/v1727686962/Prime-off_giesez.png",
+    on: "https://res.cloudinary.com/dlxpea208/image/upload/v1727796378/Prime-on_ko3xot.png",
+    off: "https://res.cloudinary.com/dlxpea208/image/upload/v1727796377/Prime-off_jbr8vm.png",
   },
   imgSequence: [
     "https://res.cloudinary.com/dlxpea208/image/upload/v1727673365/popUp-Church_00000_fhsjce.png",
@@ -1359,11 +1361,11 @@ export const prime = {
 export const prestige = {
   id: 3,
   title: "Prestige",
-  description: `When celebration of workmanship is how ‘DISCERNING’ choices are rationalized.
-“PRESTIGE” in essence captures the moment making its possession a ‘STATEMENT’ for its adopters.`,
+  subHead: "Special",
+  description: `When celebration of workmanship is how ‘DISCERNING’ choices are rationalized.“PRESTIGE” in essence captures the moment making its possession ‘STATEMENT’ for its adopters.`,
   activeImg: {
-    on: "https://res.cloudinary.com/dlxpea208/image/upload/v1727686962/Prestige-on_lf9ugu.png",
-    off: "https://res.cloudinary.com/dlxpea208/image/upload/v1727686962/Prestige-off_iyelha.png",
+    on: "https://res.cloudinary.com/dlxpea208/image/upload/v1727796377/Prestige-on_cj5e6z.png",
+    off: "https://res.cloudinary.com/dlxpea208/image/upload/v1727796377/Prestige-off_zvwvbk.png",
   },
   imgSequence: [
     "https://res.cloudinary.com/dlxpea208/image/upload/v1727673365/popUp-Church_00000_fhsjce.png",
@@ -1522,6 +1524,7 @@ export const productShowcase = [
   {
     id: 1,
     title: "Pilot",
+    subHead: "The Daily Driver",
     description:
       "Designed for the ‘CURIOUS’ who seek a near perfect blend of aesthetics – comfort – image. “PROWL” signals to its adopter as the only ‘SMART’ choice",
     activeImg: {
@@ -1534,6 +1537,7 @@ export const productShowcase = [
   {
     id: 2,
     title: "Prime",
+    subHead: "The Boardroom",
     description:
       "Crafted for the ‘BOLD’ who seek to be distinct regardless of the occasion, “PRIME” exudes a ‘SIGNATURE’ appeal for its adopters.",
     activeImg: {
@@ -1546,6 +1550,7 @@ export const productShowcase = [
   {
     id: 3,
     title: "Prestige",
+    subHead: "Special",
     description: `When celebration of workmanship is how ‘DISCERNING’ choices are rationalized.
   “PRESTIGE” in essence captures the moment making its possession a ‘STATEMENT’ for its adopters.`,
     activeImg: {

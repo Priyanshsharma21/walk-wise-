@@ -26,7 +26,6 @@ const Gallary = ({
   const descriptionRef = useRef(null); // Reference for description animation
   const { showBtn, setShowBtn } = useAnimeContext();
   const [showTitle, setShowTitle] = useState(false);
-  console.log(showTitle);
 
   const [canvasSize, setCanvasSize] = useState({
     width: initialWidth,
@@ -80,20 +79,17 @@ const Gallary = ({
           setShowBtn(false);
         }
 
-        console.log(index);
-
         if (index > 0 && index <= 110) {
           gsap.to(primeTextBoxRef.current, { opacity: 1, duration: 1 });
 
-          // Animate description on scroll
           if (descriptionRef.current) {
             gsap.to(descriptionRef.current.children, {
               opacity: 1,
-              stagger: 0.1, // Word by word animation
+              stagger: 0.1,
               ease: "power1.out",
               scrollTrigger: {
                 trigger: galleryRef.current,
-                start: "top +=500", // Adjust based on when you want it to start
+                start: "top +=500",
                 end: "bottom bottom-=100",
                 scrub: true,
               },
@@ -166,10 +162,18 @@ const Gallary = ({
   }, [initialWidth, initialHeight]);
 
   const revealMask = {
-    initial: { x: "100%" }, // Start from the right side
+    initial: { x: "100%" },
     animate: (i) => ({
-      x: "0%", // Animate back to the initial position (from the right to left)
-      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 }, // No delay
+      x: "0%",
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 },
+    }),
+  };
+
+  const unRevealMask = {
+    initial: { x: "0%" },
+    animate: (i) => ({
+      x: "100%",
+      transition: { duration: 0.1, ease: [0.33, 1, 0.68, 1], delay: 0 },
     }),
   };
 
@@ -178,6 +182,32 @@ const Gallary = ({
     animate: (i) => ({
       y: "0%",
       transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.02 * i },
+    }),
+  };
+
+  const unRevealMask2 = {
+    initial: { y: "0%" },
+    animate: (i) => ({
+      y: "100%",
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 * i },
+    }),
+  };
+
+  const revealMask3 = {
+    initial: { x: "-100%", filter: "blur(10px)" },
+    animate: (i) => ({
+      x: "0%",
+      filter: "blur(0px)",
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 * i },
+    }),
+  };
+
+  const unRevealMask3 = {
+    initial: { x: "0%", filter: "blur(10px)" },
+    animate: (i) => ({
+      x: "-100%",
+      filter: "blur(0px)",
+      transition: { duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0 * i },
     }),
   };
 
@@ -190,7 +220,6 @@ const Gallary = ({
           width={1920}
           height={1080}
         />
-
         <div
           className={styles.primeText}
           style={{
@@ -198,7 +227,7 @@ const Gallary = ({
             left: data.title === "Prestige" ? "34%" : "44%",
           }}
         >
-          {showTitle && (
+          {showTitle ? (
             <div className="w-full overflow-hidden">
               <motion.div
                 ref={primeTextRef}
@@ -206,15 +235,25 @@ const Gallary = ({
                 variants={revealMask}
                 initial="initial"
                 animate="animate"
-                // style={{
-                //   opacity: 0,
-                // }}
+              >
+                <motion.div>{data.title}</motion.div>
+              </motion.div>
+            </div>
+          ) : (
+            <div className="w-full overflow-hidden">
+              <motion.div
+                ref={primeTextRef}
+                custom={1}
+                variants={unRevealMask}
+                initial="initial"
+                animate="animate"
               >
                 <motion.div>{data.title}</motion.div>
               </motion.div>
             </div>
           )}
         </div>
+
         <div
           className={styles.buttonContainer}
           style={{ opacity: showBtn ? 1 : 0 }}
@@ -237,10 +276,42 @@ const Gallary = ({
             className={styles.gallaryImg}
           />
         </div>
-
-        {showTitle && (
+        <div
+          className={styles.subHead}
+          style={{
+            bottom: data.title === "Prestige" ? "33%" : "30%",
+            left: "7.5%",
+          }}
+        >
+          {showTitle ? (
+            <div className="w-full overflow-hidden">
+              <motion.div
+                ref={primeTextRef}
+                custom={1}
+                variants={revealMask3}
+                initial="initial"
+                animate="animate"
+              >
+                <motion.div>{data.subHead}</motion.div>
+              </motion.div>
+            </div>
+          ) : (
+            <div className="w-full overflow-hidden">
+              <motion.div
+                ref={primeTextRef}
+                custom={1}
+                variants={unRevealMask3}
+                initial="initial"
+                animate="animate"
+              >
+                <motion.div>{data.subHead}</motion.div>
+              </motion.div>
+            </div>
+          )}
+        </div>
+        {showTitle ? (
           <div
-            className={styles.gallarySubtitleBox}
+            className={`${styles.gallarySubtitleBox} flex flex-col`}
             ref={primeTextBoxRef}
             style={{ opacity: 0 }}
           >
@@ -256,6 +327,34 @@ const Gallary = ({
                   <motion.div
                     custom={i + 1}
                     variants={revealMask2}
+                    initial="initial"
+                    animate="animate"
+                    className={`${styles.heroTitle} w-auto text-white ml-[0.6em] flex items-center`}
+                  >
+                    <motion.div>{word}</motion.div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div
+            className={`${styles.gallarySubtitleBox} flex flex-col`}
+            ref={primeTextBoxRef}
+            style={{ opacity: 0 }}
+          >
+            <div
+              ref={descriptionRef}
+              className={`${styles.gallarySubtitle} flex`}
+            >
+              {data.description.split(" ").map((word, i) => (
+                <div
+                  className="w-auto overflow-hidden flex justify-center"
+                  key={i}
+                >
+                  <motion.div
+                    custom={i + 1}
+                    variants={unRevealMask2}
                     initial="initial"
                     animate="animate"
                     className={`${styles.heroTitle} w-auto text-white ml-[0.6em] flex items-center`}

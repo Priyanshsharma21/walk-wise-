@@ -13,7 +13,7 @@
   width: 100%;
   height: 100vh;
   z-index: 1;
-  background: url("/wwc-bg.png");
+  background: url("https://res.cloudinary.com/dlxpea208/image/upload/v1727842605/wwc-bg1_hzpxlt.png");
   /* Conical gradient */
   /* background: conic-gradient(
     from 180deg,
