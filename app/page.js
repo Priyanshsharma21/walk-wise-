@@ -6,11 +6,9 @@ import Website from "@/components/Website/Website";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
-/* The following plugin is a Club GSAP perk */
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useAnimeContext } from "@/context/animeContext";
 
-gsap.registerPlugin(useGSAP, ScrollSmoother);
+gsap.registerPlugin(useGSAP);
 
 const page = () => {
   const { navRef } = useAnimeContext();
