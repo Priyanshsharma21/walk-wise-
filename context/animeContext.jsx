@@ -6,7 +6,7 @@ const AnimeContext = createContext();
 
 export const AnimeProvider = ({ children }) => {
   const [breakPoint] = useState(768);
-  const [isMobile, setIsMobile] = useState(false); // Default to false to avoid SSR issues
+  const [isMobile, setIsMobile] = useState(false); // Initially false, set later in useEffect
   const [showWebsite, setShowWebsite] = useState(false);
   const [isLoaderCompleted, setIsLoaderCompleted] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
@@ -14,23 +14,26 @@ export const AnimeProvider = ({ children }) => {
   const navRef = useRef(null);
 
   useEffect(() => {
-    // This effect runs only on the client side
-    setIsMobile(window.innerWidth <= breakPoint);
-
-    const handleResize = () => {
+    // Check if running on the client side
+    if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth <= breakPoint);
-    };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= breakPoint);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, [breakPoint]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setShowWebsite(true);
     }, 3000);
-
-    return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, []);
 
   let appRef = useRef(null);

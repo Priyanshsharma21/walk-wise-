@@ -104,9 +104,6 @@ const Contact = () => {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55991.10808332078!2d77.0397095484314!3d28.70626655959539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d06a18fd99255%3A0x82d87d985b01ba3d!2sKrishan%20Vihar%2C%20Delhi%2C%20110086!5e0!3m2!1sen!2sin!4v1708196559261!5m2!1sen!2sin"
                   width="100%"
                   height="450"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
                   className={styles.map}
                 />
               </section>
@@ -193,7 +190,7 @@ const Contact = () => {
                 <Col xl={12} lg={12} md={12} sm={24} xs={24}>
                   <section className={styles.socialMedia}>
                     {navbarData.socialMedia.map((item, i) => (
-                      <FramerMagnetic>
+                      <FramerMagnetic key={i}>
                         <item.icon
                           className={styles.icons}
                           onClick={() => handleClick}

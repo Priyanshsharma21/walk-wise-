@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client"; // Ensures the component is only rendered on the client side
+
+import React, { useState, useEffect } from "react";
 import styles from "./Website.module.css";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Hero/Hero";
@@ -12,12 +14,33 @@ import { pilot, prestige, prime } from "@/constants";
 const Website = () => {
   const { showWebsite, isLoaderCompleted } = useAnimeContext();
   const [activeButton, setActiveButton] = useState(0);
-  const showMainWebsite = () => {
-    if (isLoaderCompleted && showWebsite) {
-      return true;
-    } else {
-      return false;
+  const [dimensions, setDimensions] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 1920,
+    height: typeof window !== "undefined" ? window.innerHeight : 1080,
+  });
+
+  // Handle window resize event
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
     }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
+  const showMainWebsite = () => {
+    return isLoaderCompleted && showWebsite;
   };
 
   return (
@@ -31,14 +54,14 @@ const Website = () => {
       <div className={styles.content}>
         <Navbar />
         <Hero
-          width={window.innerWidth}
-          height={window.innerHeight}
+          width={dimensions.width}
+          height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
         />
         <Introduction
-          width={window.innerWidth}
-          height={window.innerHeight}
+          width={dimensions.width}
+          height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
         />
@@ -47,8 +70,8 @@ const Website = () => {
         <VideoShow />
 
         <Gallary
-          width={window.innerWidth}
-          height={window.innerHeight}
+          width={dimensions.width}
+          height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
           data={pilot}
@@ -57,8 +80,8 @@ const Website = () => {
           setActive={setActiveButton}
         />
         <Gallary
-          width={window.innerWidth}
-          height={window.innerHeight}
+          width={dimensions.width}
+          height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
           data={prime}
@@ -67,8 +90,8 @@ const Website = () => {
           setActive={setActiveButton}
         />
         <Gallary
-          width={window.innerWidth}
-          height={window.innerHeight}
+          width={dimensions.width}
+          height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
           data={prestige}
