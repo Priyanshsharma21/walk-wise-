@@ -54,7 +54,6 @@ const VideoShow = () => {
   }, []);
 
   useEffect(() => {
-    // Animation for subtitle
     if (subtitleRef.current) {
       gsap.fromTo(
         subtitleRef.current.children,

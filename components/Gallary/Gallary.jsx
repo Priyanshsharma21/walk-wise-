@@ -165,7 +165,7 @@ const Gallary = ({
     initial: { x: "100%" },
     animate: (i) => ({
       x: "0%",
-      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 },
+      transition: { duration: 0.6, ease: [0.65, 0, 0.35, 1], delay: 0 },
     }),
   };
 
@@ -173,7 +173,7 @@ const Gallary = ({
     initial: { x: "0%" },
     animate: (i) => ({
       x: "100%",
-      transition: { duration: 0.1, ease: [0.33, 1, 0.68, 1], delay: 0 },
+      transition: { duration: 0.1, ease: [0.65, 0, 0.35, 1], delay: 0 },
     }),
   };
 
@@ -181,7 +181,7 @@ const Gallary = ({
     initial: { y: "100%" },
     animate: (i) => ({
       y: "0%",
-      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.02 * i },
+      transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1], delay: 0.02 * i },
     }),
   };
 
@@ -189,7 +189,7 @@ const Gallary = ({
     initial: { y: "0%" },
     animate: (i) => ({
       y: "100%",
-      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 * i },
+      transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1], delay: 0 * i },
     }),
   };
 
@@ -198,7 +198,7 @@ const Gallary = ({
     animate: (i) => ({
       x: "0%",
       filter: "blur(0px)",
-      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0 * i },
+      transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1], delay: 0 * i },
     }),
   };
 
@@ -207,7 +207,7 @@ const Gallary = ({
     animate: (i) => ({
       x: "-100%",
       filter: "blur(0px)",
-      transition: { duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0 * i },
+      transition: { duration: 1, ease: [0.65, 0, 0.35, 1], delay: 0 * i },
     }),
   };
 
@@ -276,6 +276,7 @@ const Gallary = ({
             className={styles.gallaryImg}
           />
         </div>
+
         <div
           className={styles.subHead}
           style={{

@@ -77,10 +77,11 @@
 
 .buttonContainer {
   position: fixed;
-  top: 20px; /* Adjust as needed */
-  left: 50%;
+  top: 20%; /* Adjust as needed */
+  right: 0%;
   transform: translateX(-50%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 10px; /* Adjust spacing between buttons */
   opacity: 1;

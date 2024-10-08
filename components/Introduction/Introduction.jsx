@@ -204,7 +204,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
       <div ref={sectionRef} className={styles.introduction}>
         <main className={`${styles.info} w-full h-screen`}>
           <Row>
-            <Col xl={9} lg={9} md={24} sm={24} xm={24}>
+            <Col xl={9} lg={9} md={9} sm={9} xm={9}>
               <div className={`flex flex-col ${styles.iCol1} justify-center`}>
                 {infoData.map((data, i) => (
                   <div
@@ -221,7 +221,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                 ))}
               </div>
             </Col>
-            <Col xl={15} lg={15} md={24} sm={24} xm={24}></Col>
+            <Col xl={15} lg={15} md={15} sm={15} xm={15}></Col>
           </Row>
 
           {/* <Row> */}
@@ -250,7 +250,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                   x: [-100, -50, 0],
                   opacity: [0, 0, 1],
                 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
               >
                 <h4
                   ref={stepIntoRef}
@@ -284,7 +284,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                   x: [100, 50, 0],
                   opacity: [0, 0, 1],
                 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
               >
                 <h4
                   ref={zoneRef}

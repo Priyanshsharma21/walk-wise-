@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Hero = ({ width, height, initialWidth, initialHeight }) => {
   const [contentVisible, setContentVisible] = useState(false);
+  const [showBrandName, setShowBrandName] = useState(false);
   const { navRef, setShowWebsite, showWebsite, isLoaderCompleted } =
     useAnimeContext();
   const [images, setImages] = useState([]);
@@ -70,6 +71,12 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
           Math.ceil(progress * logoSeqImg.length)
         );
         setFrameIndex(index);
+
+        if (index > 75 && index <= 152) {
+          setShowBrandName(true);
+        } else {
+          setShowBrandName(false);
+        }
 
         // const newColorOpacity = 1 - Math.min(progress * 2, 1);
         const newColorOpacityForScroll = 1 - Math.min(progress * 21, 1);
@@ -302,6 +309,13 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
           </div>
         </Tilt>
       </div>
+
+      {/* {showBrandName && (
+        <motion.div className={styles.walkwiseText}>
+          Walk Wise Collective Pvt. Ltd
+        </motion.div>
+      )} */}
+
       <div className="w-full h-[250vh]" />
       <section className={`${styles.hero} w-full min-h-full`} ref={heroRef}>
         <div

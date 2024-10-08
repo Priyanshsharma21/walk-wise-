@@ -16,6 +16,18 @@
   left: 3rem;
 }
 
+.walkwiseText {
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.2em;
+  word-spacing: 0.2em;
+  color: #ca6bd7;
+  position: fixed;
+  bottom: 12%;
+  left: 37%;
+}
+
 .heroSubTitle {
   font-size: 3vw;
   font-weight: 200;
