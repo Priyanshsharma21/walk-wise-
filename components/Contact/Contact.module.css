@@ -111,3 +111,67 @@
   border-radius: 0px;
   margin-right: 5rem;
 }
+
+.contactCol1 {
+  height: 40%;
+}
+.contactCol2 {
+  height: 60%;
+}
+
+@media (max-width: 720px) {
+  .contactCol1 {
+    height: 25%;
+  }
+  .contactCol2 {
+    height: 75%;
+  }
+
+  .contactInput {
+    width: 90%;
+  }
+
+  .inputMain {
+    background: #ffebcdc2;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.9em;
+    color: #710071;
+    font-family: "Poppins", "Helvetica Neue";
+    border-radius: 10px;
+    margin-top: 1rem;
+    border: 1px solid #710071;
+  }
+
+  .submitBtn {
+    font-family: "Poppins", "Helvetica Neue";
+    background: #710071;
+    color: #ffebcd;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.9em;
+    transition: all 0.3s linear;
+    border-radius: 10px;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .formMain {
+    margin-top: 8rem;
+  }
+
+  .icons {
+    width: 30px;
+    height: 30px;
+    font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffebcd3d;
+    color: #710071;
+    border-radius: 0px;
+    margin-right: 5rem;
+  }
+}

@@ -82,7 +82,15 @@ const Contact = () => {
     <div className={`w-full h-screen relative ${styles.contactContainer}`}>
       <div style={{ height: "100vh" }}>
         <Row style={{ height: "100%" }} gutter={[0, 0]}>
-          <Col span={24} style={{ height: "40%", backgroundColor: "#f0f2f5" }}>
+          <Col
+            className={styles.contactCol1}
+            xl={24}
+            lg={24}
+            md={24}
+            sm={24}
+            xs={24}
+            style={{ backgroundColor: "#f0f2f5" }}
+          >
             <div
               style={{
                 height: "100%",
@@ -110,7 +118,15 @@ const Contact = () => {
             </div>
           </Col>
 
-          <Col span={24} style={{ height: "60%", backgroundColor: "#fff" }}>
+          <Col
+            className={styles.contactCol2}
+            xl={24}
+            lg={24}
+            md={24}
+            sm={24}
+            xs={24}
+            style={{ backgroundColor: "#fff" }}
+          >
             <div
               style={{
                 height: "100%",

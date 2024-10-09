@@ -74,7 +74,7 @@
 
 .videoSubtitle {
   word-spacing: 0.1em;
-  font-size: 2.5rem;
+  font-size: 2.19vw;
   line-height: 1.3em;
   font-weight: 300;
   max-width: 90%;
@@ -83,7 +83,6 @@
   letter-spacing: 0.02em;
   color: #181818;
   position: relative;
-  text-align: center;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -100,4 +99,36 @@
   /* Any additional styling, such as margin, color, etc. */
   display: inline-block;
   margin-left: 0.2em;
+}
+
+@media (max-width: 720px) {
+  .logoBrandTitle {
+    width: 100px;
+  }
+
+  .videoLeftSide {
+    height: 250px;
+    width: 200px;
+    border-radius: 1rem;
+    top: 1rem;
+    left: 1rem;
+  }
+  .thumbnail {
+    margin-left: 0px !important;
+    width: 250vw;
+  }
+
+  .wrapper {
+    width: calc(250vw * 3);
+  }
+
+  .videoSubtitle {
+    word-spacing: 0.1em;
+    font-size: 1rem;
+    line-height: 1.3em;
+    font-weight: 300;
+    max-width: 90%;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
 }

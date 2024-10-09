@@ -35,12 +35,12 @@
   line-height: 0.8em;
   color: #ffebcd;
   position: relative;
-  top: 2em;
+  top: 0em;
   letter-spacing: 0.01em;
 }
 
 .heroTitle {
-  font-size: 26vw;
+  font-size: 22vw;
   font-weight: 500;
   font-family: "Cormorant Garamond", serif;
   line-height: 0.8em;
@@ -150,4 +150,39 @@
 
 .containerText {
   overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .scrollImg {
+    width: 200px;
+    left: 60%;
+  }
+
+  .scrollToBegin {
+    position: relative;
+    top: 2rem;
+    left: 6rem;
+  }
+
+  .canvas {
+    top: 35%;
+  }
+
+  .hero {
+    padding: 12em 1em;
+    /* padding-top: 10rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .heroSubTitle {
+    font-size: 1.2rem;
+    font-weight: 200;
+    line-height: 0.8em;
+    color: #ffebcd;
+    position: relative;
+    top: 0em;
+    letter-spacing: 0.01em;
+  }
 }

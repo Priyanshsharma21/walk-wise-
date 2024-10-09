@@ -77,8 +77,8 @@
 
 .buttonContainer {
   position: fixed;
-  top: 20%; /* Adjust as needed */
-  right: 0%;
+  top: 40%; /* Adjust as needed */
+  right: 5%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -91,4 +91,80 @@
   width: 200px;
   height: auto;
   transition: all 0.2s linear;
+}
+
+.gallaryLaMarca {
+  position: fixed;
+  top: 5%; /* Adjust as needed */
+  right: 5%;
+}
+
+.gallaryLaMarca img {
+  width: 400px;
+}
+
+@media (max-width: 720px) {
+  .gallaryLaMarca img {
+    width: 150px;
+  }
+
+  .gallaryImg {
+    width: 80px;
+    height: auto;
+    transition: all 0.2s linear;
+  }
+
+  .buttonContainer {
+    position: fixed;
+    top: 30%; /* Adjust as needed */
+    right: 5%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px; /* Adjust spacing between buttons */
+    opacity: 1;
+  }
+
+  .canvas {
+    top: 30%;
+  }
+
+  .gallarySubtitle {
+    color: #ffebcd;
+    font-size: 1rem;
+    font-weight: 200;
+    font-style: normal;
+    max-width: 100%;
+    line-height: 1.3em;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.04em;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+  }
+
+  .primeText {
+    font-size: 12vw;
+    line-height: 0.9em;
+    position: fixed;
+    top: 45%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  }
+
+  .subHead {
+    font-size: 1.2rem;
+    padding-left: 0rem;
+    bottom: 26% !important;
+    left: 0px;
+  }
+
+  .gallarySubtitleBox {
+    width: 95%;
+    padding: 1rem;
+    left: 3%;
+    padding-left: 0.2rem;
+    height: 150px;
+    bottom: 2rem;
+  }
 }

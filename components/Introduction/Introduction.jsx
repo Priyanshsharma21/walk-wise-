@@ -16,7 +16,6 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
   const subheadRefs = useRef([]);
-  const comfortRef = useRef(null);
   const stepIntoRef = useRef(null);
   const zoneRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -182,15 +181,6 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
         style={{ height: "100vh", width: "100%", zIndex: 9999999999999 }}
         ref={imageSequenceRef}
       >
-        {/* <Tilt
-          className="background-stripes track-on-window"
-          perspective={500}
-          glareEnable={true}
-          glareMaxOpacity={0}
-          glarePosition="all"
-          scale={1.02}
-          trackOnWindow={true}
-        > */}
         <canvas
           ref={canvasRef}
           style={{ mixBlendMode: "lighten" }}
@@ -198,13 +188,19 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
           height={1080}
           className={styles.canvas}
         />
-        {/* </Tilt> */}
       </div>
 
       <div ref={sectionRef} className={styles.introduction}>
         <main className={`${styles.info} w-full h-screen`}>
           <Row>
-            <Col xl={9} lg={9} md={9} sm={9} xm={9}>
+            <Col
+              xl={9}
+              lg={9}
+              md={24}
+              sm={24}
+              xm={24}
+              className={styles.introCol1}
+            >
               <div className={`flex flex-col ${styles.iCol1} justify-center`}>
                 {infoData.map((data, i) => (
                   <div
@@ -221,23 +217,14 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                 ))}
               </div>
             </Col>
-            <Col xl={15} lg={15} md={15} sm={15} xm={15}></Col>
+            <Col xl={15} lg={15} md={0} sm={0} xm={0}></Col>
           </Row>
-
-          {/* <Row> */}
-          {/* <Col xl={24} lg={24} md={24} sm={24} xs={24}> */}
-
-          {/* </Col> */}
-          {/* </Row> */}
         </main>
 
         <section
           className={`${styles.hero} w-full min-h-full flex justify-end`}
           ref={heroRef}
           style={{
-            position: "fixed",
-            top: "14%",
-            right: "10rem",
             background: showBottomText
               ? "linear-gradient(to right, #710071, transparent)"
               : "",
@@ -250,7 +237,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                   x: [-100, -50, 0],
                   opacity: [0, 0, 1],
                 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <h4
                   ref={stepIntoRef}
@@ -260,7 +247,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                 </h4>
               </motion.div>
 
-              <div className="flex">
+              <div className={`flex ${styles.introBigWord}`}>
                 {introductionText[1].split("").map((word, i) => (
                   <div
                     className="w-auto overflow-hidden flex justify-center"
@@ -284,7 +271,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                   x: [100, 50, 0],
                   opacity: [0, 0, 1],
                 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <h4
                   ref={zoneRef}

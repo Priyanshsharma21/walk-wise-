@@ -337,16 +337,14 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
               className={`${styles.heroTitle} text-6xl text-white flex items-center`}
               ref={comfortRef}
             >
-              comfort
+              Excellence
             </h1>
           </div>
 
           <h4
             ref={zoneRef}
             className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
-          >
-            zone
-          </h4>
+          ></h4>
         </div>
       </section>
       <div className="w-full h-[50vh]" />

@@ -46,7 +46,7 @@ const Website = () => {
   return (
     <section
       className={styles.website}
-      // style={{ opacity: showMainWebsite() ? 1 : 0 }}
+      style={{ opacity: showMainWebsite() ? 1 : 0 }}
     >
       <div className={styles.gradientBackground}></div>
       <div className={styles.glassLayer}></div>
@@ -68,7 +68,7 @@ const Website = () => {
 
         <div className="w-full h-[20vh]" />
         <VideoShow />
-
+        
         <Gallary
           width={dimensions.width}
           height={dimensions.height}

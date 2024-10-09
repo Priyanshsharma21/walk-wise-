@@ -79,7 +79,9 @@ const Gallary = ({
           setShowBtn(false);
         }
 
-        if (index > 0 && index <= 110) {
+        console.log(index);
+
+        if (index > 50 && index <= 288) {
           gsap.to(primeTextBoxRef.current, { opacity: 1, duration: 1 });
 
           if (descriptionRef.current) {
@@ -99,7 +101,7 @@ const Gallary = ({
           gsap.to(primeTextBoxRef.current, { opacity: 0, duration: 1 });
         }
 
-        if (index >= 26 && index <= 96) {
+        if (index >= 80 && index <= 288) {
           setShowTitle(true);
           if (data.title === "Pilot") {
             setActive(1);
@@ -213,6 +215,22 @@ const Gallary = ({
 
   return (
     <div ref={galleryRef}>
+      {showBtn && (
+        <motion.div
+          whileInView={{
+            x: [100, 50, 0],
+            opacity: [0, 0, 1],
+          }}
+          transition={{ duration: 0.8, delay: 0 }}
+          className={styles.gallaryLaMarca}
+        >
+          <img
+            src="https://res.cloudinary.com/dlxpea208/image/upload/v1728460116/lamarca_lxagyq.png"
+            alt="la marca logo"
+          />
+        </motion.div>
+      )}
+
       <div className={`relative`} style={{ height: "100vh", width: "100%" }}>
         <canvas
           ref={canvasRef}
@@ -254,28 +272,35 @@ const Gallary = ({
           )}
         </div>
 
-        <div
-          className={styles.buttonContainer}
-          style={{ opacity: showBtn ? 1 : 0 }}
-        >
-          <img
-            src={isActive === 1 ? pilot.activeImg.on : pilot.activeImg.off}
-            alt={data.title}
-            className={styles.gallaryImg}
-          />
-          <img
-            src={isActive === 2 ? prime.activeImg.on : prime.activeImg.off}
-            alt={data.title}
-            className={styles.gallaryImg}
-          />
-          <img
-            src={
-              isActive === 3 ? prestige.activeImg.on : prestige.activeImg.off
-            }
-            alt={data.title}
-            className={styles.gallaryImg}
-          />
-        </div>
+        {showBtn && (
+          <motion.div
+            whileInView={{
+              x: [100, 50, 0],
+              opacity: [0, 0, 1],
+            }}
+            transition={{ duration: 0.8, delay: 0 }}
+            className={styles.buttonContainer}
+            style={{ opacity: showBtn ? 1 : 0 }}
+          >
+            <img
+              src={isActive === 1 ? pilot.activeImg.on : pilot.activeImg.off}
+              alt={data.title}
+              className={styles.gallaryImg}
+            />
+            <img
+              src={isActive === 2 ? prime.activeImg.on : prime.activeImg.off}
+              alt={data.title}
+              className={styles.gallaryImg}
+            />
+            <img
+              src={
+                isActive === 3 ? prestige.activeImg.on : prestige.activeImg.off
+              }
+              alt={data.title}
+              className={styles.gallaryImg}
+            />
+          </motion.div>
+        )}
 
         <div
           className={styles.subHead}

@@ -129,25 +129,51 @@ body {
 }
 
 .video-0-0 {
-  font-size: 5.3rem;
+  font-size: 4.63vw;
 }
 
 .video-1-0 {
-  font-size: 6.8rem;
+  font-size: 5.94vw;
 }
 
 .video-0-1 {
-  font-size: 7.7rem;
+  font-size: 6.73vw;
 }
 
 .video-1-1 {
-  font-size: 6.8rem;
+  font-size: 5.94vw;
 }
 
 .video-0-2 {
-  font-size: 6.4rem;
+  font-size: 5.59vw;
 }
 
 .video-1-2 {
-  font-size: 5.5rem;
+  font-size: 4.8vw;
+}
+
+@media (max-width: 720px) {
+  .video-0-0 {
+    font-size: 5.63vw;
+  }
+
+  .video-1-0 {
+    font-size: 6.94vw;
+  }
+
+  .video-0-1 {
+    font-size: 7.73vw;
+  }
+
+  .video-1-1 {
+    font-size: 6.94vw;
+  }
+
+  .video-0-2 {
+    font-size: 6.59vw;
+  }
+
+  .video-1-2 {
+    font-size: 5.8vw;
+  }
 }
