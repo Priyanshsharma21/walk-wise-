@@ -5,6 +5,7 @@ import styles from "./VideoShow.module.css"; // Importing CSS module
 import { videoSectionData } from "@/constants";
 import { Divider } from "antd";
 import { motion } from "framer-motion";
+import { useAnimeContext } from "@/context/animeContext";
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoShow = () => {
@@ -18,6 +19,7 @@ const VideoShow = () => {
     videoSectionData[0].background
   );
   const subtitleRef = useRef(null);
+  const { isMobile } = useAnimeContext();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -52,6 +54,8 @@ const VideoShow = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+
+  console.log(backgroundLeft);
 
   useEffect(() => {
     if (subtitleRef.current) {
@@ -92,7 +96,7 @@ const VideoShow = () => {
               style={{ marginLeft: i === 0 ? "30vw" : "0px" }}
             >
               <video
-                src={item.videoUrl}
+                src={isMobile ? item.videoUrl.mobile : item.videoUrl.desktop}
                 poster={item.poster}
                 autoPlay
                 muted
@@ -115,7 +119,11 @@ const VideoShow = () => {
         </div>
 
         <div
-          style={{ background: backgroundLeft }}
+          style={{
+            background: isMobile
+              ? backgroundLeft.mobile
+              : backgroundLeft.desktop,
+          }}
           className={`absolute left-0 top-0 h-full w-[35vw] flex items-center justify-center ${styles.videoLeftSide}`}
         >
           <div

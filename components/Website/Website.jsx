@@ -10,6 +10,7 @@ import VideoShow from "../VideoShowcase/VideoShow";
 import Gallary from "../Gallary/Gallary";
 import Contact from "../Contact/Contact";
 import { pilot, prestige, prime } from "@/constants";
+import Faq from "../Faq/Faq";
 
 const Website = () => {
   const { showWebsite, isLoaderCompleted } = useAnimeContext();
@@ -68,7 +69,7 @@ const Website = () => {
 
         <div className="w-full h-[20vh]" />
         <VideoShow />
-        
+
         <Gallary
           width={dimensions.width}
           height={dimensions.height}
@@ -99,6 +100,8 @@ const Website = () => {
           isActive={activeButton}
           setActive={setActiveButton}
         />
+
+        {/* <Faq /> */}
 
         <div className="w-full h-screen" />
         <Contact />

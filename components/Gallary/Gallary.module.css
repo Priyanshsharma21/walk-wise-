@@ -103,6 +103,10 @@
   width: 400px;
 }
 
+.mobTitleStyle {
+  left: 37% !important;
+}
+
 @media (max-width: 720px) {
   .gallaryLaMarca img {
     width: 150px;

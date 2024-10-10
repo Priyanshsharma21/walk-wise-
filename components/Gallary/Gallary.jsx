@@ -24,7 +24,7 @@ const Gallary = ({
   const primeTextBoxRef = useRef(null);
   const galleryRef = useRef(null);
   const descriptionRef = useRef(null); // Reference for description animation
-  const { showBtn, setShowBtn } = useAnimeContext();
+  const { showBtn, setShowBtn, isMobile } = useAnimeContext();
   const [showTitle, setShowTitle] = useState(false);
 
   const [canvasSize, setCanvasSize] = useState({
@@ -213,6 +213,16 @@ const Gallary = ({
     }),
   };
 
+  const checkMobileReveal = () => {
+    if (isMobile) {
+      if (data.title === "Prestige") {
+        return "";
+      } else {
+        return styles.mobTitleStyle;
+      }
+    }
+  };
+
   return (
     <div ref={galleryRef}>
       {showBtn && (
@@ -225,7 +235,7 @@ const Gallary = ({
           className={styles.gallaryLaMarca}
         >
           <img
-            src="https://res.cloudinary.com/dlxpea208/image/upload/v1728460116/lamarca_lxagyq.png"
+            src="https://res.cloudinary.com/dlxpea208/image/upload/v1728541015/la_marca_italy_png_okn0kg.png"
             alt="la marca logo"
           />
         </motion.div>
@@ -239,10 +249,10 @@ const Gallary = ({
           height={1080}
         />
         <div
-          className={styles.primeText}
+          className={`${styles.primeText} ${checkMobileReveal()}`}
           style={{
             top: "45%",
-            left: data.title === "Prestige" ? "34%" : "44%",
+            left: data.title === "Prestige" ? "34%" : "42%",
           }}
         >
           {showTitle ? (
