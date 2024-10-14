@@ -4,6 +4,8 @@ import emailjs from "emailjs-com";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./Contact.module.css";
+import btnStyle from "./Button.module.css";
+
 import { Col, Row } from "antd";
 import { navbarData } from "../../constants";
 import FramerMagnetic from "../FramerMagnetic";
@@ -78,27 +80,45 @@ const Contact = () => {
       );
   };
 
+  const handleLamarca = () => {
+    window.open("https://lamarcaitaly.com/", "_blank");
+  };
+
   return (
     <div className={`w-full h-screen relative ${styles.contactContainer}`}>
       <div style={{ height: "100vh" }}>
         <Row style={{ height: "100%" }} gutter={[0, 0]}>
           <Col
-            className={styles.contactCol1}
-            xl={24}
-            lg={24}
-            md={24}
+            className={styles.contactCol2}
+            xl={12}
+            lg={12}
+            md={12}
             sm={24}
             xs={24}
-            style={{ backgroundColor: "#f0f2f5" }}
           >
-            <div
-              style={{
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <Row className="w-full h-full">
+              <div className="w-full h-full flex flex-col justify-center items-center">
+                <div className={btnStyle.showButton} onClick={handleLamarca}>
+                  <span class="text">SHOP NOW</span>
+                  <span>DISCOVER</span>
+                </div>
+              </div>
+              <div>
+                <section className={styles.socialMedia}>
+                  {navbarData.socialMedia.map((item, i) => (
+                    <FramerMagnetic key={i} link={item.link}>
+                      <item.icon
+                        className={styles.icons}
+                        onClick={() => handleClick}
+                      />
+                    </FramerMagnetic>
+                  ))}
+                </section>
+              </div>
+            </Row>
+          </Col>
+          <Col xl={12} lg={12} md={12} sm={24} xs={24}>
+            <div className={styles.rightSide}>
               <video
                 className={styles.backgroundVideo}
                 src="https://res.cloudinary.com/dlxpea208/video/upload/v1727342704/test-Vbit-01_fwlgw0.mp4"
@@ -107,112 +127,34 @@ const Contact = () => {
                 muted
                 playsInline
               ></video>
-              <section className={styles.mapSection}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55991.10808332078!2d77.0397095484314!3d28.70626655959539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d06a18fd99255%3A0x82d87d985b01ba3d!2sKrishan%20Vihar%2C%20Delhi%2C%20110086!5e0!3m2!1sen!2sin!4v1708196559261!5m2!1sen!2sin"
-                  width="100%"
-                  height="450"
-                  className={styles.map}
-                />
-              </section>
-            </div>
-          </Col>
+              <Row className="w-full h-full absolute top-0">
+                <Col span={24}>
+                  <section className={styles.rightSideSection}>
+                    <div className={styles.wrapper}>
+                      <svg className={styles.svg}>
+                        <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                          EXPERIENCE
+                        </text>
+                      </svg>
+                    </div>
 
-          <Col
-            className={styles.contactCol2}
-            xl={24}
-            lg={24}
-            md={24}
-            sm={24}
-            xs={24}
-            style={{ backgroundColor: "#fff" }}
-          >
-            <div
-              style={{
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Row
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#ffebcd",
-                }}
-              >
-                <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-                  <div
-                    className={`absolute inset-0 flex justify-center items-center ${styles.formContainer}`}
-                  >
-                    <form
-                      ref={form}
-                      onSubmit={handleSubmit}
-                      className={styles.formMain}
-                    >
-                      <div className={styles.contactMainBox}>
-                        <div className={styles.contactInput}>
-                          {/* Name field */}
-                          <div className="mb-4">
-                            <input
-                              type="text"
-                              name="name"
-                              placeholder="Name"
-                              className={`${styles.inputMain} w-full p-4 border rounded-lg focus:outline-none`}
-                              onChange={handleChange}
-                              value={formData.name}
-                              required
-                            />
-                          </div>
-
-                          {/* Email field */}
-                          <div className="mb-4">
-                            <input
-                              type="email"
-                              name="email"
-                              placeholder="Email"
-                              className={`${styles.inputMain} w-full p-4 border rounded-lg focus:outline-none`}
-                              onChange={handleChange}
-                              value={formData.email}
-                              required
-                            />
-                          </div>
-
-                          {/* Message field */}
-                          <div className="mb-6">
-                            <textarea
-                              name="message"
-                              placeholder="Message"
-                              className={`${styles.inputMain} ${styles.textArea} w-full p-4 border rounded-lg focus:outline-none`}
-                              onChange={handleChange}
-                              value={formData.message}
-                              required
-                            ></textarea>
-                          </div>
-
-                          <button
-                            type="submit"
-                            className={`${styles.submitBtn} w-full p-4 rounded-lg`}
-                            disabled={loading}
-                          >
-                            {loading ? "Sending..." : "Send Message"}
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+                    <div className={styles.wrapper}>
+                      <svg className={styles.svg}>
+                        <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                          IN SHOP
+                        </text>
+                      </svg>
+                    </div>
+                  </section>
                 </Col>
-                <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-                  <section className={styles.socialMedia}>
-                    {navbarData.socialMedia.map((item, i) => (
-                      <FramerMagnetic key={i}>
-                        <item.icon
-                          className={styles.icons}
-                          onClick={() => handleClick}
-                        />
-                      </FramerMagnetic>
-                    ))}
+                <Col span={24}>
+                  <section className={styles.mapSection}>
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.695731528204!2d80.2166199!3d12.991302600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526765f770d9af%3A0x48653d3e62a674b8!2sLa%20Marca%20-%20Handcrafted%20Footwear%20%26%20Accessories!5e0!3m2!1sen!2sin!4v1728911229544!5m2!1sen!2sin"
+                      width="100%"
+                      height="450"
+                      className={styles.map}
+                    />
                   </section>
                 </Col>
               </Row>

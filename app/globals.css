@@ -159,7 +159,10 @@ body {
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
+
+  background: black;
 }
+
 .menu .header {
   display: flex;
   justify-content: flex-end;
@@ -167,7 +170,7 @@ body {
 }
 
 .menu .body {
-  position: absolute;
+  /* position: absolute; */
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);

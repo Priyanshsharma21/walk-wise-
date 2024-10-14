@@ -23,7 +23,7 @@ const Gallary = ({
   const primeTextRef = useRef(null);
   const primeTextBoxRef = useRef(null);
   const galleryRef = useRef(null);
-  const descriptionRef = useRef(null); // Reference for description animation
+  const descriptionRef = useRef(null);
   const { showBtn, setShowBtn, isMobile } = useAnimeContext();
   const [showTitle, setShowTitle] = useState(false);
 

@@ -1,0 +1,134 @@
+.faqSection {
+  padding: 50px 20px;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  z-index: 99999;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+}
+
+.title {
+  font-size: 2vw;
+  margin-bottom: 30px;
+  /* text-transform: uppercase; */
+  font-style: italic;
+}
+
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.questionContainer {
+  position: relative;
+  border-top: 1px solid rgba(255, 235, 205, 0.418);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.question {
+  font-size: 3vw;
+  /* text-transform: uppercase; */
+  margin: 0;
+  text-align: left;
+  color: blanchedalmond;
+  color: #8b008b;
+}
+
+.outer {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: #8b008b;
+  background-color: blanchedalmond;
+  pointer-events: none;
+  transition: top 0.1s ease-in-out;
+}
+
+.inner {
+  position: absolute;
+  top: 100%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: top 0.3s ease-in-out;
+}
+
+.answerContainer {
+  white-space: nowrap;
+  display: flex;
+}
+
+.answer {
+  color: blanchedalmond;
+  color: #8b008b;
+  font-size: 3vw;
+  margin: 0;
+  animation: ticker 15s linear infinite;
+
+  padding-left: 10rem;
+}
+
+.questionNumber {
+  background: black;
+  font-size: 3vw;
+  font-weight: 500;
+  position: absolute;
+  height: 100%;
+  width: 100px;
+  left: 0px;
+  top: 0px;
+  color: #ffebcd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.faqFirstLetter {
+  font-size: 4vw;
+  color: #ffebcd;
+  font-family: "Times New Roman", "Helvetica Neue", Helvetica;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(70%);
+  }
+  100% {
+    transform: translateX(-70%);
+  }
+}
+
+@media (max-width: 720px) {
+  .title {
+    font-size: 1rem;
+  }
+  .faqFirstLetter {
+    font-size: 2rem;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  .answer {
+    font-size: 1rem;
+  }
+
+  .questionNumber {
+    width: 40px;
+  }
+
+  .questionContainer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}

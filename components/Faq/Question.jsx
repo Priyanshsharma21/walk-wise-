@@ -1,11 +1,10 @@
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { mountAnim, rotateX } from "../../utils/index";
-import { useRef } from "react";
-import gsap from "gsap";
-import Link from "next/link";
 import styles from "./Faq.module.css";
+import Link from "next/link";
 
-const Box = ({ data, index }) => {
+const Question = ({ data, index }) => {
   const { question, answer } = data;
   const outer = useRef(null);
   const inner = useRef(null);
@@ -44,15 +43,15 @@ const Box = ({ data, index }) => {
       variants={rotateX}
       {...mountAnim}
       custom={index}
-      className="el"
+      className={styles.el}
     >
-      <Link className="question" href="/">{question}</Link>
-      <div ref={outer} className="outer">
-        <div ref={inner} className="inner">
+      <Link href="/">{question}</Link>
+      <div ref={outer} className={styles.outer}>
+        <div ref={inner} className={styles.inner}>
           {[...Array(1)].map((_, index) => {
             return (
-              <div key={index} className="container">
-                <p>{answer}</p>
+              <div key={index} className={styles.container}>
+                <p className={styles.para}>{answer}</p>
               </div>
             );
           })}
@@ -62,4 +61,4 @@ const Box = ({ data, index }) => {
   );
 };
 
-export default Box;
+export default Question;
