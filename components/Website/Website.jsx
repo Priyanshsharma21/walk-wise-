@@ -12,6 +12,7 @@ import Contact from "../Contact/Contact";
 import { pilot, prestige, prime } from "@/constants";
 import Sawal from "../Faq/Sawal";
 import Lamarca from "../LaMarca/Lamarca";
+import Sampark from "../Contact/Sampark";
 
 const Website = () => {
   const { showWebsite, isLoaderCompleted } = useAnimeContext();
@@ -106,8 +107,9 @@ const Website = () => {
         <div className="w-full h-screen" />
 
         <Sawal />
+        <Sampark />
 
-        <Contact />
+        {/* <Contact /> */}
       </div>
     </section>
   );

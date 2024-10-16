@@ -3,6 +3,8 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { logo } from "@/assets";
 import { IoLogoYoutube } from "react-icons/io";
+import { SlSocialFacebook } from "react-icons/sl";
+import { CiYoutube } from "react-icons/ci";
 export const navbarData = {
   logo: {
     src: logo,
@@ -18,14 +20,14 @@ export const navbarData = {
     },
     {
       id: 2,
-      icon: FaFacebookSquare,
+      icon: SlSocialFacebook,
       title: "Facebook",
       link: "https://www.facebook.com/lamarcaitaly/",
     },
 
     {
       id: 3,
-      icon: IoLogoYoutube,
+      icon: CiYoutube,
       title: "youtube",
       link: "https://www.youtube.com/channel/UChUxVVI8ZHIlp3Yf_DHiq3Q",
     },

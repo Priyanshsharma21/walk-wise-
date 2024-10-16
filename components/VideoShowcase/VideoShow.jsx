@@ -55,7 +55,6 @@ const VideoShow = () => {
     };
   }, []);
 
-  console.log(backgroundLeft);
 
   useEffect(() => {
     if (subtitleRef.current) {

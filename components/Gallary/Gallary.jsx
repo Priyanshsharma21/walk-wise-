@@ -79,7 +79,6 @@ const Gallary = ({
           setShowBtn(false);
         }
 
-        console.log(index);
 
         if (index > 50 && index <= 288) {
           gsap.to(primeTextBoxRef.current, { opacity: 1, duration: 1 });

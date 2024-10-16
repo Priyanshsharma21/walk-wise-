@@ -6,7 +6,9 @@ const AnimeContext = createContext();
 
 export const AnimeProvider = ({ children }) => {
   const [breakPoint] = useState(768);
+  const [xsBreakPoint] = useState(500);
   const [isMobile, setIsMobile] = useState(false); // Initially false, set later in useEffect
+  const [xsSize, setXsSize] = useState(false);
   const [showWebsite, setShowWebsite] = useState(false);
   const [isLoaderCompleted, setIsLoaderCompleted] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
@@ -14,12 +16,13 @@ export const AnimeProvider = ({ children }) => {
   const navRef = useRef(null);
 
   useEffect(() => {
-    // Check if running on the client side
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth <= breakPoint);
+      setXsSize(window.innerWidth <= xsBreakPoint);
 
       const handleResize = () => {
         setIsMobile(window.innerWidth <= breakPoint);
+        setXsSize(window.innerWidth <= xsBreakPoint);
       };
 
       window.addEventListener("resize", handleResize);
@@ -52,6 +55,7 @@ export const AnimeProvider = ({ children }) => {
         isLoaderCompleted,
         setShowBtn,
         showBtn,
+        xsSize,
       }}
     >
       {children}

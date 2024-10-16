@@ -148,6 +148,11 @@
   text-align: left;
 }
 
+.containerImage {
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
 .containerText {
   overflow: hidden;
 }

@@ -266,6 +266,37 @@ body {
   }
 }
 
+.pt-hl-box {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-display: auto;
+  line-height: 1em;
+  top: 8.41667vw;
+  transform: translateY(-90%);
+  position: absolute;
+  white-space: nowrap;
+  margin-top: 0.15vw;
+  display: block;
+  overflow: hidden;
+  width: 100vw;
+}
+.pt-hl {
+  /* bottom: 1rem; */
+}
+.pt-hl,
+.pt-hl-line1,
+.pt-hl-line2 {
+  display: inline-block;
+  position: relative;
+}
+
+.pt-hl {
+  font-size: 7.5vw;
+  line-height: 0.84em;
+  color: blanchedalmond;
+}
+
 @media (max-width: 720px) {
   .video-0-0 {
     font-size: 5.63vw;

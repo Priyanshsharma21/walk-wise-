@@ -36,9 +36,9 @@ export default function Sawal() {
   return (
     <section className={styles.faqSection}>
       <h2 className={styles.title}>
-        <span className={styles.faqFirstLetter}>F</span>requently&nbsp;&nbsp;
-        <span className={styles.faqFirstLetter}>A</span>sked&nbsp;&nbsp;
-        <span className={styles.faqFirstLetter}>Q</span>uestions&nbsp;&nbsp;
+        <span className={styles.faqFirstLetter}>F</span>&nbsp;
+        <span className={styles.faqFirstLetter}>A</span>&nbsp;
+        <span className={styles.faqFirstLetter}>Q</span>&nbsp;
       </h2>
       <div className={styles.faqContainer}>
         {faqData.map((item, index) => (
