@@ -241,7 +241,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
               >
                 <h4
                   ref={stepIntoRef}
-                  className={`${styles.heroSubTitle} text-6xl text-white text-left`}
+                  className={`${styles.heroSubTitle}  text-left`}
                 >
                   have the
                 </h4>
@@ -258,7 +258,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
                       variants={revealMask}
                       initial="initial"
                       animate="animate"
-                      className={`${styles.heroTitle} w-auto text-white flex items-center`}
+                      className={`${styles.heroTitle} w-auto  flex items-center`}
                     >
                       <motion.div>{word}</motion.div>
                     </motion.div>
@@ -275,7 +275,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
               >
                 <h4
                   ref={zoneRef}
-                  className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
+                  className={`${styles.heroSubTitle2} text-right`}
                 >
                   at your feet
                 </h4>
