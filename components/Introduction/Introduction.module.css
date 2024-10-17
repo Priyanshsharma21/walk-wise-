@@ -22,12 +22,12 @@
 .hero {
   transition: all 0.2s linear;
   position: fixed;
-  top: 13%;
+  top: 14%;
   right: 10rem;
 }
 .heroContent {
   position: relative;
-  bottom: 2em;
+  bottom: 1em;
 }
 
 .heroSubTitle {

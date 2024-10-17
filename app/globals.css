@@ -34,6 +34,10 @@
   height: 100%;
 }
 
+canvas {
+  z-index: 999999999;
+}
+
 /* TODO - uncomment it */
 .mf-cursor::before {
   display: none;
