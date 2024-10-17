@@ -57,7 +57,7 @@ const Website = () => {
 
       <div className={styles.content}>
         <Navbar />
-        <LogoReveal
+        {/* <LogoReveal
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
@@ -65,13 +65,13 @@ const Website = () => {
         />
         <div className="w-full h-[250vh]" />
         <HeroText />
-        <div className="w-full h-[110vh]" />
-        {/* <Hero
+        <div className="w-full h-[110vh]" /> */}
+        <Hero
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
-        /> */}
+        />
 
         <Introduction
           width={dimensions.width}
