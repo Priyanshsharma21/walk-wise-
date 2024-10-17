@@ -114,6 +114,8 @@
     left: 1rem;
 
     box-shadow: 10px 10px 20px 20px rgba(0, 0, 0, 0.233);
+
+    border: 1px solid #bb8637;
   }
   .thumbnail {
     margin-left: 0px !important;

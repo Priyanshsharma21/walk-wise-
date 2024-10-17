@@ -41,6 +41,21 @@ export const navbarData = {
   ],
 };
 
+export const footerData = {
+  legalInfo: [
+    {
+      id: 1,
+      title: "Terms & Conditions",
+      path: "/terms-condition",
+    },
+    {
+      id: 2,
+      title: "Privacy Policy",
+      path: "/privacy-policies",
+    },
+  ],
+};
+
 export const infoData = [
   "handcrafted",
   "leather",
@@ -2240,62 +2255,34 @@ export const introductionText = ["have the", "world", "at your feet"];
 export const faqData = [
   {
     id: 1,
-    question: "What is the return policy for your shoes?",
+    question: "Why Walkwise Collectives (WWC)?",
     answer:
-      "You can return any unworn shoes within 30 days of purchase for a full refund. Simply contact our customer service to initiate the process.",
+      "Brand WWC is crafted to resonate with India’s modern image. Our product range seeks to elevate the lifestyle quotient for our consumers.",
   },
   {
     id: 2,
-    question: "Do you offer international shipping?",
-    answer:
-      "Yes, we ship to most countries worldwide. Shipping costs and times may vary depending on your location.",
+    question: "What inspires our designs?",
+    answer: `"The Flow" is an Italian design aesthetic, with emphasis on minimalism, functionality, and a seamless integration with the consumer's lifestyle.`,
   },
   {
     id: 3,
-    question: "How can I track my order?",
+    question: "Why are we innovators?",
     answer:
-      "Once your order is shipped, you will receive a tracking number via email. You can use this number to track your package on our website.",
+      "The fusion between craftmanship & experiential design is reflected in our products which gives us the competitive edge.",
   },
   {
     id: 4,
-    question: "What sizes are available for your shoes?",
+    question: "Why Now? (Conviction)",
     answer:
-      "We offer a wide range of sizes for men, women, and children. Please refer to our size guide on each product page for detailed measurements.",
+      "India is at an inflection point with growing digital affluency representing yearning for indigenous premiumized consumer goods.",
   },
   {
     id: 5,
-    question: "Are your shoes eco-friendly?",
-    answer:
-      "Yes, we are committed to sustainability. Many of our shoes are made from recycled materials and our production processes aim to reduce waste and environmental impact.",
-  },
-  {
-    id: 6,
-    question: "Can I cancel or modify my order after placing it?",
-    answer:
-      "You can cancel or modify your order within 24 hours of placing it. Please contact our customer support team as soon as possible to make changes.",
-  },
-  {
-    id: 7,
-    question: "Do you offer customization options?",
-    answer:
-      "At the moment, we do not offer shoe customization services. However, we are working on adding this feature in the near future.",
-  },
-  {
-    id: 8,
-    question: "What payment methods do you accept?",
-    answer:
-      "We accept all major credit cards, PayPal, and Apple Pay. You can select your preferred payment method at checkout.",
-  },
-  {
-    id: 9,
-    question: "How should I care for my shoes?",
-    answer:
-      "We recommend using a soft brush to remove dirt and applying a protective spray to keep your shoes in top condition. Check the care instructions on each product page for more details.",
-  },
-  {
-    id: 10,
-    question: "Do you offer gift cards?",
-    answer:
-      "Yes, we offer digital gift cards in various amounts. You can purchase them directly from our website.",
+    question: "What drives our customer centricity?",
+    answer: `The DML Loop:
+Design - Assess trends & curate best-in-class collections. 
+Measure - Gauge customer response to corelate choices with utility. 
+Learn - Collate feedback & improve the product line.  
+`,
   },
 ];

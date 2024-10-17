@@ -6,11 +6,13 @@ import { videoSectionData } from "@/constants";
 import { Divider } from "antd";
 import { motion } from "framer-motion";
 import { useAnimeContext } from "@/context/animeContext";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoShow = () => {
   const containerRef = useRef(null);
   const thumbnailRefs = useRef([]);
+  const videoLeftSideRef = useRef(null); // Ref for the animated box
   const [title, setTitle] = useState(videoSectionData[0].title);
   const [index, setIndex] = useState(videoSectionData[0].id);
   const [title2, setTitle2] = useState(videoSectionData[0].title2);
@@ -19,7 +21,7 @@ const VideoShow = () => {
     videoSectionData[0].background
   );
   const subtitleRef = useRef(null);
-  const { isMobile } = useAnimeContext();
+  const { isMobile, xsSize } = useAnimeContext();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -55,7 +57,6 @@ const VideoShow = () => {
     };
   }, []);
 
-
   useEffect(() => {
     if (subtitleRef.current) {
       gsap.fromTo(
@@ -73,6 +74,22 @@ const VideoShow = () => {
       );
     }
   }, [subTitle]);
+
+  // New effect to animate the videoLeftSide box from bottom to its initial position when the title changes
+  useEffect(() => {
+    if (videoLeftSideRef.current && xsSize) {
+      gsap.fromTo(
+        videoLeftSideRef.current,
+        { x: "-200%", filter: "blur(5px)" }, // Start from off-screen bottom
+        {
+          x: "0%", // Move to initial position
+          filter: "blur(0px)",
+          duration: 0.4,
+          ease: "power3.out",
+        }
+      );
+    }
+  }, [title, xsSize]); // Trigger animation whenever the title changes
 
   const revealMask = {
     initial: { y: "100%" },
@@ -118,6 +135,7 @@ const VideoShow = () => {
         </div>
 
         <div
+          ref={videoLeftSideRef} // Ref for the box to animate
           style={{
             background: isMobile
               ? backgroundLeft.mobile

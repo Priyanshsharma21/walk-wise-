@@ -10,6 +10,15 @@ export default function Sawal() {
   const manageMouseEnter = (index, e) => {
     const outer = outerRefs.current[index];
     const inner = innerRefs.current[index];
+    const answerElement = inner.querySelector(
+      `.${index === 4 ? styles.answer2 : styles.answer}`
+    );
+
+    // Restart the ticker animation by resetting the animation class
+    answerElement.style.animation = "none"; // Temporarily remove the animation
+    requestAnimationFrame(() => {
+      answerElement.style.animation = ""; // Reapply the animation
+    });
 
     // Slide effect for the question-answer transition
     gsap.set(outer, { top: "-100%" });
@@ -36,8 +45,8 @@ export default function Sawal() {
   return (
     <section className={styles.faqSection}>
       <h2 className={styles.title}>
-        <span className={styles.faqFirstLetter}>F</span>&nbsp;
-        <span className={styles.faqFirstLetter}>A</span>&nbsp;
+        <span className={styles.faqFirstLetter}>F</span>&nbsp;.&nbsp;
+        <span className={styles.faqFirstLetter}>A</span>&nbsp;.&nbsp;
         <span className={styles.faqFirstLetter}>Q</span>&nbsp;
       </h2>
       <div className={styles.faqContainer}>
@@ -59,11 +68,10 @@ export default function Sawal() {
                 style={{ opacity: 0 }} // Initially set opacity to 0
               >
                 <div className={styles.answerContainer}>
-                  <p className={styles.answer}>{item.answer}</p>
-
+                  <p className={index === 4 ? styles.answer2 : styles.answer}>
+                    {item.answer}
+                  </p>
                   <div className={styles.questionNumber}>{index + 1}</div>
-
-                  {/* <p className={styles.answer}>{item.answer}</p> */}
                 </div>
               </div>
             </div>

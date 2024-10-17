@@ -13,6 +13,8 @@ import { pilot, prestige, prime } from "@/constants";
 import Sawal from "../Faq/Sawal";
 import Lamarca from "../LaMarca/Lamarca";
 import Sampark from "../Contact/Sampark";
+import LogoReveal from "../LogoReveal/LogoReveal";
+import HeroText from "../HeroText/HeroText";
 
 const Website = () => {
   const { showWebsite, isLoaderCompleted } = useAnimeContext();
@@ -22,7 +24,6 @@ const Website = () => {
     height: typeof window !== "undefined" ? window.innerHeight : 1080,
   });
 
-  // Handle window resize event
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
@@ -49,19 +50,29 @@ const Website = () => {
   return (
     <section
       className={styles.website}
-      // style={{ opacity: showMainWebsite() ? 1 : 0 }}
+      style={{ opacity: showMainWebsite() ? 1 : 0 }}
     >
       <div className={styles.gradientBackground}></div>
       <div className={styles.glassLayer}></div>
 
       <div className={styles.content}>
         <Navbar />
-        <Hero
+        <LogoReveal
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
         />
+        <div className="w-full h-[250vh]" />
+        <HeroText />
+        <div className="w-full h-[110vh]" />
+        {/* <Hero
+          width={dimensions.width}
+          height={dimensions.height}
+          initialWidth={1920}
+          initialHeight={1080}
+        /> */}
+
         <Introduction
           width={dimensions.width}
           height={dimensions.height}

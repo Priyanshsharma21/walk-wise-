@@ -2,23 +2,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "./Lamarca.module.css";
+import styles from "../LaMarca/Lamarca.module.css";
 import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
 import SplitText from "gsap/SplitText"; // Import SplitText
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Hero = ({ width, height, initialWidth, initialHeight }) => {
-  const [contentVisible, setContentVisible] = useState(false);
-  const { navRef, setShowWebsite, showWebsite, isLoaderCompleted, xsSize } =
-    useAnimeContext();
+const HeroText = ({ width, height, initialWidth, initialHeight }) => {
+  const { navRef, contentVisible, xsSize } = useAnimeContext();
   const [frameIndex, setFrameIndex] = useState(0);
   const canvasRef = useRef(null);
   const heroRef = useRef(null);
   const stepIntoRef = useRef(null);
   const zoneRef = useRef(null);
-  const imageRef = useRef(null); // Ref for the image
+  const comfortRef = useRef(null);
 
   useEffect(() => {
     ScrollTrigger.create({
@@ -37,7 +35,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
         const newColorOpacityForScroll = 1 - Math.min(progress * 21, 1);
       },
       onLeave: () => {
-        setContentVisible(true);
+        // setContentVisible(true);
       },
     });
 
@@ -71,19 +69,23 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
     });
 
     if (contentVisible) {
+      const splitComfortText = new SplitText(comfortRef.current, {
+        type: "chars",
+      });
       const splitStepIntoText = new SplitText(stepIntoRef.current, {
         type: "chars",
       });
       const splitZoneText = new SplitText(zoneRef.current, {
         type: "chars",
       });
+      const splitChar = splitComfortText.chars;
       const stepChars = splitStepIntoText.chars;
       const zoneChars = splitZoneText.chars;
       const getStart = () => {
         if (xsSize) {
           return "top top";
         } else {
-          return "top +=100";
+          return "top +=50";
         }
       };
       gsap
@@ -103,6 +105,19 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
           { opacity: 1, filter: "blur(0px)", duration: 2 }
         )
         .fromTo(
+          splitChar,
+          { y: 250, opacity: 0, overflow: "hidden" },
+          {
+            y: 0,
+            opacity: 1,
+            overflow: "hidden",
+            stagger: 1,
+            duration: 10,
+            ease: "power4.inOut",
+            scrub: true,
+          }
+        )
+        .fromTo(
           stepChars,
           { opacity: 0 },
           {
@@ -110,18 +125,6 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
             opacity: 1,
             stagger: 0.15,
             duration: 7,
-            ease: "power4.inOut",
-            scrub: true,
-          }
-        )
-        .fromTo(
-          imageRef.current, // Animate the image reference
-          { y: 250, opacity: 0, filter: "blur(10px)" },
-          {
-            y: 0,
-            opacity: 1,
-            filter: "blur(0px)",
-            duration: 10,
             ease: "power4.inOut",
             scrub: true,
           }
@@ -160,29 +163,28 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
             ref={stepIntoRef}
             className={`${styles.heroSubTitle} text-6xl text-white text-left`}
           >
-            introducing
+            step into
           </h4>
 
-          <div className={styles.containerImage}>
-            <img
-              src="https://res.cloudinary.com/dlxpea208/image/upload/v1728541015/la_marca_italy_png_okn0kg.png"
-              alt="LaMarca"
-              className={styles.heroImage} // Style this class in CSS for dimensions
-              ref={imageRef}
-            />
+          <div className={styles.containerText}>
+            <h1
+              className={`${styles.heroTitle} text-6xl text-white flex items-center`}
+              ref={comfortRef}
+            >
+              Excellence
+            </h1>
           </div>
 
           <h4
             ref={zoneRef}
             className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
           >
-            from the house of walkwise
+            {/* from the house of walkwise */}
           </h4>
         </div>
       </section>
-      <div className="w-full h-[110vh]" />
     </>
   );
 };
 
-export default Hero;
+export default HeroText;

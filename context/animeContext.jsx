@@ -15,6 +15,8 @@ export const AnimeProvider = ({ children }) => {
   const [pageCount, setPageCount] = useState(1);
   const navRef = useRef(null);
 
+  const [contentVisible, setContentVisible] = useState(false);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth <= breakPoint);
@@ -56,6 +58,8 @@ export const AnimeProvider = ({ children }) => {
         setShowBtn,
         showBtn,
         xsSize,
+        contentVisible,
+        setContentVisible,
       }}
     >
       {children}

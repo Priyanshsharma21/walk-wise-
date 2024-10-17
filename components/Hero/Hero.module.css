@@ -166,6 +166,8 @@
 
   .canvas {
     top: 35%;
+    /* width: 100% !important; */
+    /* height: 100% !important; */
   }
 
   .hero {

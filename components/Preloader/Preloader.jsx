@@ -10,7 +10,6 @@ const Preloader = () => {
   const [hidePreloader, setHidePreloader] = useState(false);
 
   useEffect(() => {
-    // Disable body scrolling during preloader
     document.body.style.overflow = "hidden";
 
     const interval = setInterval(() => {
