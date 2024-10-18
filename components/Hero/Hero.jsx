@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const Hero = ({ width, height, initialWidth, initialHeight }) => {
   const [contentVisible, setContentVisible] = useState(false);
   const [showBrandName, setShowBrandName] = useState(false);
-  const { navRef, setShowWebsite, showWebsite, isLoaderCompleted } =
+  const { navRef, setShowWebsite, showWebsite, isLoaderCompleted, xsSize } =
     useAnimeContext();
   const [images, setImages] = useState([]);
   const [frameIndex, setFrameIndex] = useState(0);
@@ -170,11 +170,18 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
       const stepChars = splitStepIntoText.chars;
       const zoneChars = splitZoneText.chars;
 
+      const getStart = () => {
+        if (xsSize) {
+          return "top top";
+        } else {
+          return "top +=50";
+        }
+      };
       gsap
         .timeline({
           scrollTrigger: {
             trigger: heroRef.current,
-            start: "top top",
+            start: getStart(),
             end: "+=1000",
             scrub: true,
             pin: true,
@@ -319,16 +326,13 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
             transition: "opacity 1s ease-in-out",
           }}
         >
-          <h4
-            ref={stepIntoRef}
-            className={`${styles.heroSubTitle} text-6xl text-white text-left`}
-          >
+          <h4 ref={stepIntoRef} className={`${styles.heroSubTitle}  text-left`}>
             step into
           </h4>
 
           <div className={styles.containerText}>
             <h1
-              className={`${styles.heroTitle} text-6xl text-white flex items-center`}
+              className={`${styles.heroTitle}  flex items-center`}
               ref={comfortRef}
             >
               Excellence
@@ -337,7 +341,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
 
           <h4
             ref={zoneRef}
-            className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
+            className={`${styles.heroSubTitle2} text-right`}
           ></h4>
         </div>
       </section>

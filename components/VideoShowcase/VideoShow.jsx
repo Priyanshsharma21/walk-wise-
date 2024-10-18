@@ -141,7 +141,7 @@ const VideoShow = () => {
               ? backgroundLeft.mobile
               : backgroundLeft.desktop,
           }}
-          className={`absolute left-0 top-0 h-full w-[35vw] flex items-center justify-center ${styles.videoLeftSide}`}
+          className={`${styles.videoLeftSide}`}
         >
           <div
             className={`${styles.videoCard} flex flex-col justify-around items-center w-full h-full`}

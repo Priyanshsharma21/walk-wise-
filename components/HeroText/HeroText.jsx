@@ -159,16 +159,13 @@ const HeroText = ({ width, height, initialWidth, initialHeight }) => {
             transition: "opacity 1s ease-in-out",
           }}
         >
-          <h4
-            ref={stepIntoRef}
-            className={`${styles.heroSubTitle} text-6xl text-white text-left`}
-          >
+          <h4 ref={stepIntoRef} className={`${styles.heroSubTitle}  text-left`}>
             step into
           </h4>
 
           <div className={styles.containerText}>
             <h1
-              className={`${styles.heroTitle} text-6xl text-white flex items-center`}
+              className={`${styles.heroTitle}  flex items-center`}
               ref={comfortRef}
             >
               Excellence
@@ -177,10 +174,8 @@ const HeroText = ({ width, height, initialWidth, initialHeight }) => {
 
           <h4
             ref={zoneRef}
-            className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
-          >
-            {/* from the house of walkwise */}
-          </h4>
+            className={`${styles.heroSubTitle2} text-right`}
+          ></h4>
         </div>
       </section>
     </>

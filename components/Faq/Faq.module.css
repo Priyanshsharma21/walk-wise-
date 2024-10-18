@@ -138,7 +138,8 @@
   }
 
   .questionNumber {
-    width: 40px;
+    width: 50px;
+    font-size: 0.9rem;
   }
 
   .questionContainer {

@@ -83,7 +83,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
         if (xsSize) {
           return "top top";
         } else {
-          return "top +=100";
+          return "top +=50";
         }
       };
       gsap
@@ -115,7 +115,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
           }
         )
         .fromTo(
-          imageRef.current, // Animate the image reference
+          imageRef.current,
           { y: 250, opacity: 0, filter: "blur(10px)" },
           {
             y: 0,

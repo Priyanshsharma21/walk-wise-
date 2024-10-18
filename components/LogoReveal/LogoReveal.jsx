@@ -65,7 +65,6 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
       }
     };
 
-    console.log(getStart());
 
     ScrollTrigger.create({
       trigger: canvasRef.current,
@@ -81,9 +80,7 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
         );
         setFrameIndex(index);
 
-        // const newColorOpacity = 1 - Math.min(progress * 2, 1);
         const newColorOpacityForScroll = 1 - Math.min(progress * 21, 1);
-        // canvasRef.current.style.backgroundColor = `rgba(0, 0, 0, ${newColorOpacity})`;
         scrollRef.current.style.opacity = newColorOpacityForScroll;
       },
       onLeave: () => {

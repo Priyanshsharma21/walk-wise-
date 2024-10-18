@@ -17,7 +17,7 @@ import LogoReveal from "../LogoReveal/LogoReveal";
 import HeroText from "../HeroText/HeroText";
 
 const Website = () => {
-  const { showWebsite, isLoaderCompleted } = useAnimeContext();
+  const { showWebsite, isLoaderCompleted, xsSize } = useAnimeContext();
   const [activeButton, setActiveButton] = useState(0);
   const [dimensions, setDimensions] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 1920,
@@ -57,7 +57,7 @@ const Website = () => {
 
       <div className={styles.content}>
         <Navbar />
-        <LogoReveal
+        {/* <LogoReveal
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
@@ -65,13 +65,13 @@ const Website = () => {
         />
         <div className="w-full h-[250vh]" />
         <HeroText />
-        <div className="w-full h-[110vh]" />
-        {/* <Hero
+        <div className="w-full h-[130vh]" /> */}
+        <Hero
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
-        /> */}
+        />
 
         <Introduction
           width={dimensions.width}
@@ -84,6 +84,7 @@ const Website = () => {
         <VideoShow />
 
         <Lamarca />
+        {xsSize && <div className="w-full h-[60vh]" />}
 
         <Gallary
           width={dimensions.width}
