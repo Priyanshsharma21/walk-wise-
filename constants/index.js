@@ -5,6 +5,11 @@ import { logo } from "@/assets";
 import { IoLogoYoutube } from "react-icons/io";
 import { SlSocialFacebook } from "react-icons/sl";
 import { CiYoutube } from "react-icons/ci";
+import { TiPuzzle } from "react-icons/ti";
+import { CiClock2 } from "react-icons/ci";
+import { TbTruckDelivery } from "react-icons/tb";
+import { BsArrowReturnLeft } from "react-icons/bs";
+
 export const navbarData = {
   logo: {
     src: logo,
@@ -2286,3 +2291,611 @@ Learn - Collate feedback & improve the product line.
 `,
   },
 ];
+
+export const tAndCData = {
+  heading: {
+    title: "Terms and Conditions",
+    subTitle:
+      "Please read the following terms and conditions very carefully as your use of service is subject to your acceptance of and compliance with the following terms and conditions ('Terms').",
+    description: [
+      `By subscribing to or using any of our services, you agree that you have read, understood and are bound by the Terms, regardless of how you subscribe to or use the services. If you do not want to be bound by the Terms and Conditions, you must not subscribe to or use any of our services.`,
+      `These Terms and Conditions constitute a legally binding contract between the customer ('YOU') and Walk Wise Collectives Pvt. Ltd. ('LA MARCA') and apply to the ordering, purchasing, fulfillment and delivery of goods from the domain name WalkWise.in ('Website')`,
+    ],
+  },
+
+  footerData: {
+    info: [
+      "Walk Wise Collectives Pvt. Ltd.",
+      "No. 56 Raja Muthiah Road, Periamet",
+      "Chennai - 600034",
+    ],
+    infoDetails: [
+      {
+        id: 1,
+        title: "Genuine Leather",
+        icon: TiPuzzle,
+      },
+      {
+        id: 2,
+        title: "45 Hrs Dispatch",
+        icon: CiClock2,
+      },
+      {
+        id: 3,
+        title: "Free Delivery !",
+        icon: TbTruckDelivery,
+      },
+      {
+        id: 4,
+        title: "Hassle Free Returns",
+        icon: BsArrowReturnLeft,
+      },
+    ],
+  },
+
+  mainContent: [
+    {
+      id: 1,
+      title: "INTRODUCTION",
+      description: [
+        `WalkWise.in ('Website') is an Internet-based content and e-commerce portal operated by Walk Wise Collectives Pvt. Ltd., a company incorporated under the laws of India. Use of the Website is offered to you conditioned on acceptance without modification of all the terms, conditions and notices contained in these Terms, as may be posted on the Website from time to time. Any revisions to the said Terms and Conditions will be updated on this page and you agree to be bound by such revisions. WalkWise.in at its sole discretion reserves the right not to accept a User from registering on the Website without assigning any reason thereof.`,
+      ],
+    },
+
+    {
+      id: 2,
+      title: "COMMUNICATIONS BY US",
+      description: [
+        `As a condition of creating an account with LA MARCA, you consent to us sending you Administrative Emails and Promotional Emails.`,
+      ],
+      points: [
+        {
+          id: 11,
+          point: `'Administrative Emails' involve details of account activity and purchases you have made.`,
+        },
+        {
+          id: 12,
+          point: `'Promotional Emails' consist of product information, new offers and information about LA MARCA. You may choose to opt-out of receiving Promotional Emails anytime by simply clicking the unsubscribe button at the bottom of our emails and following the instructions.`,
+        },
+      ],
+    },
+
+    {
+      id: 3,
+      title: "USER ACCOUNT, PASSWORD AND SECURITY",
+      description: [
+        `You will receive a password and account designation upon completing the Website's registration process. You are responsible for maintaining the confidentiality of the password and account, and are fully responsible for all activities that occur under your password or account. You agree to:`,
+      ],
+      points: [
+        {
+          id: 11,
+          point: `Immediately notify lamarcaitaly.com of any unauthorized use of your password or account or any other breach of security`,
+        },
+        {
+          id: 12,
+          point: `Ensure that you exit from your account at the end of each session. lamarcaitaly.com cannot and will not be liable for any loss or damage arising from your failure to comply with this section.`,
+        },
+      ],
+    },
+
+    {
+      id: 4,
+      title: "SERVICES OFFERED",
+      description: [
+        `LA MARCA provides a number of Internet-based services through the Web Site (all such services, collectively, the 'Service'). One such service enables users to purchase original and exclusive branded footwear (collectively, 'Products'). Upon placing an order, LA MARCA shall ship the product to you and be entitled to its payment for the Services.`,
+      ],
+    },
+
+    {
+      id: 5,
+      title: "LIMITATIONS",
+      description: [
+        `The User agrees and undertakes not to reverse engineer, modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer, or sell any information or software obtained from the Website. Limited reproduction and copying of the content of the Website is permitted provided that LA MARCA's name is stated as the source and prior written permission is sought. For the removal of doubt, it is clarified that unlimited or wholesale reproduction, copying of the content for commercial or noncommercial purposes and unwarranted modification of data and information within the content of the Website is not permitted under any circumstance.`,
+      ],
+    },
+
+    {
+      id: 6,
+      title: "USER CONDUCT AND RULES",
+      description: [
+        `You agree and undertake to use the Website and the Service only to view, review and purchase the products listed as part of the website. By way of example, and not as a limitation, you agree and undertake that when using a Service, you will not:`,
+      ],
+      points: [
+        {
+          id: 1,
+          point: `Defame, abuse, harass, stalk, threaten or otherwise violate the legal rights of others;`,
+        },
+        {
+          id: 2,
+          point: `Publish, post, upload, distribute or disseminate any inappropriate, profane, defamatory, infringing, obscene, indecent or unlawful topic, name, material or information;`,
+        },
+        {
+          id: 3,
+          point: `Upload files that contain software or other material protected by intellectual property laws unless you own or control the rights thereto or have received all necessary consents;`,
+        },
+        {
+          id: 4,
+          point: `Upload or distribute files that contain viruses, corrupted files, or any other similar software or programs that may damage the operation of the Website or another's computer;`,
+        },
+        {
+          id: 5,
+          point: `Conduct or forward surveys, contests, pyramid schemes or chain letters;`,
+        },
+        {
+          id: 6,
+          point: `Download any file posted by another user of a Service that you know, or reasonably should know, cannot be legally distributed in such manner;`,
+        },
+        {
+          id: 7,
+          point: `Falsify or delete any author attributions, legal or other proper notices or proprietary designations or labels of the origin or source of software or other material contained in a file that is uploaded;`,
+        },
+        {
+          id: 8,
+          point: `Violate any code of conduct or other guidelines, which may be applicable for or to any particular Service;`,
+        },
+        {
+          id: 9,
+          point: `Violate any applicable laws or regulations for the time being in force in or outside India;`,
+        },
+        {
+          id: 10,
+          point: `Violate any of the terms and conditions of this Agreement or any other terms and conditions for the use of the Website contained elsewhere herein;`,
+        },
+        {
+          id: 11,
+          point: `Exploit any of the services. We reserve the right to deprive individual customers of our Cash on Delivery payment option. Moreover, we might refuse any of our services, terminate accounts, and/or cancel orders at our discretion, including but not limited to, if we believe that customer conduct violates applicable law or is harmful to our interests;`,
+        },
+        {
+          id: 12,
+          point: `You shall not make any derogatory, defamatory, abusive, inappropriate, profane or indecent statements and/or comments about LA MARCA, its associates and partners on any property owned by LA MARCA.`,
+        },
+      ],
+    },
+
+    {
+      id: 7,
+      title: "SUBMISSION OF CONTENT",
+      description: [
+        `LA MARCA welcomes user comments, information and submissions (collectively, Submission). LA MARCA, however, does not assume any obligation with respect to any Submission and no confidential or fiduciary understanding or relationship is established by LA MARCA receipt or acceptance of any Submission. All Submissions become the exclusive property of LA MARCA and its affiliates. LA MARCA and its affiliates may use any Submission without restriction and User shall not be entitled to any compensation.`,
+      ],
+    },
+
+    {
+      id: 8,
+      title: "NO COMPENSATION POLICY",
+      description: [
+        `If the quality of any products, services, information, or other material purchased or obtained by you through the Website did not meet your expectations, no compensation will be given other than the Return and refund or Exchange of the product. The customer cannot request compensation for any reason, including but not limited to: any variation in the finish or appearance of the final product; any delay in delivery caused by unforeseen circumstances; any special, incidental, indirect or consequential damage of any kind caused by a product; missed opportunities to avail certain discounts; any issue with our Delivery partners or their personnel; any voucher which got deactivated due to the end of expiry date; unavailability of items which the customer tried to purchase etc. Unreasonable and unlawful requests for compensation, over and above the entitled refund, will be treated as loss to business cases. LA MARCA holds the rights to cancel orders and block accounts of such customers without any prior notice.`,
+      ],
+    },
+
+    {
+      id: 9,
+      title: "USER WARRANTY AND REPRESENTATION",
+      description: [
+        `The user guarantees, warrants, and certifies that you are the owner of the content which you submit or otherwise authorized to use the content and that the content does not infringe upon the property rights, intellectual property rights or other rights of others. You further warrant that to your knowledge, no action, suit, proceeding, or investigation has been instituted or threatened relating to any content, including trademark, trade name service mark, and copyright formerly or currently used by you in connection with the Services rendered by LA MARCA.`,
+      ],
+    },
+
+    {
+      id: 10,
+      title: "EXACTNESS NOT GUARANTEED",
+      description: [
+        `LA MARCA hereby disclaims any guarantees of exactness as to the finish and appearance of the final Product as ordered by the user. The quality of any products, Services, information, or other material purchased or obtained by you through the Website may not meet your expectations. Alterations to certain aspects of your order such as the size, colour etc. may be required due to limitations caused by availability of product. In this instance you agree that a representative from LA MARCA will call you or send an approval request via the email address which you submitted when placing your order. If you do not agree with the requested change you retain the right to reject the requested production change by replying to it within 10 days of it being sent to you. LA MARCA may re-request that you accept a production alteration one additional time if an alternative method to send your merchandise is available. If you reject this 2nd request your order will be cancelled and you will be able to exchange for a different product or get a store credit.`,
+      ],
+    },
+
+    {
+      id: 11,
+      title: "INTELLECTUAL PROPERTY RIGHTS",
+      description: [
+        `Unless otherwise indicated or anything contained to the contrary or any proprietary material owned by a third party and so expressly mentioned, LA MARCA owns all Intellectual Property Rights to and into the Website, including, without limitation, any and all rights, title and interest in and to copyright, related rights, patents, utility models, trademarks, trade names, service marks, designs, know-how, trade secrets and inventions (whether patentable or not), goodwill, source code, meta tags, databases, text, content, graphics, icons, and hyperlinks. You acknowledge and agree that you shall not use, reproduce or distribute any content from the Website belonging to LA MARCA without obtaining prior authorization.
+The compilation (meaning the collection, arrangement and assembly) of all content on this Site is the exclusive property of LA MARCA and protected by international copyright laws. All software used on this website is the exclusive property of LA MARCA and protected by international copyright laws. The Content and software on this website may be used as a shopping resource. Any other use, including the reproduction, modification, distribution, transmission, republication, display, or performance of the content of this website is strictly prohibited.`,
+      ],
+    },
+
+    {
+      id: 12,
+      title: "DISCLAIMER OF WARRANTIES / LIMITATION OF LIABILITY",
+      description: [
+        `LA MARCA has endeavored to ensure that all the information on the Website is correct, but LA MARCA neither warrants nor makes any representations regarding the quality, accuracy or completeness of any data, information, product or Service. In no event shall LA MARCA be liable for any direct, indirect, punitive, incidental, special, consequential damages or any other damages resulting from:`,
+      ],
+      points: [
+        {
+          id: 11,
+          point: `(a) The use or the inability to use the Services;`,
+        },
+        {
+          id: 12,
+          point: `(b) Unauthorized access to or alteration of the user's transmissions or data;`,
+        },
+        {
+          id: 13,
+          point: `(c) Any other matter relating to the services; including, without limitation, damages for loss of use, data or profits, arising out of or in any way connected with the use or performance of the Website or Service. Neither shall LA MARCA be responsible for the delay or inability to use the Website or related services, the provision of or failure to provide Services, or for any information, software, products, services and related graphics obtained through the Website, or otherwise arising out of the use of the website, whether based on contract, tort, negligence, strict liability or otherwise. Further, LA MARCA shall not be held responsible for non-availability of the Website during periodic maintenance operations or any unplanned suspension of access to the website that may occur due to technical reasons or for any reason beyond LA MARCA's control. The user understands and agrees that any material and/or data downloaded or otherwise obtained through the Website is done entirely at their own discretion and risk and they will be solely responsible for any damage to their computer systems or loss of data that results from the download of such material and/or data.`,
+        },
+      ],
+    },
+
+    {
+      id: 13,
+      title: "INDEMNIFICATION",
+      description: [
+        `You agree to indemnify, defend and hold harmless LA MARCA from and against any and all losses, liabilities, claims, damages, costs and expenses (including legal fees and disbursements in connection therewith and interest chargeable thereon) asserted against or incurred by LA MARCA that arise out of, result from, or may be payable by virtue of, any breach or non-performance of any representation, warranty, covenant or agreement made or obligation to be performed by you pursuant to these Terms.`,
+      ],
+    },
+
+    {
+      id: 14,
+      title: "PRICING",
+      description: [
+        `Prices for products are described on our Website and are incorporated into these Terms by reference. All prices are in Indian rupees. Prices, products and Services may change at LA MARCA's discretion. In accordance with our guidelines, prices might change when the stocks are replenished.`,
+      ],
+    },
+
+    {
+      id: 15,
+      title: "MISPRICING",
+      description: [
+        `Despite our best efforts, a small number of the items in our catalogue may be mispriced. However, we verify prices as part of our dispatch procedures.
+If an item's correct price is lower than our stated price, we charge the lower amount and send you the item.
+If a product's correct price is higher than our stated price, we will notify you of the same and request confirmation to proceed or cancel such order.`,
+      ],
+    },
+
+    {
+      id: 16,
+      title: "TERMINATION",
+      description: [
+        `LA MARCA may suspend or terminate your use of the Website or any Service if it believes, in its sole and absolute discretion that you have breached any of the Terms.
+If you or LA MARCA terminates your use of the Website or any Service, LA MARCA may delete any content or other materials relating to your use of the Service and LA MARCA will have no liability to you or any third party for doing so.
+You shall be liable to pay for any Service or product that you have already ordered till the time of Termination by either party whatsoever.`,
+      ],
+    },
+
+    {
+      id: 17,
+      title: "GOVERNING LAW",
+      description: [
+        `These terms shall be governed by and constructed in accordance with the laws of India.
+In the event of any disputes, differences or controversies between the Parties hereto, out of or in connection with the provisions of this Agreement, or any action taken hereunder, the Parties hereto shall thoroughly explore all possibilities for an amicable settlement. In case an amicable settlement cannot be reached, such disputes, differences or controversies shall be referred to arbitration in accordance with the provisions of the Arbitration and Conciliation Act, 1996 including any amendment or re-enactment thereof. The proceedings of such arbitration shall be conducted in the English language and the venue of such arbitration shall be Chennai. The award of such arbitration shall be final and binding upon the Parties hereto.`,
+      ],
+    },
+
+    {
+      id: 18,
+      title: "SEVERABILITY",
+      description: [
+        `If any provision of the Terms is determined to be invalid or unenforceable in whole or in part, such invalidity or unenforceability shall attach only to such provision or part of such provision and the remaining part of such provision and all other provisions of these Terms shall continue to be in full force and effect.`,
+      ],
+    },
+
+    {
+      id: 19,
+      title: "HEADINGS",
+      description: [
+        `The headings and subheadings herein are included for convenience and identification only and are not intended to describe, interpret, define or limit the scope, extent or intent of the Terms and Conditions or the right to use the Website by you contained herein or any other section or pages of the Website or any Linked Sites in any manner whatsoever.`,
+      ],
+    },
+
+    {
+      id: 18,
+      title: "REPORT ABUSE",
+      description: [
+        `As per these Terms, users are solely responsible for every material or content uploaded on to the Website. LA MARCA does not review the contents in any way before they appear on the Website. LA MARCA does not verify, endorse or otherwise vouch for the contents of any user or any content generally posted or uploaded on to the Website. Users can be held legally liable for their contents and may be held legally accountable if their contents or material include, for example, defamatory comments or material protected by copyright, trademark, etc. If you come across any abuse or violation of these Terms, please report to info@lamarcaitaly.com`,
+      ],
+    },
+
+    {
+      id: 18,
+      title: "UNAUTHORIZED CHARGES ON YOUR CARD",
+      description: [
+        `If you see charges on your credit/debit card for purchases made on WalkWise.in, but you never created an account or signed up, please check with your family members or business colleagues    authorised to make purchases on your behalf, to confirm that they haven't placed the order. If you're still unable to recognize the charge, please report the unauthorized purchase within 15 days of the transaction to enable LA MARCA to begin an investigation.`,
+      ],
+    },
+
+    {
+      id: 18,
+      title: "CANCELLATION OF FRAUDULENT ORDERS",
+      description: [
+        `To provide a safe and secure shopping experience, we regularly monitor transactions for fraudulent activity. In the event of detecting any suspicious activity, LA MARCA reserves the right to cancel all past, pending and future orders without any liability. LA MARCA also reserves the right to refuse or cancel orders in scenarios like inaccuracies in pricing of product on website and stock unavailability. We may also require additional verifications or information before accepting any order. We will contact you if all or any portion of your order is cancelled or if additional information is required to accept your order. If your order is cancelled after your card has been charged, the said amount will be reversed to your Card Account. Any promotional voucher used for the cancelled orders may not be refunded.
+The customer may be considered fraudulent if any of the following scenarios are met:`,
+      ],
+      points: [
+        {
+          id: 1,
+          point: `Customer fails to produce adequate documents during the payment details verification;`,
+        },
+        {
+          id: 2,
+          point: `Misuse of another customer's phone/email;`,
+        },
+        {
+          id: 3,
+          point: `Customer uses invalid email and phone no.;`,
+        },
+        {
+          id: 4,
+          point: `Overuse of a voucher code;`,
+        },
+        {
+          id: 5,
+          point: `Use of a special voucher not tagged to the email ID used;`,
+        },
+        {
+          id: 6,
+          point: `Customer returns the wrong product;`,
+        },
+        {
+          id: 7,
+          point: `Customer refuses to pay for an order;`,
+        },
+        {
+          id: 8,
+          point: `Customer is involved in the snatch and run for any order; The customer may be considered loss to business if any of the following scenarios are met:`,
+        },
+
+        {
+          id: 9,
+          point: `Customer with a very high return rate;`,
+        },
+        {
+          id: 10,
+          point: `Invalid/Incomplete address cases;`,
+        },
+        {
+          id: 11,
+          point: `Repeated request for monetary compensation for petty issues;`,
+        },
+      ],
+    },
+
+    {
+      id: 19,
+      title: "CANCELLATION OF BULK ORDERS",
+      description: [
+        `LA MARCA may cancel any orders that classify as 'Bulk Order' under certain criteria at any stage of the product delivery. An order can be classified as 'Bulk Order' if it meets with the below mentioned criteria, and any additional criteria as defined by LA MARCA:`,
+      ],
+      points: [
+        {
+          id: 11,
+          point: `Products ordered are not for self-consumption but for commercial resale`,
+        },
+        {
+          id: 12,
+          point: `Multiple orders placed for same product at the same address, depending on the product category`,
+        },
+        {
+          id: 13,
+          point: `Bulk quantity of the same product ordered`,
+        },
+        {
+          id: 14,
+          point: `Invalid address given in order details`,
+        },
+        {
+          id: 15,
+          point: `Any malpractice used to place the order`,
+        },
+        {
+          id: 16,
+          point: `Any promotional voucher used for placing the 'Bulk Order' may not be refunded`,
+        },
+      ],
+    },
+
+    {
+      id: 20,
+      title: "PROCESS FOR PILFERAGE CLAIM",
+      description: [
+        `If a customer raises a complaint for partial item/partial orders through Customer Care`,
+      ],
+      points: [
+        {
+          id: 11,
+          point: `The customer is supposed to claim for pilferage within 48 hours of delivery failing which the claim will not be entertained`,
+        },
+        {
+          id: 12,
+          point: `An Email will be sent seeking/providing following information:`,
+          subPoints: [
+            {
+              id: 122,
+              number: 1,
+              subPoint:
+                "Short description of the case (A few questions will be asked to help us understand the scenario)",
+            },
+            {
+              id: 123,
+              number: 2,
+              subPoint: `The snapshots of the packet and other box (If any)(Try to cover the sides which look tampered/damaged as per the customer)`,
+            },
+          ],
+        },
+        {
+          id: 13,
+          point: `The refund for prepaid orders will be done after investigation which usually requires 3-4 business day. The process will include investigation with the concerned departments`,
+        },
+        {
+          id: 14,
+          point: `The customer may not be liable for a refund if he/she falls in any of the scenarios stated below:`,
+          subPoints: [
+            {
+              id: 141,
+              number: 1,
+              subPoint:
+                "Customer fails to provide adequate information about the case. Customer fails to provide snapshots of the packet and box(if any)",
+            },
+            {
+              id: 142,
+              number: 2,
+              subPoint: `If an opened delivery was received, pilferage claims must be made the same day`,
+            },
+            {
+              id: 143,
+              number: 3,
+              subPoint: `Customer must not dispose the packaging for 3-4 days post-delivery. We might need to pick-up your packaging for investigation at our end.`,
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 21,
+      description: [
+        `All notices, demands or other communications required or permitted to be given or made under or in connection with this Agreement shall be in writing and shall be sufficiently given or made and sent by prepaid registered post addressed to:`,
+      ],
+    },
+  ],
+};
+
+export const privacyPolityData = {
+  heading: {
+    title: "PRIVACY POLICY",
+
+    description: [
+      `Walk Wise Collectives Pvt. Ltd. respects your privacy policy. This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from WalkWise.in
+ `,
+    ],
+  },
+
+  footerData: {
+    info: [
+      "Walk Wise Collectives Pvt. Ltd.",
+      "No. 56 Raja Muthiah Road, Periamet",
+      "Chennai - 600034",
+    ],
+    infoDetails: [
+      {
+        id: 1,
+        title: "Genuine Leather",
+        icon: TiPuzzle,
+      },
+      {
+        id: 2,
+        title: "45 Hrs Dispatch",
+        icon: CiClock2,
+      },
+      {
+        id: 3,
+        title: "Free Delivery !",
+        icon: TbTruckDelivery,
+      },
+      {
+        id: 4,
+        title: "Hassle Free Returns",
+        icon: BsArrowReturnLeft,
+      },
+    ],
+  },
+
+  mainContent: [
+    {
+      id: 1,
+      title: "PERSONAL INFORMATION WE COLLECT",
+      description: [
+        `When you visit the Site, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device. Additionally, as you browse the Site, we collect information about the individual web pages or products that you view, what websites or search terms referred you to the Site, and information about how you interact with the Site. We refer to this automatically-collected information as “Device Information.”`,
+        `We collect Device Information using the following technologies:`,
+      ],
+
+      points: [
+        {
+          id: 11,
+          point: ` “Log files” track actions occurring on the Site, and collect data including your IP address, browser type, Internet service provider, referring/exit pages, and date/time stamps.`,
+        },
+        {
+          id: 12,
+          point: ` “Web beacons,” “tags,” and “pixels” are electronic files used to record information about how you browse the Site.`,
+        },
+      ],
+
+      description2: [
+        `Additionally when you make a purchase or attempt to make a purchase through the Site, we collect certain information from you, including your name, billing address, shipping address, payment information (including credit card numbers), email address and phone number.  We refer to this information as “Order Information.”`,
+        ` When we talk about “Personal Information” in this Privacy Policy, we are talking both about Device Information and Order Information.`,
+      ],
+    },
+
+    {
+      id: 2,
+      title: "HOW DO WE USE YOUR PERSONAL INFORMATION?",
+      description: [
+        `We use the Order Information that we collect generally to fulfill any orders placed through the Site (including processing your payment information, arranging for shipping, and providing you with invoices and/or order confirmations).  Additionally, we use this Order Information to:`,
+      ],
+
+      points: [
+        {
+          id: 11,
+          point: `Communicate with you for registration confirmation, special offers, changes of service policies or terms of use, etc..`,
+        },
+        {
+          id: 12,
+          point: `Screen our orders for potential risk or fraud; and`,
+        },
+        {
+          id: 13,
+          point: `When in line with the preferences you have shared with us, provide you with information or advertising relating to our products or services.`,
+        },
+      ],
+
+      description2: [
+        `We use the Device Information that we collect to help us screen for potential risk and fraud (in particular, your IP address), and more generally to improve and optimize our Site (for example, by generating analytics about how our customers browse and interact with the Site, and to assess the success of our marketing and advertising campaigns).`,
+      ],
+    },
+
+    {
+      id: 3,
+      title: "SHARING YOUR PERSONAL INFORMATION",
+      description: [
+        `We share your Personal Information with third parties (agents & alliances) to help us use your Personal Information, as described above. We use Shopify to power our online store. We also use Google Analytics to help us understand how our customers use the Site.`,
+        `Finally, we may also share your Personal Information to comply with applicable laws and regulations, to respond to a subpoena, search warrant or other lawful request for information we receive, or to otherwise protect our rights.`,
+      ],
+    },
+
+    {
+      id: 4,
+      title: "BEHAVIOURAL ADVERTISING",
+      description: [
+        `As described above, we use your Personal Information to provide you with targeted advertisements or marketing communications we believe may be of interest to you. `,
+      ],
+    },
+
+    {
+      id: 5,
+      title: "DO NOT TRACK",
+      description: [
+        `Please note that we do not alter our Site’s data collection and use practices when we see a Do Not Track signal from your browser.`,
+      ],
+    },
+
+    {
+      id: 6,
+      title: "DATA RETENTION",
+      description: [
+        `When you place an order through the Site, we will maintain your Order Information for our records unless and until you ask us to delete this information.`,
+      ],
+    },
+
+    {
+      id: 7,
+      title: "COOKIES",
+      description: [
+        `The acceptance of cookies is not a requirement for visiting the site. However we would like to point out that the some functionality on the site and ordering is only possible with the activation of cookies. Cookies are tiny text files which identify your computer to our server as a unique user when you visit certain pages on the site and they are stored by your Internet browser on your computer's hard drive. Cookies can be used to recognize your Internet Protocol address, saving you time while you are on, or want to enter, the site. We only use cookies for your convenience in using the site (for example to remember who you are when you want to amend your shopping cart without having to re-enter your email address) and not for obtaining or using any other information about you (for example targeted advertising). Your browser can be set to not accept cookies, but this would restrict your use of the site. Please accept our assurance that our use of cookies does not contain any personal or private details and are free from viruses.`,
+      ],
+    },
+
+    {
+      id: 8,
+      title: "CHANGES",
+      description: [
+        `We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal or regulatory reasons.`,
+      ],
+    },
+
+    {
+      id: 9,
+      title: "CONTACT US",
+      description: [
+        `For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at info@lamarcaitaly.com or by mail using the details provided below:`,
+      ],
+    },
+  ],
+};

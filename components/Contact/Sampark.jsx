@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "antd";
 import styles from "./Sampark.module.css";
 import Ticker from "./Ticker";
-import { footerData, navbarData } from "@/constants";
+import {
+  footerData,
+  navbarData,
+  privacyPolityData,
+  tAndCData,
+} from "@/constants";
 import FramerMagnetic from "../FramerMagnetic";
+import { Drawer } from "antd";
+import LegalInfo from "../LegalInfo/LegalInfo";
+import { useAnimeContext } from "@/context/animeContext";
 
 const Sampark = () => {
+  const [open, setOpen] = useState(false);
+  const [legalInfoData, setLegalInfoData] = useState(null); // State to hold the selected legal info data
+  const { setEnableSmoothScroll, enableSmoothScroll } = useAnimeContext();
   const handleRedirect = (url) => {
     window.open(url, "_blank");
+  };
+
+  // Function to show the drawer and set the corresponding data
+  const handleClick = (title) => {
+    if (title === "Terms & Conditions") {
+      setLegalInfoData(tAndCData);
+    } else if (title === "Privacy Policy") {
+      setLegalInfoData(privacyPolityData);
+    }
+    setOpen(true);
+    setEnableSmoothScroll(false);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+    setEnableSmoothScroll(true);
   };
 
   return (
@@ -74,8 +101,12 @@ const Sampark = () => {
         <Col span={24}>
           <div className={styles.footerBox}>
             <section className={styles.legalInfoBox}>
-              {footerData.legalInfo.map((item, i) => (
-                <div key={item.id} className={styles.legalInfo}>
+              {footerData.legalInfo.map((item) => (
+                <div
+                  key={item.id}
+                  className={styles.legalInfo}
+                  onClick={() => handleClick(item.title)}
+                >
                   {item.title}
                 </div>
               ))}
@@ -90,6 +121,16 @@ const Sampark = () => {
           </div>
         </Col>
       </Row>
+
+      <Drawer onClose={onClose} open={open} width="100%" height="100%">
+        <div className={styles.gradientBackground}></div>
+        <div className={styles.glassLayer}></div>
+        <div className={styles.scrollContainer}>
+          {" "}
+          {/* Add this wrapper */}
+          <LegalInfo data={legalInfoData} setOpen={setOpen} />
+        </div>
+      </Drawer>
     </div>
   );
 };

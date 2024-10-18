@@ -13,6 +13,7 @@ export const AnimeProvider = ({ children }) => {
   const [isLoaderCompleted, setIsLoaderCompleted] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
   const [pageCount, setPageCount] = useState(1);
+  const [enableSmoothScroll, setEnableSmoothScroll] = useState(true);
   const navRef = useRef(null);
 
   const [contentVisible, setContentVisible] = useState(false);
@@ -60,6 +61,8 @@ export const AnimeProvider = ({ children }) => {
         xsSize,
         contentVisible,
         setContentVisible,
+        setEnableSmoothScroll,
+        enableSmoothScroll,
       }}
     >
       {children}

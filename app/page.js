@@ -5,29 +5,38 @@ import Preloader from "@/components/Preloader/Preloader";
 import Website from "@/components/Website/Website";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-
 import { useAnimeContext } from "@/context/animeContext";
 
 gsap.registerPlugin(useGSAP);
 
-const page = () => {
-  const { navRef } = useAnimeContext();
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.04,
-    });
-    navRef.current.style.opacity = 0;
+const Page = () => {
+  const { navRef, enableSmoothScroll } = useAnimeContext();
 
-    function raf(time) {
-      lenis.raf(time);
+  useEffect(() => {
+    let lenis;
+
+    if (enableSmoothScroll) {
+      // Initialize Lenis if smooth scroll is enabled
+      lenis = new Lenis({
+        lerp: 0.04,
+      });
+
+      navRef.current.style.opacity = 0;
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy();
+      // Destroy Lenis when component unmounts or if smooth scrolling is disabled
+      if (lenis) {
+        lenis.destroy();
+      }
     };
-  }, []);
+  }, [enableSmoothScroll, navRef]);
 
   return (
     <main className="app">
@@ -37,4 +46,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

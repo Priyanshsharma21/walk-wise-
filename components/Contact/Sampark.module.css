@@ -238,6 +238,55 @@
   font-weight: 600;
 }
 
+.legalInformationBox {
+  position: fixed;
+  bottom: 0px;
+  z-index: 9999;
+}
+
+.gradientBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  background: url("https://res.cloudinary.com/dlxpea208/image/upload/v1727842605/wwc-bg1_hzpxlt.png");
+
+  filter: blur(0px);
+  background-size: cover;
+}
+
+.glassLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.041);
+  overflow: hidden;
+}
+
+.glassLayer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-size: contain;
+  opacity: 0.1;
+  z-index: 3;
+}
+
 @media (max-width: 720px) {
   .main {
     padding-bottom: 2rem;

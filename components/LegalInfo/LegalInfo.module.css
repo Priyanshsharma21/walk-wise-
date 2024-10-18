@@ -1,0 +1,141 @@
+.legalInfo {
+  z-index: 99999999999999999999999999999 !important;
+  position: relative; /* Changed from absolute to relative */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+}
+
+.scrollContainer {
+  height: 100vh; /* Make sure it takes full viewport height */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.content {
+  padding: 0em 21em;
+  flex-grow: 1; /* Allow content to grow and shrink */
+}
+
+.cross {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: blanchedalmond;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2em;
+  color: rgb(245, 207, 150);
+}
+
+.titleMain {
+  margin-top: 5rem;
+}
+
+.subHead {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3em;
+  color: blanchedalmond;
+  margin-top: 2rem;
+}
+
+.desc {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.3em;
+  color: blanchedalmond;
+  margin-top: 2rem;
+}
+
+.point {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.3em;
+  color: blanchedalmond;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.pointBox {
+  display: flex;
+  align-items: center;
+}
+.pointIcon {
+  font-size: 1rem;
+  color: rgb(253, 181, 72);
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+.number {
+  font-size: 1rem;
+  color: rgb(253, 181, 72);
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+.footInformationBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legalIcon {
+  font-size: 2rem;
+  color: rgb(253, 181, 72);
+  margin-right: 2rem;
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 720px) {
+  .content {
+    padding: 0em 5em;
+  }
+}
+
+@media (max-width: 500px) {
+  .content {
+    padding: 0em 1.5em;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+  .subHead,
+  .desc,
+  .point,
+  .number {
+    font-size: 14px;
+  }
+
+  .legalIcon {
+    font-size: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
+  .pointIcon {
+    font-size: 14px;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .number {
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .point2 {
+    text-align: center;
+    font-size: 12px;
+  }
+}

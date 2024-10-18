@@ -301,6 +301,24 @@ body {
   color: blanchedalmond;
 }
 
+.ant-drawer {
+  z-index: 9999999999999999 !important;
+}
+.ant-drawer-header {
+  display: none !important;
+}
+.ant-drawer-body {
+  padding: 0px !important;
+}
+.crossBox {
+  /* border-bottom: 1px solid rgba(255, 235, 205, 0.384); */
+}
+
+.footLegal {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 @media (max-width: 720px) {
   .video-0-0 {
     font-size: 5.63vw;
