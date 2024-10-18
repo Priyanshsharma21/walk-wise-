@@ -222,7 +222,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
         </main>
 
         <section
-          className={`${styles.hero} w-full min-h-full flex justify-end`}
+          className={`${styles.hero} w-full min-h-full`}
           ref={heroRef}
           style={{
             background: showBottomText

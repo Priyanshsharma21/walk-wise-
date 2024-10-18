@@ -81,6 +81,8 @@
   /* position: fixed;
   top: 60%;
   right: 2rem; */
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (max-width: 720px) {
