@@ -8,7 +8,6 @@ import { useAnimeContext } from "@/context/animeContext";
 import Introduction from "../Introduction/Introduction";
 import VideoShow from "../VideoShowcase/VideoShow";
 import Gallary from "../Gallary/Gallary";
-import Contact from "../Contact/Contact";
 import { pilot, prestige, prime } from "@/constants";
 import Sawal from "../Faq/Sawal";
 import Lamarca from "../LaMarca/Lamarca";
@@ -60,12 +59,13 @@ const Website = () => {
         {/* <LogoReveal
           width={dimensions.width}
           height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
+          initialWidth={xsSize ? 1080 : 1920}
+          initialHeight={xsSize ? 1920 : 1080}
         />
         <div className="w-full h-[250vh]" />
         <HeroText />
-        <div className="w-full h-[130vh]" /> */}
+        <div className="w-full h-[100vh]" /> */}
+
         <Hero
           width={dimensions.width}
           height={dimensions.height}

@@ -92,7 +92,7 @@ const HeroText = ({ width, height, initialWidth, initialHeight }) => {
         .timeline({
           scrollTrigger: {
             trigger: heroRef.current,
-            start: getStart(),
+            start: "top top",
             end: "+=1000",
             scrub: true,
             pin: true,

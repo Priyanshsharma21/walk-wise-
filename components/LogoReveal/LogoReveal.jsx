@@ -1,9 +1,9 @@
-import styles from "../Hero/Hero.module.css";
+import styles from "./LogoReveal.module.css";
 import React, { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText"; // Import SplitText
-import { logoSeqImg } from "../../constants";
+import { logoSeqImg, logoSeqMobile } from "../../constants"; // Import both image sequences
 import { useAnimeContext } from "@/context/animeContext";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
@@ -14,8 +14,8 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
     setShowWebsite,
     showWebsite,
     isLoaderCompleted,
-    xsSize,
     setContentVisible,
+    xsSize,
   } = useAnimeContext();
 
   const [images, setImages] = useState([]);
@@ -27,13 +27,16 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
     width: initialWidth,
     height: initialHeight,
   });
+
   useEffect(() => {
+    const selectedImages = xsSize ? logoSeqMobile : logoSeqImg; 
+
     const preloadImages = async () => {
       const loadedImages = [];
       const batchSize = 50;
 
-      for (let i = 0; i < logoSeqImg.length; i += batchSize) {
-        const batch = logoSeqImg.slice(i, i + batchSize);
+      for (let i = 0; i < selectedImages.length; i += batchSize) {
+        const batch = selectedImages.slice(i, i + batchSize);
         const batchPromises = batch.map(
           (url) =>
             new Promise((resolve) => {
@@ -57,26 +60,16 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
 
     const ctx = canvasRef.current.getContext("2d");
 
-    const getStart = () => {
-      if (xsSize) {
-        return "top top";
-      } else {
-        return "top -=100";
-      }
-    };
-
-
     ScrollTrigger.create({
       trigger: canvasRef.current,
-      // start: "top top",
-      start: getStart(),
+      start: "top top",
       end: "+=300%",
       pin: true,
       scrub: 1,
       onUpdate: ({ progress }) => {
         const index = Math.min(
-          logoSeqImg.length - 1,
-          Math.ceil(progress * logoSeqImg.length)
+          selectedImages.length - 1,
+          Math.ceil(progress * selectedImages.length)
         );
         setFrameIndex(index);
 

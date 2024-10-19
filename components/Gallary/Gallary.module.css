@@ -35,6 +35,9 @@
 
   position: fixed;
   left: 7%;
+
+  bottom: 31%;
+  margin-bottom: 0.5rem;
 }
 
 .gallarySubtitleBox {
@@ -58,6 +61,7 @@
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   padding-left: 0.5rem;
+  height: 220px;
 }
 
 .gallarySubtitle {
@@ -177,5 +181,29 @@
 @media (max-width: 500px) {
   .primeText {
     top: 28% !important;
+  }
+}
+
+@media (max-height: 850px) {
+  .buttonContainer {
+    position: fixed;
+    top: 30%; /* Adjust as needed */
+    right: 5%;
+    transform: translateX(-50%);
+  }
+  .gallaryImg {
+    width: 150px;
+    height: auto;
+    transition: all 0.2s linear;
+  }
+  .subHead {
+    bottom: 30%;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .gallarySubtitleBox {
+    height: 200px;
+    bottom: 3%;
   }
 }

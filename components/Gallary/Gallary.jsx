@@ -79,7 +79,6 @@ const Gallary = ({
           setShowBtn(false);
         }
 
-
         if (index > 50 && index <= 288) {
           gsap.to(primeTextBoxRef.current, { opacity: 1, duration: 1 });
 
@@ -314,8 +313,8 @@ const Gallary = ({
         <div
           className={styles.subHead}
           style={{
-            bottom: data.title === "Prestige" ? "33%" : "30%",
-            left: "7.5%",
+            // bottom: data.title === "Prestige" ? "33%" : "33%",
+            // left: "7.5%",
           }}
         >
           {showTitle ? (
