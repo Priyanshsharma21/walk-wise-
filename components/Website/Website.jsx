@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./Website.module.css";
 import Navbar from "../Navbar/Navbar";
 import Hero from "../Hero/Hero";
+import HeroMobile from "../Hero/HeroMobile";
+
 import { useAnimeContext } from "@/context/animeContext";
 import Introduction from "../Introduction/Introduction";
 import VideoShow from "../VideoShowcase/VideoShow";
@@ -66,12 +68,36 @@ const Website = () => {
         <HeroText />
         <div className="w-full h-[100vh]" /> */}
 
-        <Hero
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-        />
+        {/* {xsSize ? (
+          <HeroMobile
+            width={dimensions.width}
+            height={dimensions.height}
+            initialWidth={1080}
+            initialHeight={1920}
+          />
+        ) : (
+          <Hero
+            width={dimensions.width}
+            height={dimensions.height}
+            initialWidth={1920}
+            initialHeight={1080}
+          />
+        )} */}
+        {xsSize ? (
+          <Hero
+            width={dimensions.width}
+            height={dimensions.height}
+            initialWidth={1920}
+            initialHeight={1080}
+          />
+        ) : (
+          <Hero
+            width={dimensions.width}
+            height={dimensions.height}
+            initialWidth={1920}
+            initialHeight={1080}
+          />
+        )}
 
         <Introduction
           width={dimensions.width}

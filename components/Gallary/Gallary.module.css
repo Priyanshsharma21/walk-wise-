@@ -110,6 +110,36 @@
   left: 37% !important;
 }
 
+@media (max-width: 500px) {
+  .primeText {
+    top: 28% !important;
+  }
+}
+
+@media (max-height: 850px) {
+  .buttonContainer {
+    position: fixed;
+    top: 30%; /* Adjust as needed */
+    right: 5%;
+    transform: translateX(-50%);
+  }
+  .gallaryImg {
+    width: 150px;
+    height: auto;
+    transition: all 0.2s linear;
+  }
+  .subHead {
+    bottom: 30%;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .gallarySubtitleBox {
+    height: 200px;
+    bottom: 3%;
+  }
+}
+
 @media (max-width: 720px) {
   .gallaryLaMarca img {
     width: 150px;
@@ -175,35 +205,5 @@
     padding-left: 0.2rem;
     height: 150px;
     bottom: 2rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .primeText {
-    top: 28% !important;
-  }
-}
-
-@media (max-height: 850px) {
-  .buttonContainer {
-    position: fixed;
-    top: 30%; /* Adjust as needed */
-    right: 5%;
-    transform: translateX(-50%);
-  }
-  .gallaryImg {
-    width: 150px;
-    height: auto;
-    transition: all 0.2s linear;
-  }
-  .subHead {
-    bottom: 30%;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .gallarySubtitleBox {
-    height: 200px;
-    bottom: 3%;
   }
 }

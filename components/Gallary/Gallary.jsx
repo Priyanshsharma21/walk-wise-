@@ -314,7 +314,7 @@ const Gallary = ({
           className={styles.subHead}
           style={{
             // bottom: data.title === "Prestige" ? "33%" : "33%",
-            // left: "7.5%",
+            left: "7.5%",
           }}
         >
           {showTitle ? (
