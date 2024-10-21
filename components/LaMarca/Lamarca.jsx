@@ -9,7 +9,7 @@ import SplitText from "gsap/SplitText"; // Import SplitText
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Hero = ({ width, height, initialWidth, initialHeight }) => {
+const Lamarca = ({ width, height, initialWidth, initialHeight }) => {
   const [contentVisible, setContentVisible] = useState(false);
   const { navRef, setShowWebsite, showWebsite, isLoaderCompleted, xsSize } =
     useAnimeContext();
@@ -83,7 +83,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
         if (xsSize) {
           return "top top";
         } else {
-          return "top +=50";
+          return "top +=10";
         }
       };
       gsap
@@ -158,7 +158,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
         >
           <h4
             ref={stepIntoRef}
-            className={`${styles.heroSubTitle} text-6xl text-white text-left`}
+            className={`${styles.heroSubTitle} text-[#ffebcd] text-left`}
           >
             introducing
           </h4>
@@ -167,14 +167,14 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
             <img
               src="https://res.cloudinary.com/dlxpea208/image/upload/v1728541015/la_marca_italy_png_okn0kg.png"
               alt="LaMarca"
-              className={styles.heroImage} // Style this class in CSS for dimensions
+              className={styles.heroImage}
               ref={imageRef}
             />
           </div>
 
           <h4
             ref={zoneRef}
-            className={`${styles.heroSubTitle2} text-6xl text-white text-right`}
+            className={`${styles.heroSubTitle2} text-[#ffebcd] text-right`}
           >
             from the house of walkwise
           </h4>
@@ -185,4 +185,4 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
   );
 };
 
-export default Hero;
+export default Lamarca;

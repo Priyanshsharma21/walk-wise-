@@ -15,6 +15,10 @@ import Lamarca from "../LaMarca/Lamarca";
 import Sampark from "../Contact/Sampark";
 import LogoReveal from "../LogoReveal/LogoReveal";
 import HeroText from "../HeroText/HeroText";
+import Responsive from "../Responsive/Responsive.jsx";
+import IntroductionMobile from "../Introduction/IntroductionMobile";
+import LogoRevealMobile from "../LogoReveal/LogoRevealMobile";
+import { logoSeqImg, logoSeqImgMobile, shoeEntryImg } from "../../constants";
 
 const Website = () => {
   const { showWebsite, isLoaderCompleted, xsSize } = useAnimeContext();
@@ -57,28 +61,48 @@ const Website = () => {
 
       <div className={styles.content}>
         <Navbar />
-        {/* <LogoReveal
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-        />
-        <div className="w-full h-[250vh]" />
+        {/* <Hero
+            width={dimensions.width}
+            height={dimensions.height}
+            initialWidth={1080}
+            initialHeight={1920}
+            logoSeqImg={logoSeqImgMobile}
+          /> */}
+        {xsSize ? (
+          <LogoReveal
+            width={dimensions.width}
+            height={dimensions.height}
+            initialWidth={1080}
+            initialHeight={1920}
+            logoSeqImg={logoSeqImgMobile}
+          />
+        ) : (
+          <>
+            <LogoReveal
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1920}
+              initialHeight={1080}
+              logoSeqImg={logoSeqImg}
+            />
+          </>
+        )}
         <HeroText />
-        <div className="w-full h-[130vh]" /> */}
-        <Hero
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-        />
 
         <Introduction
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
+          shoeEntryImg={shoeEntryImg}
         />
+        {/* <IntroductionMobile
+          width={dimensions.width}
+          height={dimensions.height}
+          initialWidth={1920}
+          initialHeight={1080}
+          logoSeqImg={shoeEntryImg}
+        /> */}
 
         <div className="w-full h-[20vh]" />
         <VideoShow />
@@ -86,42 +110,86 @@ const Website = () => {
         <Lamarca />
         {xsSize && <div className="w-full h-[60vh]" />}
 
-        <Gallary
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-          data={pilot}
-          heightBelow={"0vh"}
-          isActive={activeButton}
-          setActive={setActiveButton}
-        />
-        <Gallary
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-          data={prime}
-          heightBelow={"0vh"}
-          isActive={activeButton}
-          setActive={setActiveButton}
-        />
-        <Gallary
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-          data={prestige}
-          heightBelow={"100vh"}
-          isActive={activeButton}
-          setActive={setActiveButton}
-        />
+        {xsSize ? (
+          <>
+            <Gallary
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1080}
+              initialHeight={1920}
+              data={pilot}
+              imgSeq={pilot.imgSequenceMobile}
+              heightBelow={"0vh"}
+              isActive={activeButton}
+              setActive={setActiveButton}
+            />
+            <Gallary
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1080}
+              initialHeight={1920}
+              data={prime}
+              imgSeq={prime.imgSequenceMobile}
+              heightBelow={"0vh"}
+              isActive={activeButton}
+              setActive={setActiveButton}
+            />
+            <Gallary
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1080}
+              initialHeight={1920}
+              data={prestige}
+              imgSeq={prestige.imgSequenceMobile}
+              heightBelow={"100vh"}
+              isActive={activeButton}
+              setActive={setActiveButton}
+            />
+          </>
+        ) : (
+          <>
+            <Gallary
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1920}
+              initialHeight={1080}
+              data={pilot}
+              imgSeq={pilot.imgSequence}
+              heightBelow={"0vh"}
+              isActive={activeButton}
+              setActive={setActiveButton}
+            />
+            <Gallary
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1920}
+              initialHeight={1080}
+              data={prime}
+              imgSeq={prime.imgSequence}
+              heightBelow={"0vh"}
+              isActive={activeButton}
+              setActive={setActiveButton}
+            />
+            <Gallary
+              width={dimensions.width}
+              height={dimensions.height}
+              initialWidth={1920}
+              initialHeight={1080}
+              data={prestige}
+              imgSeq={prestige.imgSequence}
+              heightBelow={"100vh"}
+              isActive={activeButton}
+              setActive={setActiveButton}
+            />
+          </>
+        )}
+
         <div className="w-full h-screen" />
 
         <Sawal />
-        <Sampark />
+        {/* <Sampark /> */}
 
-        {/* <Contact /> */}
+        <Contact />
       </div>
     </section>
   );

@@ -126,8 +126,6 @@ const Sampark = () => {
         <div className={styles.gradientBackground}></div>
         <div className={styles.glassLayer}></div>
         <div className={styles.scrollContainer}>
-          {" "}
-          {/* Add this wrapper */}
           <LegalInfo data={legalInfoData} setOpen={setOpen} />
         </div>
       </Drawer>

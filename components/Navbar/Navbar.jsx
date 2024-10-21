@@ -19,7 +19,11 @@ const Navbar = () => {
       className={`${styles.navbar} w-full flex flex-col justify-between fixed top-0`}
     >
       <div className={`${styles.navTop} flex justify-between items-center`}>
-        <Image src={logo} alt="logo" className={styles.navLogo} />
+        <img
+          src={`https://res.cloudinary.com/dlxpea208/image/upload/v1729494123/LOGO_a8usuq.png`}
+          alt="logo"
+          className={styles.navLogo}
+        />
       </div>
     </nav>
   );

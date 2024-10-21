@@ -16,6 +16,8 @@
 .content {
   padding: 0em 21em;
   flex-grow: 1; /* Allow content to grow and shrink */
+  padding-bottom: 7rem;
+  padding-top: 7rem;
 }
 
 .cross {

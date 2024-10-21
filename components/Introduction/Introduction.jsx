@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Introduction = ({ width, height, initialWidth, initialHeight }) => {
-  const { setPageCount } = useAnimeContext();
+  const { setPageCount, isMobile } = useAnimeContext();
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
   const subheadRefs = useRef([]);
@@ -67,6 +67,8 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
           Math.ceil(progress * shoeEntryImg.length)
         );
         setFrameIndex(index);
+
+        console.log(index);
 
         if (index >= 0 && index <= 469) {
           gsap.to(sectionRef.current, { opacity: 1, duration: 0.1 });
@@ -183,7 +185,6 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
       >
         <canvas
           ref={canvasRef}
-          style={{ mixBlendMode: "lighten" }}
           width={1920}
           height={1080}
           className={styles.canvas}

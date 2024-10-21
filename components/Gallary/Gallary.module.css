@@ -42,7 +42,7 @@
   bottom: 8%;
   left: 7%;
   width: 500px;
-  height: max-content;
+  height: 230px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,6 +106,21 @@
   left: 37% !important;
 }
 
+@media (max-height: 800px) {
+  .gallaryImg {
+    width: 130px;
+  }
+  .gallarySubtitle {
+    font-size: 1.2rem;
+  }
+  .gallarySubtitleBox {
+    height: 160px;
+  }
+  .subHead {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 720px) {
   .gallaryLaMarca img {
     width: 150px;
@@ -120,7 +135,7 @@
   .buttonContainer {
     position: fixed;
     top: 30%; /* Adjust as needed */
-    right: 5%;
+    right: -7%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -130,9 +145,9 @@
   }
 
   .canvas {
-    top: 55%;
-    right: 30%;
-    transform: scale3d(1.5, 1.5, 1.5) !important;
+    /* top: 55%; */
+    right: 10%;
+    /* transform: scale3d(1.5, 1.5, 1.5) !important; */
   }
 
   .gallarySubtitle {

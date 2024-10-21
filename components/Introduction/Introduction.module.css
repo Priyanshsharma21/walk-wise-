@@ -67,7 +67,7 @@
 
 .canvas {
   top: -30px;
-  filter: drop-shadow(10px 6px 8px black);
+  filter: drop-shadow(5px 3px 4px black);
 }
 
 /* .heroSubTitle div {

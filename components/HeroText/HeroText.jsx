@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "../LaMarca/Lamarca.module.css";
+import styles from "./HeroText.module.css";
 import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
 import SplitText from "gsap/SplitText"; // Import SplitText
@@ -85,7 +85,7 @@ const HeroText = ({ width, height, initialWidth, initialHeight }) => {
         if (xsSize) {
           return "top top";
         } else {
-          return "top +=50";
+          return "top top";
         }
       };
       gsap
@@ -150,7 +150,7 @@ const HeroText = ({ width, height, initialWidth, initialHeight }) => {
 
   return (
     <>
-      <div className="w-full h-[10vh]" />
+      {/* <div className="w-full h-[10vh]" /> */}
       <section className={`${styles.hero} w-full min-h-full`} ref={heroRef}>
         <div
           className={`${styles.heroContent} flex flex-col`}
@@ -178,6 +178,7 @@ const HeroText = ({ width, height, initialWidth, initialHeight }) => {
           ></h4>
         </div>
       </section>
+      <div className="w-full" style={{ height: xsSize ? "50vh" : "100vh" }} />
     </>
   );
 };

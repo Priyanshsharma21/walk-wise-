@@ -1,15 +1,20 @@
-import styles from "../Hero/Hero.module.css";
+import styles from "./LogoReveal.module.css";
 import React, { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText"; // Import SplitText
-import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
+const LogoReveal = ({
+  width,
+  height,
+  initialWidth,
+  initialHeight,
+  logoSeqImg,
+}) => {
   const {
     setShowWebsite,
     showWebsite,
@@ -44,8 +49,7 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
         );
         const loadedBatch = await Promise.all(batchPromises);
         loadedImages.push(...loadedBatch);
-        if (i === 1) {
-          // Show the website as soon as the first batch is loaded
+        if (i === 50) {
           setShowWebsite(true);
         }
       }
@@ -64,7 +68,6 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
         return "top -=100";
       }
     };
-
 
     ScrollTrigger.create({
       trigger: canvasRef.current,
@@ -91,7 +94,7 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [width, height, xsSize]);
+  }, [width, height, xsSize, logoSeqImg]);
 
   useEffect(() => {
     if (!canvasRef.current || images.length < 1) return;
@@ -150,8 +153,8 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
         <canvas
           ref={canvasRef}
           className={styles.canvas}
-          width={1920}
-          height={1080}
+          width={xsSize ? 1080 : 1920}
+          height={xsSize ? 1920 : 1080}
         />
       </div>
       <div ref={scrollRef} className={styles.scrollDown}>
@@ -211,6 +214,7 @@ const LogoReveal = ({ width, height, initialWidth, initialHeight }) => {
           </div>
         </Tilt>
       </div>
+      <div className="w-full h-[250vh]" />
     </>
   );
 };

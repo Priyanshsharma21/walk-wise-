@@ -4,13 +4,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText"; // Import SplitText
 import styles from "./Hero.module.css";
-import { logoSeqImg } from "../../constants";
 import { useAnimeContext } from "@/context/animeContext";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Hero = ({ width, height, initialWidth, initialHeight }) => {
+const Hero = ({ width, height, initialWidth, initialHeight, logoSeqImg }) => {
   const [contentVisible, setContentVisible] = useState(false);
   const [showBrandName, setShowBrandName] = useState(false);
   const { navRef, setShowWebsite, showWebsite, isLoaderCompleted, xsSize } =
@@ -255,8 +254,8 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
         <canvas
           ref={canvasRef}
           className={styles.canvas}
-          width={1920}
-          height={1080}
+          width={1080}
+          height={1920}
         />
       </div>
       <div ref={scrollRef} className={styles.scrollDown}>
