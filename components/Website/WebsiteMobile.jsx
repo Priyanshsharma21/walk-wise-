@@ -16,6 +16,7 @@ import Sampark from "../Contact/Sampark";
 import LogoReveal from "../LogoReveal/LogoReveal";
 import HeroText from "../HeroText/HeroText";
 import MobileShow from "../VideoShowcase/MobileShow";
+import IntroductionMobile from "../Introduction/IntroductionMobile";
 
 const WebsiteMobile = () => {
   const { showWebsite, isLoaderCompleted, xsSize, isMobile } =
@@ -68,12 +69,16 @@ const WebsiteMobile = () => {
           imgSeq={logoSeqImgMobile}
         />
 
-        <Introduction
+        <div className="w-full h-screen" />
+
+        <IntroductionMobile
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
         />
+
+        <div className="w-full h-screen" />
 
         <div className="w-full h-[20vh]" />
         <MobileShow />

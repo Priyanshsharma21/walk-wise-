@@ -1,0 +1,164 @@
+.introduction {
+  z-index: 100;
+}
+
+.iSubhead {
+  color: blanchedalmond;
+  font-size: 3vw;
+  font-weight: 200;
+  line-height: 0.8em;
+  margin-right: 4rem;
+  margin-top: 0.2em;
+  letter-spacing: 0.01em;
+}
+
+.info {
+  padding-top: 3rem;
+}
+
+.iCol1 {
+  border-right: 2px solid blanchedalmond;
+}
+.hero {
+  transition: all 0.2s linear;
+  position: fixed;
+  top: 14%;
+  right: 10rem;
+}
+.heroContent {
+  position: relative;
+  bottom: 1em;
+}
+
+.heroSubTitle {
+  font-size: 2vw;
+  font-weight: 200;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+  line-height: 0.8em;
+  color: #ffebcd;
+  position: relative;
+  top: 2em;
+  right: 2rem;
+  letter-spacing: 0.01em;
+}
+
+.heroTitle {
+  font-size: 15vw;
+  font-weight: 200;
+  font-family: "Cormorant Garamond", serif;
+  line-height: 0.8em;
+  color: #ffebcd;
+  letter-spacing: 0.01em;
+  position: relative;
+  left: 0rem;
+  display: inline-block; /* Added to ensure word wrapping */
+}
+
+.heroSubTitle2 {
+  font-size: 2vw;
+  font-weight: 200;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+  line-height: 0.8em;
+  color: #ffebcd;
+  position: relative;
+  bottom: 0.2em;
+  letter-spacing: 0.01em;
+}
+
+.canvas {
+  top: -30px;
+  filter: drop-shadow(10px 6px 8px black);
+}
+
+/* .heroSubTitle div {
+    opacity: 1 !important;
+  }
+  .heroSubTitle div div {
+    opacity: 1 !important;
+  } */
+
+.hero {
+  /* position: fixed;
+    top: 60%;
+    right: 2rem; */
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 720px) {
+  .canvas {
+    top: 20%;
+  }
+  .introCol1 {
+    width: 40%;
+  }
+  .info {
+    position: fixed;
+    top: 8%;
+    left: 2%;
+  }
+
+  .iSubhead {
+    color: blanchedalmond;
+    font-size: 1.2rem;
+    font-weight: 200;
+    line-height: 0em;
+    margin-right: 1rem;
+    padding-top: 0.8rem;
+    letter-spacing: 0.01em;
+  }
+
+  .iCol1 {
+    border-right: 1px solid rgba(255, 235, 205, 0.384);
+  }
+
+  .hero {
+    transition: all 0.2s linear;
+    position: fixed;
+    top: 70%;
+    right: 0rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .heroTitle {
+    font-size: 9rem;
+    font-weight: 200;
+    line-height: 0.8em;
+    letter-spacing: 0.01em;
+    position: relative;
+    left: 0rem;
+    right: 2rem;
+  }
+  .introBigWord {
+    margin-right: 0.5rem;
+  }
+
+  .heroContent {
+    bottom: 0em;
+    top: 1.5rem;
+  }
+
+  .heroSubTitle {
+    font-size: 1.2rem;
+    font-weight: 200;
+    line-height: 0.8em;
+    color: #ffebcd;
+    position: relative;
+    top: 2em;
+    right: 0rem;
+    letter-spacing: 0.01em;
+  }
+
+  .heroSubTitle2 {
+    font-size: 1.2rem;
+    font-weight: 200;
+    line-height: 0.8em;
+    color: #ffebcd;
+    position: relative;
+    bottom: 0.2em;
+    letter-spacing: 0.01em;
+    right: 0.5rem;
+  }
+}
