@@ -9,10 +9,8 @@ import SplitText from "gsap/SplitText"; // Import SplitText
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const LaMarcaMobile = ({ width, height, initialWidth, initialHeight }) => {
-  const [contentVisible, setContentVisible] = useState(true);
-  const { navRef, setShowWebsite, showWebsite, isLoaderCompleted, xsSize } =
-    useAnimeContext();
+const Lamarca = ({ width, height, initialWidth, initialHeight }) => {
+  const { navRef, xsSize, contentVisible } = useAnimeContext();
   const [frameIndex, setFrameIndex] = useState(0);
   const canvasRef = useRef(null);
   const heroRef = useRef(null);
@@ -185,4 +183,4 @@ const LaMarcaMobile = ({ width, height, initialWidth, initialHeight }) => {
   );
 };
 
-export default LaMarcaMobile;
+export default Lamarca;
