@@ -9,15 +9,17 @@ import Introduction from "../Introduction/Introduction";
 import VideoShow from "../VideoShowcase/VideoShow";
 import Gallary from "../Gallary/Gallary";
 import Contact from "../Contact/Contact";
-import { pilot, prestige, prime } from "@/constants";
+import { logoSeqImg, pilot, prestige, prime } from "@/constants";
 import Sawal from "../Faq/Sawal";
 import Lamarca from "../LaMarca/Lamarca";
 import Sampark from "../Contact/Sampark";
 import LogoReveal from "../LogoReveal/LogoReveal";
 import HeroText from "../HeroText/HeroText";
+import MobileShow from "../VideoShowcase/MobileShow";
 
 const Website = () => {
-  const { showWebsite, isLoaderCompleted, xsSize } = useAnimeContext();
+  const { showWebsite, isLoaderCompleted, xsSize, isMobile } =
+    useAnimeContext();
   const [activeButton, setActiveButton] = useState(0);
   const [dimensions, setDimensions] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 1920,
@@ -71,6 +73,7 @@ const Website = () => {
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
+          imgSeq={logoSeqImg}
         />
 
         <Introduction
@@ -95,6 +98,7 @@ const Website = () => {
           heightBelow={"0vh"}
           isActive={activeButton}
           setActive={setActiveButton}
+          imgSeq={pilot.imgSequence}
         />
         <Gallary
           width={dimensions.width}
@@ -105,6 +109,7 @@ const Website = () => {
           heightBelow={"0vh"}
           isActive={activeButton}
           setActive={setActiveButton}
+          imgSeq={prime.imgSequence}
         />
         <Gallary
           width={dimensions.width}
@@ -115,13 +120,14 @@ const Website = () => {
           heightBelow={"100vh"}
           isActive={activeButton}
           setActive={setActiveButton}
+          imgSeq={prestige.imgSequence}
         />
         <div className="w-full h-screen" />
 
         <Sawal />
-        <Sampark />
+        {/* <Sampark /> */}
 
-        {/* <Contact /> */}
+        <Contact />
       </div>
     </section>
   );

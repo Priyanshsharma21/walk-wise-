@@ -1,169 +1,124 @@
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-import { Slide, ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import styles from "./Contact.module.css";
-import btnStyle from "./Button.module.css";
-
-import { Col, Row } from "antd";
-import { navbarData } from "../../constants";
+import React, { useState } from "react";
+import styles from "./Sampark.module.css";
+import Ticker from "./Ticker";
+import {
+  footerData,
+  navbarData,
+  privacyPolityData,
+  tAndCData,
+} from "@/constants";
 import FramerMagnetic from "../FramerMagnetic";
+import { Drawer } from "antd";
+import LegalInfo from "../LegalInfo/LegalInfo";
+import { useAnimeContext } from "@/context/animeContext";
 
 const Contact = () => {
-  const form = useRef();
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
-
-  const handleClick = (url) => {
+  const [open, setOpen] = useState(false);
+  const [legalInfoData, setLegalInfoData] = useState(null); // State to hold the selected legal info data
+  const { setEnableSmoothScroll, enableSmoothScroll } = useAnimeContext();
+  const handleRedirect = (url) => {
     window.open(url, "_blank");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    emailjs
-      .sendForm(
-        "service_wbrdcli",
-        "template_ghdja7d",
-        form.current,
-        "gbPZu0yZl9NphdAfF"
-      )
-      .then(
-        () => {
-          toast.success("Details Submitted.", {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Slide,
-          });
-          resetForm();
-          setLoading(false);
-        },
-        (error) => {
-          toast.error("Oops! Something went wrong.", {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Slide,
-          });
-          resetForm();
-          setLoading(false);
-        }
-      );
+  // Function to show the drawer and set the corresponding data
+  const handleClick = (title) => {
+    if (title === "Terms & Conditions") {
+      setLegalInfoData(tAndCData);
+    } else if (title === "Privacy Policy") {
+      setLegalInfoData(privacyPolityData);
+    }
+    setOpen(true);
+    setEnableSmoothScroll(false);
   };
 
-  const handleLamarca = () => {
-    window.open("https://lamarcaitaly.com/", "_blank");
+  const onClose = () => {
+    setOpen(false);
+    setEnableSmoothScroll(true);
   };
-
   return (
-    <div className={`w-full h-screen relative ${styles.contactContainer}`}>
-      <div style={{ height: "100vh" }}>
-        <Row style={{ height: "100%" }} gutter={[0, 0]}>
-          <Col
-            className={styles.contactCol2}
-            xl={12}
-            lg={12}
-            md={12}
-            sm={24}
-            xs={24}
+    <div className={styles.main}>
+      {/* Heading ticker */}
+      <section className={styles.tickerSection}>
+        <Ticker word={"EXPLORE NOW"} />
+      </section>
+
+      {/* showcase */}
+      <section className={styles.showCaseSection}>
+        <div className="w-full flex justify-center items-center h-full">
+          <section
+            className={styles.mapSection}
+            onClick={() =>
+              handleRedirect("https://lamarcaitaly.com/collections/oxford-2")
+            }
           >
-            <Row className="w-full h-full">
-              <div className="w-full h-full flex flex-col justify-center items-center">
-                <div className={btnStyle.showButton} onClick={handleLamarca}>
-                  <span class="text">SHOP NOW</span>
-                  <span>DISCOVER</span>
+            <div className={styles.shopImg}>
+              <img
+                src="https://res.cloudinary.com/dlxpea208/image/upload/v1729075202/Screenshot_2024-10-16_160632_1_qskrn2.png"
+                alt="Shop"
+              />
+              <div className={styles.overlay}>
+                <div className={styles.experienceText}>Shop Now</div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div className="w-full flex justify-center items-center h-full">
+          <section className="w-full h-full flex justify-center items-center">
+            <section
+              className={styles.mapSection}
+              onClick={() =>
+                handleRedirect(
+                  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.695731528204!2d80.2166199!3d12.991302600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526765f770d9af%3A0x48653d3e62a674b8!2sLa%20Marca%20-%20Handcrafted%20Footwear%20%26%20Accessories!5e0!3m2!1sen!2sin!4v1728911229544!5m2!1sen!2sin"
+                )
+              }
+            >
+              <div className={styles.shopImg}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.695731528204!2d80.2166199!3d12.991302600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526765f770d9af%3A0x48653d3e62a674b8!2sLa%20Marca%20-%20Handcrafted%20Footwear%20%26%20Accessories!5e0!3m2!1sen!2sin!4v1728911229544!5m2!1sen!2sin"
+                  className={styles.map}
+                  width="100%"
+                  height="450"
+                />
+                <div className={styles.overlay}>
+                  <div className={styles.experienceText}>Experience Now</div>
                 </div>
               </div>
-              <div>
-                <section className={styles.socialMedia}>
-                  {navbarData.socialMedia.map((item, i) => (
-                    <FramerMagnetic key={i} link={item.link}>
-                      <item.icon
-                        className={styles.icons}
-                        onClick={() => handleClick}
-                      />
-                    </FramerMagnetic>
-                  ))}
-                </section>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      {/* footer */}
+      <section className={styles.footerSection}>
+        <div className={styles.footerBox}>
+          <section className={styles.legalInfoBox}>
+            {footerData.legalInfo.map((item) => (
+              <div
+                key={item.id}
+                className={styles.legalInfo}
+                onClick={() => handleClick(item.title)}
+              >
+                {item.title}
               </div>
-            </Row>
-          </Col>
-          <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-            <div className={styles.rightSide}>
-              <video
-                className={styles.backgroundVideo}
-                src="https://res.cloudinary.com/dlxpea208/video/upload/v1727342704/test-Vbit-01_fwlgw0.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-              ></video>
-              <Row className="w-full h-full absolute top-0">
-                <Col span={24}>
-                  <section className={styles.rightSideSection}>
-                    <div className={styles.wrapper}>
-                      <svg className={styles.svg}>
-                        <text x="50%" y="50%" dy=".35em" text-anchor="middle">
-                          EXPERIENCE
-                        </text>
-                      </svg>
-                    </div>
+            ))}
+          </section>
+          <section className={styles.socialMedia}>
+            {navbarData.socialMedia.map((item, i) => (
+              <FramerMagnetic key={i} link={item.link}>
+                <item.icon className={styles.icons} />
+              </FramerMagnetic>
+            ))}
+          </section>
+        </div>
+      </section>
 
-                    <div className={styles.wrapper}>
-                      <svg className={styles.svg}>
-                        <text x="50%" y="50%" dy=".35em" text-anchor="middle">
-                          IN SHOP
-                        </text>
-                      </svg>
-                    </div>
-                  </section>
-                </Col>
-                <Col span={24}>
-                  <section className={styles.mapSection}>
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.695731528204!2d80.2166199!3d12.991302600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526765f770d9af%3A0x48653d3e62a674b8!2sLa%20Marca%20-%20Handcrafted%20Footwear%20%26%20Accessories!5e0!3m2!1sen!2sin!4v1728911229544!5m2!1sen!2sin"
-                      width="100%"
-                      height="450"
-                      className={styles.map}
-                    />
-                  </section>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-      </div>
-
-      <ToastContainer />
+      <Drawer onClose={onClose} open={open} width="100%" height="100%">
+        <div className={styles.gradientBackground}></div>
+        <div className={styles.glassLayer}></div>
+        <div className={styles.scrollContainer}>
+          <LegalInfo data={legalInfoData} setOpen={setOpen} />
+        </div>
+      </Drawer>
     </div>
   );
 };

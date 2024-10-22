@@ -16,6 +16,7 @@ const Gallary = ({
   heightBelow,
   isActive,
   setActive,
+  imgSeq,
 }) => {
   const [images, setImages] = useState([]);
   const [frameIndex, setFrameIndex] = useState(0);
@@ -38,8 +39,8 @@ const Gallary = ({
       const loadedImages = [];
       const batchSize = 50;
 
-      for (let i = 0; i < data["imgSequence"].length; i += batchSize) {
-        const batch = data["imgSequence"].slice(i, i + batchSize);
+      for (let i = 0; i < imgSeq.length; i += batchSize) {
+        const batch = imgSeq.slice(i, i + batchSize);
         const batchPromises = batch.map(
           (url) =>
             new Promise((resolve) => {
@@ -68,8 +69,8 @@ const Gallary = ({
       scrub: 1,
       onUpdate: ({ progress }) => {
         const index = Math.min(
-          data["imgSequence"].length - 1,
-          Math.ceil(progress * data["imgSequence"].length)
+          imgSeq.length - 1,
+          Math.ceil(progress * imgSeq.length)
         );
         setFrameIndex(index);
 
@@ -78,7 +79,6 @@ const Gallary = ({
         } else {
           setShowBtn(false);
         }
-
 
         if (index > 50 && index <= 288) {
           gsap.to(primeTextBoxRef.current, { opacity: 1, duration: 1 });
@@ -244,8 +244,8 @@ const Gallary = ({
         <canvas
           ref={canvasRef}
           className={styles.canvas}
-          width={1920}
-          height={1080}
+          width={initialWidth}
+          height={initialHeight}
         />
         <div
           className={`${styles.primeText} ${checkMobileReveal()}`}
@@ -282,12 +282,7 @@ const Gallary = ({
         </div>
 
         {showBtn && (
-          <motion.div
-            whileInView={{
-              x: [100, 50, 0],
-              opacity: [0, 0, 1],
-            }}
-            transition={{ duration: 0.8, delay: 0 }}
+          <div
             className={styles.buttonContainer}
             style={{ opacity: showBtn ? 1 : 0 }}
           >
@@ -308,13 +303,13 @@ const Gallary = ({
               alt={data.title}
               className={styles.gallaryImg}
             />
-          </motion.div>
+          </div>
         )}
 
         <div
           className={styles.subHead}
           style={{
-            bottom: data.title === "Prestige" ? "33%" : "30%",
+            bottom: data.title === "Prestige" ? "31%" : "31%",
             left: "7.5%",
           }}
         >
@@ -364,7 +359,7 @@ const Gallary = ({
                     variants={revealMask2}
                     initial="initial"
                     animate="animate"
-                    className={`${styles.heroTitle} w-auto text-white ml-[0.6em] flex items-center`}
+                    className={`${styles.heroTitle} w-auto  ml-[0.6em] flex items-center`}
                   >
                     <motion.div>{word}</motion.div>
                   </motion.div>
@@ -392,7 +387,7 @@ const Gallary = ({
                     variants={unRevealMask2}
                     initial="initial"
                     animate="animate"
-                    className={`${styles.heroTitle} w-auto text-white ml-[0.6em] flex items-center`}
+                    className={`${styles.heroTitle} w-auto  ml-[0.6em] flex items-center`}
                   >
                     <motion.div>{word}</motion.div>
                   </motion.div>

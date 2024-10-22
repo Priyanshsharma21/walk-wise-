@@ -6,11 +6,12 @@ import Website from "@/components/Website/Website";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useAnimeContext } from "@/context/animeContext";
+import WebsiteMobile from "@/components/Website/WebsiteMobile";
 
 gsap.registerPlugin(useGSAP);
 
 const Page = () => {
-  const { navRef, enableSmoothScroll } = useAnimeContext();
+  const { navRef, enableSmoothScroll, isMobile } = useAnimeContext();
 
   useEffect(() => {
     let lenis;
@@ -31,7 +32,6 @@ const Page = () => {
     }
 
     return () => {
-      // Destroy Lenis when component unmounts or if smooth scrolling is disabled
       if (lenis) {
         lenis.destroy();
       }
@@ -41,7 +41,7 @@ const Page = () => {
   return (
     <main className="app">
       <Preloader />
-      <Website />
+      {isMobile ? <WebsiteMobile /> : <Website />}
     </main>
   );
 };
