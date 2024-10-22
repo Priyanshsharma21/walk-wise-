@@ -68,7 +68,6 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
         );
         setFrameIndex(index);
 
-        console.log(index);
 
         if (index >= 0 && index <= 469) {
           gsap.to(sectionRef.current, { opacity: 1, duration: 0.1 });

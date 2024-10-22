@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "./VideoShow.module.css"; // Importing CSS module
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { videoSectionData } from "@/constants";
-import { Divider } from "antd";
-import { motion } from "framer-motion";
+import styles from "./MobileShow.module.css";
 import { useAnimeContext } from "@/context/animeContext";
+import { Divider } from "antd";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VideoShow = () => {
+const MobileShow = () => {
   const containerRef = useRef(null);
   const thumbnailRefs = useRef([]);
   const videoLeftSideRef = useRef(null); // Ref for the animated box
@@ -20,24 +21,31 @@ const VideoShow = () => {
   const [backgroundLeft, setBackgroundLeft] = useState(
     videoSectionData[0].background
   );
+  const [contentVisible, setContentVisible] = useState(false); // New state for visibility
+  const {
+    isMobile,
+    xsSize,
+    setContentVisible: isContentVisible,
+  } = useAnimeContext();
+
   const subtitleRef = useRef(null);
-  const { isMobile, xsSize } = useAnimeContext();
+  const processRef = useRef(null);
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const scrubValue = 0.5;
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
-    // Set up the horizontal scroll trigger
-    gsap.to(thumbnailRefs.current, {
-      xPercent: -100 * (videoSectionData.length - 1), // Scroll through all videos
-      ease: "none",
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.timeline({
       scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: () => `+=${container.scrollWidth - window.innerWidth}`, // Adjusting end value
-        pin: true,
-        scrub: scrubValue,
-        invalidateOnRefresh: true,
+        trigger: processRef.current,
+        start: "top 50%", // Trigger when the user scrolls to the section
+        end: "bottom 100%", // End when the user scrolls past the section
+        scrub: true,
+        pinSpacing: false,
         onUpdate: (self) => {
           const index = Math.round(
             self.progress * (videoSectionData.length - 1)
@@ -47,15 +55,15 @@ const VideoShow = () => {
           setTitle2(videoSectionData[index].title2);
           setBackgroundLeft(videoSectionData[index].background);
           setIndex(videoSectionData[index].id);
+          isContentVisible(true);
         },
+        onEnter: () => setContentVisible(true), // Set contentVisible to true when entering
+        onLeave: () => setContentVisible(false), // Set contentVisible to false when leaving
+        onEnterBack: () => setContentVisible(true), // Set contentVisible to true when re-entering
+        onLeaveBack: () => setContentVisible(false), // Set contentVisible to false when leaving back
       },
     });
-
-    // Clean up scroll triggers on component unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [isMobile, xsSize]);
+  }, []);
 
   useEffect(() => {
     if (subtitleRef.current) {
@@ -75,7 +83,6 @@ const VideoShow = () => {
     }
   }, [subTitle]);
 
-  // New effect to animate the videoLeftSide box from bottom to its initial position when the title changes
   useEffect(() => {
     if (videoLeftSideRef.current && xsSize) {
       gsap.fromTo(
@@ -100,41 +107,29 @@ const VideoShow = () => {
   };
 
   return (
-    <div style={{ zIndex: 999999 }}>
-      <div ref={containerRef} className={styles.container}>
-        <div className={styles.wrapper}>
-          {videoSectionData.map((item, i) => (
-            <div
-              key={item.id}
-              id={`thumbnail-${item.id}`}
-              ref={(el) => (thumbnailRefs.current[i] = el)}
-              className={styles.thumbnail}
-              style={{ marginLeft: i === 0 ? "30vw" : "0px" }}
-            >
-              <video
-                src={isMobile ? item.videoUrl.mobile : item.videoUrl.desktop}
-                poster={item.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className={styles.video}
-              />
-            </div>
-          ))}
+    <div
+      id="process"
+      ref={processRef}
+      className={`w-full min-h-[100vh] bg-[#141414] text-white ${styles.processMain}`}
+    >
+      <section
+        ref={targetRef}
+        className="relative h-[300vh] scrolling_box bg-[#12121218]"
+      >
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden processbg">
+          <motion.div style={{ x }} className="flex c-process-cont">
+            {videoSectionData.map((card) => {
+              return <Card card={card} key={card.id} />;
+            })}
+          </motion.div>
         </div>
+      </section>
 
-        <div className="absolute right-2 top-2">
-          <div>
-            <img
-              className={styles.logoBrandTitle}
-              src="https://res.cloudinary.com/dlxpea208/image/upload/v1727845317/Group_33_gbml5a.png"
-              alt="logo"
-            />
-          </div>
-        </div>
-
-        <div
+      {contentVisible && (
+        <motion.div
+          initial={{ opacity: 0 }} // Initial opacity
+          animate={{ opacity: 1 }} // Animate to opacity 1
+          transition={{ duration: 1 }} // Duration of the animation
           ref={videoLeftSideRef} // Ref for the box to animate
           style={{
             background: isMobile
@@ -175,10 +170,29 @@ const VideoShow = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      )}
     </div>
   );
 };
 
-export default VideoShow;
+const Card = ({ card }) => {
+  return (
+    <div
+      key={card.srno}
+      className={`group relative processCardMain overflow-hidden bg-[#E04E36] ${styles.videoCards}`}
+    >
+      <video
+        src={card.videoUrl.desktop}
+        poster={card.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={styles.video}
+      />
+    </div>
+  );
+};
+
+export default MobileShow;

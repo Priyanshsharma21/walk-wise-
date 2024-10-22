@@ -19,9 +19,12 @@ import Responsive from "../Responsive/Responsive.jsx";
 import IntroductionMobile from "../Introduction/IntroductionMobile";
 import LogoRevealMobile from "../LogoReveal/LogoRevealMobile";
 import { logoSeqImg, logoSeqImgMobile, shoeEntryImg } from "../../constants";
+import MobileShow from "../VideoShowcase/MobileShow";
+import LaMarcaMobile from "../LaMarca/LaMarcaMobile";
 
 const Website = () => {
-  const { showWebsite, isLoaderCompleted, xsSize } = useAnimeContext();
+  const { showWebsite, isLoaderCompleted, xsSize, isMobile } =
+    useAnimeContext();
   const [activeButton, setActiveButton] = useState(0);
   const [dimensions, setDimensions] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 1920,
@@ -105,9 +108,10 @@ const Website = () => {
         /> */}
 
         <div className="w-full h-[20vh]" />
-        <VideoShow />
+        {/* <div className="w-full h-[100vh]" /> */}
+        {isMobile ? <MobileShow /> : <VideoShow />}
 
-        <Lamarca />
+        {isMobile ? <LaMarcaMobile /> : <Lamarca />}
         {xsSize && <div className="w-full h-[60vh]" />}
 
         {xsSize ? (

@@ -18,6 +18,8 @@ export const AnimeProvider = ({ children }) => {
 
   const [contentVisible, setContentVisible] = useState(false);
 
+  console.log(contentVisible);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth <= breakPoint);
