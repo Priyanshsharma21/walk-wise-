@@ -22,6 +22,7 @@ const Contact = () => {
 
   // Function to show the drawer and set the corresponding data
   const handleClick = (title) => {
+    console.log(title)
     if (title === "Terms & Conditions") {
       setLegalInfoData(tAndCData);
     } else if (title === "Privacy Policy") {

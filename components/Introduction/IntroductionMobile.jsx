@@ -5,14 +5,13 @@ import SplitText from "gsap/SplitText";
 import { useAnimeContext } from "@/context/animeContext";
 import React from "react";
 import styles from "./IntroductionMobile.module.css";
-import { infoData, introductionText, shoeEntryImg } from "@/constants";
+import { infoData, introductionText, shoeEntryImgMobile } from "@/constants";
 import { Col, Row } from "antd";
 import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
-  const { setPageCount } = useAnimeContext();
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
   const subheadRefs = useRef([]);
@@ -36,8 +35,8 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
       const loadedImages = [];
       const batchSize = 50;
 
-      for (let i = 0; i < shoeEntryImg.length; i += batchSize) {
-        const batch = shoeEntryImg.slice(i, i + batchSize);
+      for (let i = 0; i < shoeEntryImgMobile.length; i += batchSize) {
+        const batch = shoeEntryImgMobile.slice(i, i + batchSize);
         const batchPromises = batch.map(
           (url) =>
             new Promise((resolve) => {
@@ -65,24 +64,24 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
       scrub: 1,
       onUpdate: ({ progress }) => {
         const index = Math.min(
-          shoeEntryImg.length - 1,
-          Math.ceil(progress * shoeEntryImg.length)
+          shoeEntryImgMobile.length - 1,
+          Math.ceil(progress * shoeEntryImgMobile.length)
         );
         setFrameIndex(index);
 
-        if (index >= 0 && index <= 469) {
+        if (index >= 1 && index <= 205) {
           setShowMainContent(true);
         } else {
           setShowMainContent(false);
         }
 
-        if (index >= 30 && index <= 469) {
+        if (index >= 0 && index <= 205) {
           gsap.to(sectionRef.current, { opacity: 1, duration: 0.1 });
         } else {
           gsap.to(sectionRef.current, { opacity: 0, duration: 1 });
         }
 
-        if (index >= 346 && index <= 469) {
+        if (index >= 70 && index <= 205) {
           setShowBottomText(true);
           gsap.to(heroRef.current, { opacity: 1, duration: 1 });
         } else {
@@ -146,6 +145,13 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
     }),
   };
 
+  const unRevealMask = {
+    initial: { y: "0%" },
+    animate: (i) => ({
+      y: "100%",
+      transition: { duration: 0.4, ease: [0.33, 1, 0.68, 1], delay: 0.1 * i },
+    }),
+  };
   return (
     <>
       <div
@@ -162,33 +168,68 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
         />
       </div>
 
-      <div ref={sectionRef} className={styles.introduction}>
-        {showMainContent && (
-          <main className={`${styles.info} w-full h-screen`}>
-            <Row>
-              <Col
-                xl={9}
-                lg={9}
-                md={24}
-                sm={24}
-                xm={24}
-                className={styles.introCol1}
-              >
-                <div className={`flex flex-col ${styles.iCol1} justify-center`}>
+      <div className={styles.introduction}>
+        <main className={`${styles.info} w-full h-screen`}>
+          <Row>
+            <Col
+              xl={9}
+              lg={9}
+              md={24}
+              sm={24}
+              xm={24}
+              className={styles.introCol1}
+            >
+              {showMainContent ? (
+                <>
                   {infoData.map((data, i) => (
                     <div
-                      key={i}
-                      className={`${styles.iSubhead} pb-8 text-right`}
+                      className={`flex flex-col ${
+                        showMainContent ? styles.iCol1 : ""
+                      } justify-center`}
                     >
-                      {data}
+                      <div className="w-full overflow-hidden">
+                        <motion.div
+                          custom={i}
+                          variants={revealMask}
+                          initial="initial"
+                          animate="animate"
+                          key={i}
+                          className={`${styles.iSubhead} pb-8 text-right`}
+                        >
+                          {data}
+                        </motion.div>
+                      </div>
                     </div>
                   ))}
-                </div>
-              </Col>
-              <Col xl={15} lg={15} md={0} sm={0} xm={0}></Col>
-            </Row>
-          </main>
-        )}
+                </>
+              ) : (
+                <>
+                  {infoData.map((data, i) => (
+                    <div
+                      className={`flex flex-col ${
+                        showMainContent ? styles.iCol1 : ""
+                      } justify-center`}
+                    >
+                      <div className="w-full overflow-hidden">
+                        <motion.div
+                          custom={i}
+                          variants={unRevealMask}
+                          initial="initial"
+                          animate="animate"
+                          key={i}
+                          className={`${styles.iSubhead} pb-8 text-right`}
+                        >
+                          {data}
+                        </motion.div>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </Col>
+            <Col xl={15} lg={15} md={0} sm={0} xm={0}></Col>
+          </Row>
+        </main>
         <section
           className={`${styles.hero} w-full min-h-full`}
           ref={heroRef}

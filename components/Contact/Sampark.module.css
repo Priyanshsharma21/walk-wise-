@@ -6,6 +6,7 @@
   /* min-height: 100vh; */
   overflow: hidden;
   background: url("https://res.cloudinary.com/dlxpea208/image/upload/v1727842605/wwc-bg1_hzpxlt.png");
+  z-index: 999999999;
 }
 
 .sliderContainer {
