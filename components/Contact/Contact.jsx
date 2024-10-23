@@ -15,14 +15,12 @@ import { useAnimeContext } from "@/context/animeContext";
 const Contact = () => {
   const [open, setOpen] = useState(false);
   const [legalInfoData, setLegalInfoData] = useState(null); // State to hold the selected legal info data
-  const { setEnableSmoothScroll, enableSmoothScroll } = useAnimeContext();
+  const { setEnableSmoothScroll } = useAnimeContext();
   const handleRedirect = (url) => {
     window.open(url, "_blank");
   };
 
-  // Function to show the drawer and set the corresponding data
   const handleClick = (title) => {
-    console.log(title)
     if (title === "Terms & Conditions") {
       setLegalInfoData(tAndCData);
     } else if (title === "Privacy Policy") {

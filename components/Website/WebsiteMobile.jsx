@@ -1,26 +1,20 @@
-"use client"; // Ensures the component is only rendered on the client side
-
+"use client";
 import React, { useState, useEffect } from "react";
 import styles from "./Website.module.css";
 import Navbar from "../Navbar/Navbar";
-import Hero from "../Hero/Hero";
 import { useAnimeContext } from "@/context/animeContext";
-import Introduction from "../Introduction/Introduction";
-import VideoShow from "../VideoShowcase/VideoShow";
 import Gallary from "../Gallary/Gallary";
 import Contact from "../Contact/Contact";
 import { logoSeqImgMobile, pilot, prestige, prime } from "@/constants";
 import Sawal from "../Faq/Sawal";
-import Lamarca from "../LaMarca/Lamarca";
-import Sampark from "../Contact/Sampark";
-import LogoReveal from "../LogoReveal/LogoReveal";
-import HeroText from "../HeroText/HeroText";
 import MobileShow from "../VideoShowcase/MobileShow";
 import IntroductionMobile from "../Introduction/IntroductionMobile";
+import HeroMobile from "../Hero/HeroMobile";
+import TextMobile from "../Hero/TextMobile";
+import LaMarcaMobile from "../LaMarca/LaMarcaMobile";
 
 const WebsiteMobile = () => {
-  const { showWebsite, isLoaderCompleted, xsSize, isMobile } =
-    useAnimeContext();
+  const { showWebsite, isLoaderCompleted, xsSize } = useAnimeContext();
   const [activeButton, setActiveButton] = useState(0);
   const [dimensions, setDimensions] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 1920,
@@ -61,7 +55,7 @@ const WebsiteMobile = () => {
       <div className={styles.content}>
         <Navbar />
 
-        <Hero
+        <HeroMobile
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1080}
@@ -69,7 +63,9 @@ const WebsiteMobile = () => {
           imgSeq={logoSeqImgMobile}
         />
 
-        <div className="w-full h-screen" />
+        <TextMobile />
+
+        <div className="w-full h-[40vh]" />
 
         <IntroductionMobile
           width={dimensions.width}
@@ -83,7 +79,7 @@ const WebsiteMobile = () => {
         <div className="w-full h-[20vh]" />
         <MobileShow />
 
-        <Lamarca />
+        <LaMarcaMobile />
         {xsSize && <div className="w-full h-[60vh]" />}
 
         <Gallary
@@ -120,9 +116,7 @@ const WebsiteMobile = () => {
           imgSeq={prestige.imgSequenceMobile}
         />
         <div className="w-full h-screen" />
-
         <Sawal />
-
         <Contact />
       </div>
     </section>

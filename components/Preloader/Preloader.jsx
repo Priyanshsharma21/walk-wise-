@@ -4,13 +4,17 @@ import styles from "./Preloader.module.css";
 import { useAnimeContext } from "@/context/animeContext";
 
 const Preloader = () => {
-  const { setShowWebsite, setIsLoaderCompleted, isLoaderCompleted } =
-    useAnimeContext();
+  const {
+    setShowWebsite,
+    setIsLoaderCompleted,
+    isLoaderCompleted,
+    showWebsite,
+  } = useAnimeContext();
   const [counter, setCounter] = useState(0);
   const [hidePreloader, setHidePreloader] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden"; // Disable body scroll during preloader
 
     const interval = setInterval(() => {
       setCounter((prevCounter) => {
@@ -19,38 +23,46 @@ const Preloader = () => {
         } else {
           clearInterval(interval);
           document.body.style.overflow = "auto"; // Enable body scrolling when counter hits 111
-
-          setHidePreloader(true);
-          setIsLoaderCompleted(true);
-
+          setIsLoaderCompleted(true); // Mark loader as completed
           return 111;
         }
       });
-    }, 30); // Adjust interval time as needed
+    }, 30);
 
     return () => {
       clearInterval(interval);
       document.body.style.overflow = "auto"; // Clean up on component unmount
     };
-  }, [setShowWebsite]);
+  }, [setIsLoaderCompleted]);
+
+  // Effect to handle the preloader fade-out
+  useEffect(() => {
+    if (showWebsite && isLoaderCompleted) {
+      // Fade out preloader
+      const timeout = setTimeout(() => {
+        setHidePreloader(true); // Set to true to hide the preloader after fade-out
+      }, 1000); // Delay for opacity transition
+
+      return () => clearTimeout(timeout);
+    }
+  }, [showWebsite, isLoaderCompleted]);
 
   return (
     <main
       className={`main flex justify-center items-center ${styles.preload}`}
       style={{
-        opacity: isLoaderCompleted === true ? 0 : 1,
-        zIndex: hidePreloader ? -1 : 999999,
-        display: hidePreloader ? "none" : "fixed",
-        position: isLoaderCompleted === true ? "relative" : "fixed",
+        opacity: showWebsite && !isLoaderCompleted ? 1 : hidePreloader ? 0 : 1, // Fade-out effect
+        transition: "opacity 1s ease", // Smooth fade-out
+        zIndex: hidePreloader ? -1 : 999999, // Lower z-index when hidden
+        display: hidePreloader ? "none" : "fixed", // Hide after fade-out
+        position: isLoaderCompleted && hidePreloader ? "relative" : "fixed", // Relative position after hiding
       }}
     >
       <div>
         <div className={styles.loaderWrapper}>
           <div data-cursor="-inverse" className={styles.spinner}>
             {Array.from({ length: 10 }).map((_, index) => {
-              // Modify the opacity to start from the top
-              // The order is changed so the opacity changes in clockwise order starting from the top
-              const adjustedIndex = (index + 6) % 10; // Adjust the index to start from the top
+              const adjustedIndex = (index + 6) % 10;
 
               return (
                 <div

@@ -311,9 +311,8 @@ body {
   padding: 0px !important;
 }
 .crossBox {
-  /* border-bottom: 1px solid rgba(255, 235, 205, 0.384); */
+  position: fixed;
 }
-
 .footLegal {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -354,5 +353,8 @@ body {
     color: #ffebcdb4;
     color: #cca873b6;
     color: #8f682eb9;
+  }
+  .crossBox {
+    position: static !important;
   }
 }

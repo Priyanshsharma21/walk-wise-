@@ -81,7 +81,7 @@ const LegalInfo = ({ data, setOpen }) => {
           <div className={styles.point}>{footerData}</div>
         ))}
 
-        <div className="flex justify-between footLegal">
+        {/* <div className="flex justify-between footLegal">
           {data.footerData.infoDetails.map((footerData, i) => (
             <div className={styles.footInformationBox}>
               <div>
@@ -92,7 +92,7 @@ const LegalInfo = ({ data, setOpen }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

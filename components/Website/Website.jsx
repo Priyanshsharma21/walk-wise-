@@ -1,5 +1,4 @@
 "use client"; // Ensures the component is only rendered on the client side
-
 import React, { useState, useEffect } from "react";
 import styles from "./Website.module.css";
 import Navbar from "../Navbar/Navbar";
@@ -12,10 +11,6 @@ import Contact from "../Contact/Contact";
 import { logoSeqImg, pilot, prestige, prime } from "@/constants";
 import Sawal from "../Faq/Sawal";
 import Lamarca from "../LaMarca/Lamarca";
-import Sampark from "../Contact/Sampark";
-import LogoReveal from "../LogoReveal/LogoReveal";
-import HeroText from "../HeroText/HeroText";
-import MobileShow from "../VideoShowcase/MobileShow";
 
 const Website = () => {
   const { showWebsite, isLoaderCompleted, xsSize, isMobile } =
@@ -59,15 +54,6 @@ const Website = () => {
 
       <div className={styles.content}>
         <Navbar />
-        {/* <LogoReveal
-          width={dimensions.width}
-          height={dimensions.height}
-          initialWidth={1920}
-          initialHeight={1080}
-        />
-        <div className="w-full h-[250vh]" />
-        <HeroText />
-        <div className="w-full h-[130vh]" /> */}
         <Hero
           width={dimensions.width}
           height={dimensions.height}
@@ -75,17 +61,14 @@ const Website = () => {
           initialHeight={1080}
           imgSeq={logoSeqImg}
         />
-
         <Introduction
           width={dimensions.width}
           height={dimensions.height}
           initialWidth={1920}
           initialHeight={1080}
         />
-
         <div className="w-full h-[20vh]" />
         <VideoShow />
-
         <Lamarca />
         {xsSize && <div className="w-full h-[60vh]" />}
 
@@ -123,10 +106,7 @@ const Website = () => {
           imgSeq={prestige.imgSequence}
         />
         <div className="w-full h-screen" />
-
         <Sawal />
-        {/* <Sampark /> */}
-
         <Contact />
       </div>
     </section>

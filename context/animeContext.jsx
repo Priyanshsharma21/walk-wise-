@@ -36,12 +36,6 @@ export const AnimeProvider = ({ children }) => {
     }
   }, [breakPoint]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowWebsite(true);
-    }, 3000);
-  }, []);
-
   let appRef = useRef(null);
 
   return (

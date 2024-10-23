@@ -45,8 +45,8 @@ const Hero = ({ width, height, initialWidth, initialHeight, imgSeq }) => {
         );
         const loadedBatch = await Promise.all(batchPromises);
         loadedImages.push(...loadedBatch);
-        if (i === 1) {
-          // Show the website as soon as the first batch is loaded
+        console.log(i);
+        if (i === 150) {
           setShowWebsite(true);
         }
       }

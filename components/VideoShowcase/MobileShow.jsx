@@ -11,8 +11,6 @@ import { Divider } from "antd";
 gsap.registerPlugin(ScrollTrigger);
 
 const MobileShow = () => {
-  const containerRef = useRef(null);
-  const thumbnailRefs = useRef([]);
   const videoLeftSideRef = useRef(null); // Ref for the animated box
   const [title, setTitle] = useState(videoSectionData[0].title);
   const [index, setIndex] = useState(videoSectionData[0].id);
@@ -21,12 +19,7 @@ const MobileShow = () => {
   const [backgroundLeft, setBackgroundLeft] = useState(
     videoSectionData[0].background
   );
-  const [contentVisible, setContentVisible] = useState(false); // New state for visibility
-  const {
-    isMobile,
-    xsSize,
-    setContentVisible: isContentVisible,
-  } = useAnimeContext();
+  const { isMobile, xsSize } = useAnimeContext();
 
   const subtitleRef = useRef(null);
   const processRef = useRef(null);
@@ -34,36 +27,42 @@ const MobileShow = () => {
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
+  const [textVisible, setTextVisible] = useState(false);
+  const { scrollYProgress: yScrollPosition } = useScroll();
+
+  const [scrollCount, setScrollCount] = useState(1);
+  const scrollValue = useTransform(yScrollPosition, [0, 1], [1, 100]);
+
+  useEffect(() => {
+    return scrollValue.onChange((value) => setScrollCount(Math.round(value)));
+  }, [scrollValue]);
+
+  useEffect(() => {
+    if (scrollCount >= 52 && scrollCount <= 61) {
+      setTextVisible(true);
+    } else {
+      setTextVisible(false);
+    }
+
+    if (scrollCount >= 52 && scrollCount < 55) {
+      setTitle(videoSectionData[0].title);
+      setSubTitle(videoSectionData[0].subtitle);
+      setTitle2(videoSectionData[0].title2);
+      setBackgroundLeft(videoSectionData[0].background);
+    } else if (scrollCount >= 55 && scrollCount < 59) {
+      setTitle(videoSectionData[1].title);
+      setSubTitle(videoSectionData[1].subtitle);
+      setTitle2(videoSectionData[1].title2);
+      setBackgroundLeft(videoSectionData[1].background);
+    } else if (scrollCount >= 59 && scrollCount <= 61) {
+      setTitle(videoSectionData[2].title);
+      setSubTitle(videoSectionData[2].subtitle);
+      setTitle2(videoSectionData[2].title2);
+      setBackgroundLeft(videoSectionData[2].background);
+    }
+  }, [scrollCount]);
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
-
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: processRef.current,
-        start: "top 50%", // Trigger when the user scrolls to the section
-        end: "bottom 100%", // End when the user scrolls past the section
-        scrub: true,
-        pinSpacing: false,
-        onUpdate: (self) => {
-          const index = Math.round(
-            self.progress * (videoSectionData.length - 1)
-          );
-          setTitle(videoSectionData[index].title);
-          setSubTitle(videoSectionData[index].subtitle);
-          setTitle2(videoSectionData[index].title2);
-          setBackgroundLeft(videoSectionData[index].background);
-          setIndex(videoSectionData[index].id);
-          isContentVisible(true);
-        },
-        onEnter: () => setContentVisible(true), // Set contentVisible to true when entering
-        onLeave: () => setContentVisible(false), // Set contentVisible to false when leaving
-        onEnterBack: () => setContentVisible(true), // Set contentVisible to true when re-entering
-        onLeaveBack: () => setContentVisible(false), // Set contentVisible to false when leaving back
-      },
-    });
-  }, []);
 
   useEffect(() => {
     if (subtitleRef.current) {
@@ -125,7 +124,7 @@ const MobileShow = () => {
         </div>
       </section>
 
-      {contentVisible && (
+      {textVisible && (
         <motion.div
           initial={{ opacity: 0 }} // Initial opacity
           animate={{ opacity: 1 }} // Animate to opacity 1
