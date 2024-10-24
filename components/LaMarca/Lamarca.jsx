@@ -162,7 +162,7 @@ const Hero = ({ width, height, initialWidth, initialHeight }) => {
 
           <div className={styles.containerImage}>
             <img
-              src="https://res.cloudinary.com/dlxpea208/image/upload/v1728541015/la_marca_italy_png_okn0kg.png"
+              src="https://res.cloudinary.com/detngwnov/image/upload/v1729762226/la_marca_italy_png_okn0kg_rq8yet.png"
               alt="LaMarca"
               className={styles.heroImage} // Style this class in CSS for dimensions
               ref={imageRef}

@@ -52,7 +52,7 @@ const Contact = () => {
           >
             <div className={styles.shopImg}>
               <img
-                src="https://res.cloudinary.com/dlxpea208/image/upload/v1729075202/Screenshot_2024-10-16_160632_1_qskrn2.png"
+                src="https://res.cloudinary.com/detngwnov/image/upload/v1729762358/Screenshot_2024-10-16_160632_1_qskrn2_w7wlun.png"
                 alt="Shop"
               />
               <div className={styles.overlay}>

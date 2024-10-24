@@ -31,7 +31,7 @@ const Hero = ({ width, height, initialWidth, initialHeight, imgSeq }) => {
   useEffect(() => {
     const preloadImages = async () => {
       const loadedImages = [];
-      const batchSize = 50;
+      const batchSize = 100;
 
       for (let i = 0; i < imgSeq.length; i += batchSize) {
         const batch = imgSeq.slice(i, i + batchSize);
@@ -45,8 +45,7 @@ const Hero = ({ width, height, initialWidth, initialHeight, imgSeq }) => {
         );
         const loadedBatch = await Promise.all(batchPromises);
         loadedImages.push(...loadedBatch);
-        console.log(i);
-        if (i === 150) {
+        if (i === 100) {
           setShowWebsite(true);
         }
       }
@@ -169,13 +168,6 @@ const Hero = ({ width, height, initialWidth, initialHeight, imgSeq }) => {
       const stepChars = splitStepIntoText.chars;
       const zoneChars = splitZoneText.chars;
 
-      const getStart = () => {
-        if (xsSize) {
-          return "top top";
-        } else {
-          return "top +=50";
-        }
-      };
       gsap
         .timeline({
           scrollTrigger: {
@@ -271,7 +263,7 @@ const Hero = ({ width, height, initialWidth, initialHeight, imgSeq }) => {
           <div className="inner-element">
             <img
               className={styles.scrollImg}
-              src="https://res.cloudinary.com/dlxpea208/image/upload/v1727772622/scroll_ula7ky.svg"
+              src="https://res.cloudinary.com/detngwnov/image/upload/v1729772989/Group_zbokcj.png"
               alt="scrollToBegin Image"
             />
             {isLoaderCompleted && showWebsite ? (

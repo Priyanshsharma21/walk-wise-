@@ -49,16 +49,19 @@ const MobileShow = () => {
       setSubTitle(videoSectionData[0].subtitle);
       setTitle2(videoSectionData[0].title2);
       setBackgroundLeft(videoSectionData[0].background);
+      setIndex(videoSectionData[0].id);
     } else if (scrollCount >= 55 && scrollCount < 59) {
       setTitle(videoSectionData[1].title);
       setSubTitle(videoSectionData[1].subtitle);
       setTitle2(videoSectionData[1].title2);
       setBackgroundLeft(videoSectionData[1].background);
+      setIndex(videoSectionData[1].id);
     } else if (scrollCount >= 59 && scrollCount <= 61) {
       setTitle(videoSectionData[2].title);
       setSubTitle(videoSectionData[2].subtitle);
       setTitle2(videoSectionData[2].title2);
       setBackgroundLeft(videoSectionData[2].background);
+      setIndex(videoSectionData[2].id);
     }
   }, [scrollCount]);
 

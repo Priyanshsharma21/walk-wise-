@@ -17,9 +17,8 @@ const Page = () => {
     let lenis;
 
     if (enableSmoothScroll) {
-      // Initialize Lenis if smooth scroll is enabled
       lenis = new Lenis({
-        lerp: 0.04,
+        lerp: 0.07,
       });
 
       navRef.current.style.opacity = 0;

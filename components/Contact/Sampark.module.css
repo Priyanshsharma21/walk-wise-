@@ -5,7 +5,7 @@
   height: 100vh;
   /* min-height: 100vh; */
   overflow: hidden;
-  background: url("https://res.cloudinary.com/dlxpea208/image/upload/v1729665636/wwc-bg1_hzpxlt_pev4k1.png");
+  background: url("https://res.cloudinary.com/detngwnov/image/upload/v1729773772/wwc-bg1_hzpxlt_im5wxx.png");
   z-index: 999999999;
 }
 
@@ -258,7 +258,7 @@
   width: 100%;
   height: 100vh;
   z-index: 1;
-  background: url("https://res.cloudinary.com/dlxpea208/image/upload/v1729665636/wwc-bg1_hzpxlt_pev4k1.png");
+  background: url("https://res.cloudinary.com/detngwnov/image/upload/v1729773772/wwc-bg1_hzpxlt_im5wxx.png");
 
   filter: blur(0px);
   background-size: cover;

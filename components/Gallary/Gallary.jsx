@@ -37,7 +37,7 @@ const Gallary = ({
     // Preload images
     const preloadImages = async () => {
       const loadedImages = [];
-      const batchSize = 50;
+      const batchSize = 100;
 
       for (let i = 0; i < imgSeq.length; i += batchSize) {
         const batch = imgSeq.slice(i, i + batchSize);
@@ -234,7 +234,7 @@ const Gallary = ({
           className={styles.gallaryLaMarca}
         >
           <img
-            src="https://res.cloudinary.com/dlxpea208/image/upload/v1728541015/la_marca_italy_png_okn0kg.png"
+            src="https://res.cloudinary.com/detngwnov/image/upload/v1729762226/la_marca_italy_png_okn0kg_rq8yet.png"
             alt="la marca logo"
           />
         </motion.div>

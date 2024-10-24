@@ -56,7 +56,7 @@ const Navbar = () => {
             className={`${styles.navTop} flex justify-between items-center`}
           >
             <img
-              src={`https://res.cloudinary.com/dlxpea208/image/upload/v1729494123/LOGO_a8usuq.png`}
+              src={`https://res.cloudinary.com/detngwnov/image/upload/v1729761899/LOGO_yws94a.png`}
               alt="logo"
               className={styles.navLogo}
             />
@@ -72,7 +72,7 @@ const Navbar = () => {
             className={`${styles.navTop} flex justify-between items-center`}
           >
             <img
-              src={`https://res.cloudinary.com/dlxpea208/image/upload/v1729494123/LOGO_a8usuq.png`}
+              src={`https://res.cloudinary.com/detngwnov/image/upload/v1729761899/LOGO_yws94a.png`}
               alt="logo"
               className={styles.navLogo}
             />

@@ -112,7 +112,7 @@ const VideoShow = () => {
               style={{ marginLeft: i === 0 ? "30vw" : "0px" }}
             >
               <video
-                src={isMobile ? item.videoUrl.mobile : item.videoUrl.desktop}
+                src={item.videoUrl.desktop}
                 poster={item.poster}
                 autoPlay
                 muted
@@ -128,7 +128,7 @@ const VideoShow = () => {
           <div>
             <img
               className={styles.logoBrandTitle}
-              src="https://res.cloudinary.com/dlxpea208/image/upload/v1727845317/Group_33_gbml5a.png"
+              src="https://res.cloudinary.com/detngwnov/image/upload/v1729778885/Group_33_a22sya.png"
               alt="logo"
             />
           </div>

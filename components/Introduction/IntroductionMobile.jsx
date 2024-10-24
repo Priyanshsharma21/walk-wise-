@@ -14,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
-  const subheadRefs = useRef([]);
   const stepIntoRef = useRef(null);
   const zoneRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -25,6 +24,7 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
     width: initialWidth,
     height: initialHeight,
   });
+  const { setIsShowLoaded, isShowLoaded } = useAnimeContext();
 
   const [showMainContent, setShowMainContent] = useState(false);
 
@@ -33,7 +33,7 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
   useEffect(() => {
     const preloadImages = async () => {
       const loadedImages = [];
-      const batchSize = 50;
+      const batchSize = 100;
 
       for (let i = 0; i < shoeEntryImgMobile.length; i += batchSize) {
         const batch = shoeEntryImgMobile.slice(i, i + batchSize);
@@ -69,19 +69,19 @@ const IntroductionMobile = ({ width, height, initialWidth, initialHeight }) => {
         );
         setFrameIndex(index);
 
-        if (index >= 1 && index <= 205) {
+        if (index >= 1 && index <= 170) {
           setShowMainContent(true);
         } else {
           setShowMainContent(false);
         }
 
-        if (index >= 0 && index <= 205) {
+        if (index >= 0 && index <= 170) {
           gsap.to(sectionRef.current, { opacity: 1, duration: 0.1 });
         } else {
           gsap.to(sectionRef.current, { opacity: 0, duration: 1 });
         }
 
-        if (index >= 70 && index <= 205) {
+        if (index >= 70 && index <= 170) {
           setShowBottomText(true);
           gsap.to(heroRef.current, { opacity: 1, duration: 1 });
         } else {

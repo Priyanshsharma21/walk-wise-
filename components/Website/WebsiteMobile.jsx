@@ -65,7 +65,7 @@ const WebsiteMobile = () => {
 
         <TextMobile />
 
-        <div className="w-full h-[40vh]" />
+        <div className="w-full h-[10vh]" />
 
         <IntroductionMobile
           width={dimensions.width}
@@ -80,7 +80,7 @@ const WebsiteMobile = () => {
         <MobileShow />
 
         <LaMarcaMobile />
-        {xsSize && <div className="w-full h-[60vh]" />}
+        {xsSize && <div className="w-full h-[20vh]" />}
 
         <Gallary
           width={dimensions.width}

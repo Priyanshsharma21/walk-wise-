@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Introduction = ({ width, height, initialWidth, initialHeight }) => {
-  const { setPageCount } = useAnimeContext();
+  const { setPageCount, setIsShowLoaded, isShowLoaded } = useAnimeContext();
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
   const subheadRefs = useRef([]);
@@ -32,7 +32,7 @@ const Introduction = ({ width, height, initialWidth, initialHeight }) => {
   useEffect(() => {
     const preloadImages = async () => {
       const loadedImages = [];
-      const batchSize = 50;
+      const batchSize = 100;
 
       for (let i = 0; i < shoeEntryImg.length; i += batchSize) {
         const batch = shoeEntryImg.slice(i, i + batchSize);
